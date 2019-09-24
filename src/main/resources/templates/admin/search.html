@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .container, .container-fluid {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .col-sm-12 {
+            width: 100%;
+        }
+
+        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {
+            background: #e96e50;
+            background-image: radial-gradient(#e28d50, #e96e50);
+        }
+
+        .headline {
+            padding-bottom: 1px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            line-height: 50px;
+        }
+
+        .first-child {
+            margin-top: 0 !important;
+        }
+
+        .h2, h2 {
+            font-size: 30px;
+        }
+
+        .headline span {
+            padding-bottom: 4px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        .color-jumbotron {
+            margin-top: -20px;
+            margin-bottom: 30px;
+            padding: 50px 0;
+            color: #fff;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
+        }
+
+        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {
+            background: #e96e50;
+            background-image: radial-gradient(#e28d50, #e96e50);
+        }
+
+        .container {
+            width: 1000px !important;
+        }
+
+        .row {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .table, .table.table-bordered td {
+            font-size: 14px;
+        }
+
+        .table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table {
+            max-width: 100%;
+            background-color: transparent;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        img {
+            border: 0;
+        }
+
+        b, strong {
+            font-weight: 700;
+        }
+
+        orange a {
+            color: #e96e50;
+        }
+
+        .badge {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            vertical-align: baseline;
+            white-space: nowrap;
+            text-align: center;
+            background-color: #4e4d4a;
+            border-radius: 10px;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a th:href="@{/}"> <button class="btn btn-md btn-primary btn-block" style="margin-left: 10px">Home
+            </button></a>
+        </li>
+
+        <li class="nav-item">
+            <form th:action="@{/admin/management}" method="get">
+                <button class="btn btn-md btn-primary btn-block"
+                        style="margin-left: 30px">Management
+                </button>
+            </form>
+        </li>
+
+        <li class="nav-item">
+            <form th:action="@{/logout}" method="get">
+                <button class="btn btn-md btn-primary" name="registration"
+                        type="Submit" style="margin-left: 1000px">Logout
+                </button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+
+<!--    <form th:action="search-weather" class="form-inline" method="get">-->
+<!--        <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">-->
+<!--        <button class="btn btn-success" type="submit">Search</button>-->
+<!--    </form>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>
+        </div>
+
+        <div class="color-jumbotron jumbotron-green">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form th:action="search-weather" class="form-inline" method="get">
+                            <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div> <!-- / .row -->
+            </div> <!-- / .container -->
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="tab-pane active" id="forecast-list">
+                        <div id="forecast_list_ul">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="http://openweathermap.org/img/wn/03d@2x.png" width="50"
+                                             height="50">
+                                    </td>
+                                    <td><b><a href="/city/1583992"><p th:text="${weathers.name}">
+                                        <p th:text="${weathers.sys.country}"></a></b>
+                                        <b><i> scattered clouds</i></b>
+                                        <p>
+                                            <span class="badge badge-info">
+                                        <p th:text="${weathers.main.temp}">°С</p>
+                                        wind <p th:text="${weathers.wind.speed}"> m/s. clouds
+                                        <p th:text="${weathers.clouds.all}"> %,
+                                        <p th:text="${weathers.main.pressure}"> hpa</p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>
