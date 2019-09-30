@@ -212,9 +212,9 @@
 <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
 
-<!--&lt;!&ndash;<p th:text="${weathers.main.temp}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.main.humidity}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.main.pressure}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p th:text="${weathers.common.temp}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p th:text="${weathers.common.humidity}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p th:text="${weathers.common.pressure}"></p>&ndash;&gt;-->
 <!--</body>-->
 <!--</html>-->
 <!DOCTYPE html>
@@ -360,10 +360,16 @@
             margin-top: 5px;
         }
 
+        /*body {*/
+        /*    background-image: url("https://themalaysianreserve.com/wp-content/uploads/2018/11/bmw1.jpg")no-repeat center center fixed;*/
+        /*    background-size: cover;*/
+        /*    overflow: hidden;*/
+        /*}*/
+
         body {
-            background-image: url("https://i.pinimg.com/originals/e4/e0/68/e4e06810ae40ee3051f4145f33cb1a42.jpg");
+            background: url("https://znews-photo.zadn.vn/w1024/Uploaded/qfrqy/2017_11_30/p90285377_highres.jpg") no-repeat center center fixed;
             background-size: cover;
-            height: 500px;
+            overflow: hidden;
         }
 
         .container {
@@ -413,14 +419,14 @@
                                                 <p th:text="${detail.date}"></p>
                                             </div>
                                         </td>
-<!--                                        <td>-->
-<!--                                            <div style="margin: 5px -65px;">-->
-<!--                                                <div class="badge badge-info" th:text="${detail.temp}+'°С'"></div>-->
-<!--                                                <b><i th:text="${detail.description}"></i></b>-->
-<!--                                                <p style="margin-top: 10px"-->
-<!--                                                   th:text="${detail.wind}+'m/s. '+ ${detail.humidity}+'%. '+${detail.pressure}+'hpa. '">-->
-<!--                                            </div>-->
-<!--                                        </td>-->
+                                        <td>
+                                            <div style="margin: 5px -65px;">
+                                                <div class="badge badge-info" th:text="${detail.temp}+'°С'"></div>
+                                                <b><i th:text="${detail.description}"></i></b>
+                                                <p style="margin-top: 10px"
+                                                   th:text="${detail.wind}+'m/s. '+ ${detail.humidity}+'%. '+${detail.pressure}+'hpa. '">
+                                            </div>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -22,16 +22,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     public UserRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
@@ -41,30 +35,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         for (Roles role : roles) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName()));
         }
-
         return new org.springframework.security.core.userdetails.User(
-                user.getEmail(), user.getPassword(), grantedAuthorities);
+                user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 
-//
-  	public User saveUser(User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setActive(1);
-		Roles userRole = roleRepository.findByRoleName("ROLE_USER");
-		user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
-		return userRepository.save(user);
-	}
 
-//  /*   //Đăng kí cho admin
+    //Đăng kí cho admin
 //    public User saveUser(User admin) {
 //        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
-//        admin.setActive(1);
+//        admin.setActive(true);
 //        HashSet<Roles> roles = new HashSet<>();
 //        roles.add(roleRepository.findByRoleName("ROLE_ADMIN"));
 //        roles.add(roleRepository.findByRoleName("ROLE_USER"));
 //        admin.setRoleName(roles);
 //        return userRepository.save(admin);
 //    }
-
-
 }

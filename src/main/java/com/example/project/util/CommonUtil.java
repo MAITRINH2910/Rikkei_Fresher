@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.Timestamp;
+
 
 public class CommonUtil {
     public static String FahtoCelsius(double Fah) {
@@ -14,6 +16,21 @@ public class CommonUtil {
     public static String formatDate(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMMM dd, yyyy");
         return simpleDateFormat.format(new Date());
+    }
+
+    public static String formatToString( Timestamp ts) {
+        String formattedDate = new SimpleDateFormat("yyyyMMdd").format(ts);
+        return formattedDate;
+    }
+
+    /**
+     * Parse curTime to String
+     * @return
+     */
+    public static String curTimeToString() {
+        Timestamp ts= new Timestamp(System.currentTimeMillis());
+        String formattedDate = new SimpleDateFormat("yyyyMMdd").format(ts);
+        return formattedDate;
     }
 
 }

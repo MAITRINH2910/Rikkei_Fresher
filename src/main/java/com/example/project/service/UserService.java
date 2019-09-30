@@ -9,7 +9,9 @@ import java.util.Optional;
 @Service
 public interface UserService {
 
-    User findUserByEmail(String email);
+//    User findUserByEmail(String email);
+
+    User findUserByUsername(String username);
 
     List<User> findAllUser();
 
@@ -19,4 +21,7 @@ public interface UserService {
 
     User saveUser(User user);
 
+    void editStatusUser(Long id);
+
+    void editRoleUser(Long id, String roleName);
 }

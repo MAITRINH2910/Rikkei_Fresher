@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>User Management</title>
     <meta charset="utf-8">
@@ -10,14 +10,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+    <style>
+        body {
+            background: url("https://d2eohwa6gpdg50.cloudfront.net/content/uploads/2018/08/07064020/BMW-i8-Roadster.jpg") no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .container{
+            width: 1050px;
+            height: 570px;
+            background: white;
+            opacity: 0.8;
+            border-style: solid;
+            border-radius: 25px;
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a th:href="@{/}"> <button class="btn btn-md btn-primary btn-block" style="margin-left: 10px">Home
-            </button></a>
+            <form th:action="@{/}" method="get">
+                <button class="btn btn-md btn-primary btn-block" style="margin-left: 10px">Home
+                </button>
+            </form>
         </li>
 
         <li class="nav-item">
@@ -37,9 +59,9 @@
         </li>
     </ul>
 </nav>
+
 <div class="container">
     <h2>User Management</h2>
-    <p>User Details: </p>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -50,24 +72,61 @@
             <th></th>
         </tr>
         </thead>
-        <th:block th:each="user,iterStat : ${listUsers}">
-            <tr>
-                <td th:text="${user.firstName}"></td>
-                <td th:text="${user.email}"></td>
-                <td><input type="checkbox" name="1" value="active" checked><br>
-                </td>
-                <td th:each="index : ${user.roleName}" th:text="${index.roleName}"></td>
-<!--                <span sec:authentication="principal.authorities"></span>-->
-                <td>
-                    <a class="text-info" th:href="@{/admin/delete/__${user.id}__}"
-                       onclick="return confirm('Bạn có muốn xoá tài khoản này hay không?')"
-                       title="Xóa Lead"><i
-                            class="fa fa-trash" style="color: #007bff !important"></i></a>
-                </td>
-            </tr>
-        </th:block>
+        <tr th:each="user,iterStat : ${listUsers}" th:data-id="${user.id}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.email}"></td>
+            <td><input class="checkbox1" type="checkbox" th:checked="${user.active}">
+            </td>
+            <td><select id="idselect" class="form-control">
+                <option th:each="item : ${user.roleName}" th:utext="${item.roleName}"></option>
+                <!--                    <option th:each="role : ${dsRole}"-->
+                <!--                            th:value="${role.roleId}" th:utext="${role.role}"></option>-->
+
+            </select></td>
+            <!--                <span sec:authentication="principal.authorities"></span>-->
+            <td>
+                <a class="text-info" th:href="@{/admin/delete/__${user.id}__}"
+                   onclick="return confirm('Bạn có muốn xoá tài khoản này hay không?')"
+                   title="Xóa Lead"><i
+                        class="fa fa-trash" style="color: #007bff !important"></i></a>
+            </td>
+        </tr>
     </table>
 </div>
-
 </body>
+<script>
+    $(document).ready(function () {
+        $('.checkbox1').change(function () {
+            if ($(this).is(":checked")) {
+                var returnVal = confirm("Are you sure change this account to enable?");
+                $(this).attr("checked", returnVal);
+                if (returnVal) {
+                    var id = $(this).closest("tr").attr("data-id");
+                    $.ajax({
+                        url: "http://localhost:8080/admin/edit-status-user",
+                        type: "GET",
+                        data: {
+                            id: id,
+                        },
+                    })
+                }
+            } else {
+                var returnVal = confirm("Are you sure change this account to disable?");
+                $(this).attr("checked", returnVal);
+                if (returnVal) {
+                    var id = $(this).closest("tr").attr("data-id");
+                    $.ajax({
+                        url: "http://localhost:8080/admin/edit-status-user",
+                        type: "GET",
+                        data: {
+                            id: id,
+                        },
+                    })
+                }
+            }
+            // $('.textbox1').val($(this).is(':checked'));
+
+        });
+    })
+</script>
 </html>

@@ -9,10 +9,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class WeatherConverterToEntity {
-    @Autowired
-    private ModelMapper modelMapper;
 
-    public WeatherEntity weatherEntityConverter(WeatherDTO weatherDTO) throws ParseException {
+    public WeatherEntity weatherEntityConverter(WeatherDTO weatherDTO) {
+        ModelMapper modelMapper = new ModelMapper();
         WeatherEntity weatherEntity = modelMapper.map(weatherDTO, WeatherEntity.class);
         weatherEntity.setIcon(weatherDTO.getWeather().get(0).getIcon());
         weatherEntity.setNameCity(weatherDTO.getName());

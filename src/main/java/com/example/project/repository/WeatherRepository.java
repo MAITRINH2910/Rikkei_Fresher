@@ -5,11 +5,20 @@ import com.example.project.entity.WeatherEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
 public interface WeatherRepository extends JpaRepository<WeatherEntity, Long> {
-    WeatherEntity findByNameCity(String city);
+    List<WeatherEntity> findAllByUsers(User user);
 
-    List<WeatherEntity> findWeatherEntitiesByUsers(User user);
+    WeatherEntity findByWeatherId(Long id);
+
+    WeatherEntity findByNameCity(String nameCity);
+
+    Boolean existsByNameCity(String nameCity);
+
+    List<WeatherEntity> findAllByDate(Date date);
+
+    Long countAllByNameCity(String nameCity);
 }

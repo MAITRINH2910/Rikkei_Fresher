@@ -9,7 +9,8 @@ import java.util.List;
 @Service
 public interface WeatherService {
     void saveWeather(WeatherEntity weatherEntity);
-    WeatherEntity findByCityName(String city);
 
     List<WeatherEntity> getWeatherByUser(User user);
+
+    void deleteWeather (Long id);
 }

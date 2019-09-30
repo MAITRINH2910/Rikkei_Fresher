@@ -212,13 +212,13 @@
 <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
 
-<!--&lt;!&ndash;<p th:text="${weathers.main.temp}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.main.humidity}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.main.pressure}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p th:text="${weathers.common.temp}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p th:text="${weathers.common.humidity}"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;<p th:text="${weathers.common.pressure}"></p>&ndash;&gt;-->
 <!--</body>-->
 <!--</html>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -229,6 +229,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <style>
+
+        .ty-compact-list {
+            padding: 5px 5px 5px 0px;
+            float: left;
+            width: 100%;
+        }
+
         .container {
             margin-right: auto;
             margin-left: auto;
@@ -241,29 +248,13 @@
             max-width: 20%;
         }
 
-
-        .body-orange.body-orange.body-orange {
-            background: #e96e50;
-            background-image: radial-gradient(#e28d50, #e96e50);
-        }
-
         .headline span {
             padding-bottom: 4px;
             border-bottom-width: 1px;
             border-bottom-style: solid;
         }
 
-        .headline {
-            /*border-bottom: 1px solid #eee;*/
-            /*margin-bottom: 30px;*/
-            line-height: 50px;
-        }
-
-        .first-child {
-            margin-top: 0 !important;
-        }
-
-        .h2, h2 {
+        h2 {
             font-size: 30px;
         }
 
@@ -273,15 +264,7 @@
             border-bottom-style: solid;
         }
 
-        .searchWeather {
-            margin-top: -195px;
-            margin-bottom: -20px;
-            padding: 50px 0;
-            color: #fff;
-            /*text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);*/
-        }
-
-        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {
+        .body-orange {
             background: #e96e50;
             background-image: radial-gradient(#e28d50, #e96e50);
         }
@@ -359,10 +342,14 @@
             border-color: #dc3545;
         }
 
-        .row {
-            background-image: url("http://4.bp.blogspot.com/-kS3rItqJ8ic/T4qN61xYnSI/AAAAAAAABdA/a0ss4xXYUH0/s1600/hinh-nen-cay-co-bong-hoa-buom.jpg");
+        body {
+            overflow: auto;
+            background: url("https://cdn.bmwblog.com/wp-content/uploads/2018/04/2018-BMW-i8-Roadster-test-drive-123.jpg") no-repeat center center fixed;
             background-size: cover;
-            height: 560px;
+        }
+
+        .row {
+            height: 560px
         }
 
         /*#frame {*/
@@ -463,34 +450,56 @@
         /*#b8 { background: hsl(210, 50%, 50%); }*/
         /*#b9 { background: hsl(240, 50%, 50%); }*/
         /*#b10 { background: hsl(270, 50%, 50%); }*/
-        .showmore {
-            cursor: pointer;
-            font-weight: bold;
-        }
+
 
         .detail {
-            margin-left: 285px;
-            margin-top: -260px;
+            margin-left: -35px;
+            margin-top: -280px;
             background-color: #f3fcff;;
-            border: 1px solid black;
             opacity: 0.8;
             filter: alpha(opacity=60);
             border-radius: 20px;
-            width: 445px;
+            width: 600px;
             height: 88px
         }
 
         .detailDB {
-            margin-left: 270px;
-            margin-top: -325px;
-            background-color: #f3fcff;;
+            margin-left: -287px;
+            background-color: #f3fcff;
             border: 1px solid black;
             opacity: 0.8;
-            filter: alpha(opacity=60);
-            width: 445px;
-            height: 88px
+            width: 600px;
+            height: 90px;
         }
 
+        .btnAdmin {
+            margin-left: 5px;
+        }
+
+        .show-more {
+            /*display: none;*/
+            cursor: pointer;
+            margin-top: -20px;
+            background-color: gray;
+            border: 1px solid black;
+            width: 600px;
+            height: 25px;
+            margin-left: -287px;
+            text-align: center;
+
+        }
+
+        .chung {
+            margin-left: 250px;
+            margin-top: -325px;
+        }
+
+        .searchWeather {
+            margin-top: -195px;
+            margin-bottom: -20px;
+            padding: 50px 0;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -514,12 +523,21 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul class="navbar-nav">
         <li class="nav-item">
-            <button class="btn btn-md btn-primary btn-block">Home</button>
+            <a th:href="@{/}" class="btn btn-md btn-primary btn-block">Home</a>
         </li>
+        <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+            <form th:action="@{/admin/management}" method="get">
+                <button class="btn btn-md btn-primary btnAdmin"
+                > Management
+                </button>
+            </form>
+        </li>
+
+
         <li class="nav-item">
             <form th:action="@{/logout}" method="get">
                 <button class="btn btn-md btn-primary" name="registration"
-                        type="Submit" style="margin-left: 1180px">Logout
+                        type="Submit" style="margin-left: 1050px">Logout
                 </button>
             </form>
         </li>
@@ -528,11 +546,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-        </div>
+        <div class="col-sm-12"></div>
 
         <div class="container">
-            <form th:action="search-weather" class="form-inline searchWeather" method="get">
+            <form th:action="search-city" class="form-inline searchWeather" method="get">
                 <input class="form-control mr-sm-2" style="margin-left: 260px; width: 40%" name="city"
                        type="text"
                        placeholder="...">
@@ -540,19 +557,18 @@
             </form>
         </div> <!-- / .container -->
 
-        <div class="detail">
-            <div class="col-sm-12" style="margin-left: 215px">
+        <div class="container">
+            <div class="col-sm-12" style="margin-left: 215px;  ">
                 <div class="tab-pane active" id="forecast-list">
                     <div id="forecast_list_ul">
-                        <table class="table">
-                            <tbody>
+                        <table class="table detail">
                             <tr th:each="currentWeather : ${currentWeather}">
                                 <td>
-                                    <img th:src="${icon}" width="50" style="margin: 10px -230px "
+                                    <img th:src="${icon}" width="50" style="margin: 5px 0px "
                                          height="50">
                                 </td>
                                 <td>
-                                    <div style="margin: 5px -190px;">
+                                    <div style="margin: 5px -1px;">
                                         <b><a th:href="@{/weather-detail/__${currentWeather.name}__}"><p
                                                 th:text="${currentWeather.name} + ', '+ ${currentWeather.sys.country}">
                                         </a></b>
@@ -560,82 +576,76 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div style="margin: 5px -56px;">
+                                    <div style="margin: 5px -10px;">
                                         <div class="badge badge-info" th:text="${temp}+'°С'"></div>
                                         <b><i th:text="${description}"></i></b>
                                         <p style="margin-top: 9px" th:text="${general}">
                                     </div>
                                 </td>
                                 <td>
-                                    <a th:href="@{/save/__${currentWeather.name}__}" class="btn btn-danger"
-                                       style="margin: 15px 90px;">Add</a>
+                                    <a th:href="@{/save/__${currentWeather.name}__}" class="btn btn-warning"
+                                       style="margin: 10px 5px;">Add</a>
                                 </td>
-                                <!--                                <p><span class="text-success" th:utext="${successMessage}"></span></p>-->
-
                             </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="detailDB">
-        <div class="col-sm-12" style="margin-left: 215px">
-            <div class="tab-pane active" data-toggle="collapse">
-                <table class="table ">
-                    <tbody>
-                    <tr th:each="weatherList : ${weatherList}">
+    <div class="chung">
+        <div class="col-sm-12" style="margin-left: 215px;margin-top: -370px;">
+            <div class="tab-pane active">
+                <table class="table">
+                    <tr class="ty-compact-list detailDB" th:each="weatherList : ${weatherList}">
                         <td>
-                            <img th:src="${weatherList.icon}" width="50" style="margin: 5px -230px"
+                            <img th:src="${weatherList.icon}" width="50" style="margin: 5px 5px"
                                  height="50">
                         </td>
                         <td>
-                            <div style="margin: 5px -190px;">
-                                <b><p th:text="${weatherList.nameCity}"></p>
-                                    </a></b>
+                            <div style="margin: 5px 10px;">
+                                <b><a th:href="@{/weather-detail/__${weatherList.nameCity}__}">
+                                    <p
+                                            th:text="${weatherList.nameCity}"></p>
+                                </a></b>
                                 <p th:text="${weatherList.date}"></p>
                             </div>
                         </td>
-
                         <td>
-                            <div style="margin: 5px -56px;">
-                                <div class="badge badge-info" th:text="${weatherList.temp}+'°С'"></div>
+                            <div style="margin: 5px 20px;">
+                                <div class="badge badge-info"
+                                     th:text="${weatherList.temp}+'°С'"></div>
                                 <b><i th:text="${weatherList.description}"></i></b>
                                 <p style="margin-top: 10px"
                                    th:text="${weatherList.wind}+'m/s. '+ ${weatherList.humidity}+'%. '+${weatherList.pressure}+'hpa. '">
                             </div>
                         </td>
-                        <td><a th:href="@{/save/__${weatherList.nameCity}__}" class="btn btn-danger"
-                               style="margin: 15px 75px;">Delete</a></td>
-                        <td> <div style="margin: 78px 80px 0px -525px;border-style: solid; height: 25px; color: lightsteelblue; background-color: lightsteelblue">
-                            <div style="margin: 0px 0px 0px 170px; color: black" class="collapse-toggle"
-                                 th:data-target="'#collapse' + ${weatherList.weatherId}"
-                                 aria-expanded="true" th:aria-controls="'collapse' + ${weatherList.weatherId}"
-                                 th:classappend="collapse-toggle- + ${weatherList.weatherId}">
-                                Show More
-                            </div>
-                        </div></td>
+                        <td><a class="text-info" th:href="@{/delete-weather/__${weatherList.weatherId}__}"
+                               onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"
+                               title="Xóa Lead">
+                            <button
+                                    class="btn btn-danger !important">Delete
+                            </button>
+                        </a></td>
                     </tr>
-                    </tbody>
                 </table>
+                <div class="show-more">Show more</div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 <script>
-
-    $('.collapse-toggle').click(function () {
-        var value = $(this).attr('data-target').substring(9, parseInt($(this).attr('data-target').length));
-        var className = '.collapse-toggle-' + value;
-        console.log($(className).text());
-        if ($(className).text().trim().indexOf('Show More') != -1) {
-            $(className).text("Show Less");
-        } else if ($(className).text().trim().indexOf('Show Less') != -1) {
-            $(className).text("Show More");
-        }
+    if ($('.ty-compact-list').length > 1) {
+        $('.ty-compact-list:gt(0)').hide();
+        $('.show-more').show();
+    }
+    $('.show-more').on('click', function () {
+        //toggle elements with class .ty-compact-list that their index is bigger than 2
+        $('.ty-compact-list:gt(0)').toggle();
+        //change text of show more element just for demonstration purposes to this demo
+        $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
     });
 </script>
+
 </html>

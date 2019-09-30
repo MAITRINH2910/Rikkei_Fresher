@@ -39,7 +39,8 @@ public class WeatherEntity {
     private String pressure;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_weather", joinColumns = @JoinColumn(name = "weather_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "user_weather", joinColumns = @JoinColumn(name = "weather_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
     public Set<User> getUsers() {

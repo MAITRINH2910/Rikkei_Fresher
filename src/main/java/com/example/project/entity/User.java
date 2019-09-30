@@ -1,7 +1,5 @@
 package com.example.project.entity;
 
-import com.example.project.DTO.Weather;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -29,7 +27,7 @@ public class User {
     private String lastName;
 
     @Column(name = "active")
-    private int active;
+    private boolean active;
 
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -95,11 +93,11 @@ public class User {
         this.roleName = roleName;
     }
 
-    public int getActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 }

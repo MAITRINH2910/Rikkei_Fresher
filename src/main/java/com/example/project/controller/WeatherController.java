@@ -1,9 +1,8 @@
 package com.example.project.controller;
 
-import com.example.project.DTO.Weather;
 import com.example.project.DTO.WeatherDTO;
 import com.example.project.DTO.WeatherDetailDTO;
-import com.example.project.entity.Roles;
+import com.example.project.api.WeatherApi;
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
 import com.example.project.service.UserService;
@@ -13,16 +12,12 @@ import com.example.project.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -34,7 +29,51 @@ public class WeatherController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/search-weather")
+    @Autowired
+    WeatherApi weatherApi;
+
+    //
+//    @GetMapping("/search-city")
+//    public String findWeatherByCity(@RequestParam String name, Model model, Principal principal, ModelMap modelMap) {
+//        // list theo ten search
+//        User user = userService.findUserByUsername(principal.getName());
+//        List<WeatherEntity> lstWeatherByName;
+//        // list weather by user
+//        List<WeatherEntity> lstWeather = weatherApi.findAllByUserEntities(user);
+//        lstWeatherByName = lstWeather.stream()
+//                .filter(curweather -> name.trim().toLowerCase().equals(curweather.getNameCity().trim().toLowerCase()))
+//                .collect(Collectors.toList());
+//        modelMap.addAttribute("listWeather", lstWeatherByName);
+//        WeatherEntity currentWeather = weatherApi.restJsonData(name);
+//
+//        // lay thoi tiet hien tai cung ten Search trong db , Xy ly nut add va update
+//        WeatherEntity curWeather = lstWeatherByName.stream()
+//                .filter(weather -> CommonUtil.curTimeToString().equals(weather.getDate()))
+//                .findAny().orElse(null);
+//        if (curWeather != null) {
+//            modelMap.addAttribute("flag", "update");
+//        } else {
+//            modelMap.addAttribute("flag", "add");
+//        }
+//
+//        String tempInCelcius = CommonUtil.FahtoCelsius(Double.parseDouble(currentWeather.getTemp()));
+//        String currentDate = CommonUtil.formatDate();
+//        String iconPath = Constant.ICON_PATH + currentWeather.getIcon() + Constant.TAIL_ICON_PATH;
+//        String humidity = currentWeather.getHumidity();
+//        String pressure = currentWeather.getPressure();
+//        String wind = currentWeather.getWind();
+//        String general = wind + "m/s.   " + humidity + "%.   " + pressure + "hpa.";
+//        model.addAttribute("currentWeather", currentWeather);
+//        model.addAttribute("icon", iconPath);
+//        model.addAttribute("city", currentWeather.getNameCity());
+//        model.addAttribute("date", currentDate);
+//        model.addAttribute("temp", tempInCelcius);
+//        model.addAttribute("description", currentWeather.getDescription());
+//        model.addAttribute("general", general);
+//
+//        return "user/home";
+//    }
+    @GetMapping("/search-city")
     public String findWeatherByCity(@RequestParam("city") String city, Model model) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<WeatherDTO> responseWeather = restTemplate.
@@ -79,7 +118,6 @@ public class WeatherController {
             String humidity = futureWeather.getList().get(j).getMain().getHumidity();
             String pressure = futureWeather.getList().get(j).getMain().getPressure();
             String wind = futureWeather.getList().get(j).getWind().getSpeed();
-            String general = wind + "m/s. " + humidity + "%. " + pressure + "hpa.";
             String tempInCelcius = CommonUtil.FahtoCelsius(Double.parseDouble(futureWeather.getList().get(j).getMain().getTemp()));
             String city1 = futureWeather.getCity().getName();
             String date = futureWeather.getList().get(j).getDt_txt();
@@ -106,24 +144,17 @@ public class WeatherController {
                 currentWeather.getName(), currentWeather.getMain().getTemp(), currentWeather.getWeather().get(0).getDescription(),
                 currentWeather.getWind().getSpeed(), currentWeather.getMain().getHumidity(), currentWeather.getMain().getPressure(),
                 currentDate);
-        weather1.setUsers(new HashSet<User>(Arrays.asList(userService.findUserByEmail(name))));
+        weather1.setUsers(new HashSet<User>(Arrays.asList(userService.findUserByUsername(name))));
         weatherService.saveWeather(weather1);
         model.addAttribute("successMessage", "Added successfully!");
 
-        return "user/home";
+        return "redirect:/";
     }
 
-//    @GetMapping("/weather")
-//    @ResponseBody
-//    public Object getWeatherDetail() {
-//
-//        RestTemplate restTemplate = new RestTemplate();
-//
-//        ResponseEntity<Object> response = restTemplate.
-//                getForEntity("http://api.openweathermap.org/data/2.5/forecast?q=Danang&APPID=2eca42b0aeb22ff4ed48f151002ea023&units=imperial",
-//                        Object.class);
-//
-//        return response;
-//    }
 
+    @GetMapping("/delete-weather/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        weatherService.deleteWeather(id);
+        return "redirect:/";
+    }
 }

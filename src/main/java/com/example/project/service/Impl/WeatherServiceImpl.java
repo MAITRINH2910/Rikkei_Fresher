@@ -21,12 +21,14 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public WeatherEntity findByCityName(String city) {
-        return weatherRepository.findByNameCity(city);
+    public List<WeatherEntity> getWeatherByUser(User user) {
+        return weatherRepository.findAllByUsers(user);
     }
 
     @Override
-    public List<WeatherEntity> getWeatherByUser(User user) {
-        return weatherRepository.findWeatherEntitiesByUsers(user);
+    public void deleteWeather(Long id) {
+        WeatherEntity weatherEntity = weatherRepository.findByWeatherId(id);
+        weatherEntity.getUsers().removeAll(weatherEntity.getUsers());
+        weatherRepository.delete(weatherEntity);
     }
 }

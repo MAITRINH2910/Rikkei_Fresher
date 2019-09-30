@@ -1,3 +1,222 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Bootstrap Example</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="utf-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1">&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <style>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        .container, .container-fluid {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-right: auto;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-left: auto;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding-left: 15px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding-right: 15px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .row {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-left: -15px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-right: -15px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .col-sm-12 {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            width: 100%;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background: #e96e50;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background-image: radial-gradient(#e28d50, #e96e50);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .headline {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding-bottom: 1px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-bottom: 1px solid #eee;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-bottom: 30px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            line-height: 50px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .first-child {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-top: 0 !important;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .h2, h2 {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            font-size: 30px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .headline span {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding-bottom: 4px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-bottom-width: 1px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-bottom-style: solid;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .color-jumbotron {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-top: -20px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-bottom: 30px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding: 50px 0;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            color: #fff;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background: #e96e50;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background-image: radial-gradient(#e28d50, #e96e50);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .container {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            width: 1000px !important;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .row {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-left: -15px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-right: -15px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .table, .table.table-bordered td {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            font-size: 14px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .table {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            width: 100%;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        table {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            max-width: 100%;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background-color: transparent;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        table {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-collapse: collapse;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-spacing: 0;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding: 8px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            line-height: 1.42857143;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            vertical-align: top;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-top: 1px solid #ddd;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        img {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            vertical-align: middle;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        img {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border: 0;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        b, strong {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            font-weight: 700;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        orange a {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            color: #e96e50;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        .badge {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            display: inline-block;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            min-width: 10px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            padding: 3px 7px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            font-size: 12px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            font-weight: 700;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            color: #fff;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            line-height: 1;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            vertical-align: baseline;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            white-space: nowrap;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            text-align: center;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background-color: #4e4d4a;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            border-radius: 10px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        p {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            margin: 0 0 10px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </style>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<nav class="navbar navbar-expand-sm bg-dark navbar-dark">&ndash;&gt;-->
+<!--&lt;!&ndash;    <ul class="navbar-nav">&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn btn-md btn-primary btn-block">Home</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;            <form th:action="@{/logout}" method="get">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="btn btn-md btn-primary" name="registration"&ndash;&gt;-->
+<!--&lt;!&ndash;                        type="Submit" style="margin-left: 1180px">Logout&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;</nav>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="container-fluid">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <form th:action="search-weather" class="form-inline" method="get">&ndash;&gt;-->
+<!--&lt;!&ndash;        <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button class="btn btn-success" type="submit">Search</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<div class="container">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <div class="row">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <div class="col-sm-12">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <div class="color-jumbotron jumbotron-green">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <div class="container">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <div class="row">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    <div class="col-sm-12">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <form th:action="search-weather" class="form-inline text-center first-child" method="get">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <button class="btn btn-success" type="submit">Search</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        </form>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                </div> &lt;!&ndash; / .row &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            </div> &lt;!&ndash; / .container &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;        <div class="container">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            <div class="row">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <div class="col-sm-12">&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                    <div class="tab-pane active" id="forecast-list">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <div id="forecast_list_ul">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            <table class="table">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <tbody>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                <tr>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    <td>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <img src="http://openweathermap.org/img/wn/03d@2x.png" width="50" height="50">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    </td>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    <td><b><a href="/city/1583992"> Danang, VN</a></b>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <img src="http://openweathermap.org/images/flags/vn.png">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <b><i> scattered clouds</i></b>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            <span class="badge badge-info">31.2°С </span> temperature from 30 to 32 °С,&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            wind 0.5 m/s. clouds 40 %, 1011 hpa</p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <p>Geo coords <a href="/weathermap?zoom=12&amp;lat=16.068&amp;lon=108.2119">[16.068,&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                            108.2119]</a></p></td>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                </tr>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                </tbody>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            </table>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;&lt;!&ndash;<p th:text="${weathers.common.temp}"></p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<p th:text="${weathers.common.humidity}"></p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<p th:text="${weathers.common.pressure}"></p>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
 <!--<!DOCTYPE html>-->
 <!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
 <!--<head>-->
@@ -8,404 +227,185 @@
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-<!--&lt;!&ndash;    <style>&ndash;&gt;-->
-<!--&lt;!&ndash;        .container, .container-fluid {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-right: auto;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-left: auto;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-left: 15px;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-right: 15px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
 
-<!--&lt;!&ndash;        .row {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-left: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-right: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--    <style>-->
+<!--        .container, .container-fluid {-->
+<!--            margin-right: auto;-->
+<!--            margin-left: auto;-->
+<!--            padding-left: 15px;-->
+<!--            padding-right: 15px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .col-sm-12 {&ndash;&gt;-->
-<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .row {-->
+<!--            margin-left: -15px;-->
+<!--            margin-right: -15px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {&ndash;&gt;-->
-<!--&lt;!&ndash;            background: #e96e50;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-image: radial-gradient(#e28d50, #e96e50);&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .col-sm-12 {-->
+<!--            width: 100%;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .headline {&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-bottom: 1px;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-bottom: 1px solid #eee;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-bottom: 30px;&ndash;&gt;-->
-<!--&lt;!&ndash;            line-height: 50px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {-->
+<!--            background: #e96e50;-->
+<!--            background-image: radial-gradient(#e28d50, #e96e50);-->
+<!--        }-->
+<!--        .headline span {-->
+<!--            padding-bottom: 4px;-->
+<!--            border-bottom-width: 1px;-->
+<!--            border-bottom-style: solid;-->
+<!--        }-->
+<!--        .headline {-->
+<!--            padding-bottom: 1px;-->
+<!--            border-bottom: 1px solid #eee;-->
+<!--            margin-bottom: 30px;-->
+<!--            line-height: 50px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .first-child {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-top: 0 !important;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .first-child {-->
+<!--            margin-top: 0 !important;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .h2, h2 {&ndash;&gt;-->
-<!--&lt;!&ndash;            font-size: 30px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .h2, h2 {-->
+<!--            font-size: 30px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .headline span {&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-bottom: 4px;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-bottom-width: 1px;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-bottom-style: solid;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .headline span {-->
+<!--            padding-bottom: 4px;-->
+<!--            border-bottom-width: 1px;-->
+<!--            border-bottom-style: solid;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .color-jumbotron {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-top: -20px;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-bottom: 30px;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding: 50px 0;&ndash;&gt;-->
-<!--&lt;!&ndash;            color: #fff;&ndash;&gt;-->
-<!--&lt;!&ndash;            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .color-jumbotron {-->
+<!--            margin-top: -20px;-->
+<!--            margin-bottom: 30px;-->
+<!--            padding: 50px 0;-->
+<!--            color: #fff;-->
+<!--            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {&ndash;&gt;-->
-<!--&lt;!&ndash;            background: #e96e50;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-image: radial-gradient(#e28d50, #e96e50);&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {-->
+<!--            background: #e96e50;-->
+<!--            background-image: radial-gradient(#e28d50, #e96e50);-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .container {&ndash;&gt;-->
-<!--&lt;!&ndash;            width: 1000px !important;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .container {-->
+<!--            width: 1000px !important;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .row {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-left: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-right: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .row {-->
+<!--            margin-left: -15px;-->
+<!--            margin-right: -15px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .table, .table.table-bordered td {&ndash;&gt;-->
-<!--&lt;!&ndash;            font-size: 14px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .table, .table.table-bordered td {-->
+<!--            font-size: 14px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .table {&ndash;&gt;-->
-<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .table {-->
+<!--            width: 100%;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        table {&ndash;&gt;-->
-<!--&lt;!&ndash;            max-width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-color: transparent;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        table {-->
+<!--            max-width: 100%;-->
+<!--            background-color: transparent;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        table {&ndash;&gt;-->
-<!--&lt;!&ndash;            border-collapse: collapse;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-spacing: 0;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--            border-spacing: 0;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {&ndash;&gt;-->
-<!--&lt;!&ndash;            padding: 8px;&ndash;&gt;-->
-<!--&lt;!&ndash;            line-height: 1.42857143;&ndash;&gt;-->
-<!--&lt;!&ndash;            vertical-align: top;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-top: 1px solid #ddd;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {-->
+<!--            padding: 8px;-->
+<!--            line-height: 1.42857143;-->
+<!--            vertical-align: top;-->
+<!--            border-top: 1px solid #ddd;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        img {&ndash;&gt;-->
-<!--&lt;!&ndash;            vertical-align: middle;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        img {-->
+<!--            vertical-align: middle;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        img {&ndash;&gt;-->
-<!--&lt;!&ndash;            border: 0;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        img {-->
+<!--            border: 0;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        b, strong {&ndash;&gt;-->
-<!--&lt;!&ndash;            font-weight: 700;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        b, strong {-->
+<!--            font-weight: 700;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        orange a {&ndash;&gt;-->
-<!--&lt;!&ndash;            color: #e96e50;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        orange a {-->
+<!--            color: #e96e50;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        .badge {&ndash;&gt;-->
-<!--&lt;!&ndash;            display: inline-block;&ndash;&gt;-->
-<!--&lt;!&ndash;            min-width: 10px;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding: 3px 7px;&ndash;&gt;-->
-<!--&lt;!&ndash;            font-size: 12px;&ndash;&gt;-->
-<!--&lt;!&ndash;            font-weight: 700;&ndash;&gt;-->
-<!--&lt;!&ndash;            color: #fff;&ndash;&gt;-->
-<!--&lt;!&ndash;            line-height: 1;&ndash;&gt;-->
-<!--&lt;!&ndash;            vertical-align: baseline;&ndash;&gt;-->
-<!--&lt;!&ndash;            white-space: nowrap;&ndash;&gt;-->
-<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-color: #4e4d4a;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--        .badge {-->
+<!--            display: inline-block;-->
+<!--            min-width: 10px;-->
+<!--            padding: 3px 7px;-->
+<!--            font-size: 12px;-->
+<!--            font-weight: 700;-->
+<!--            color: #fff;-->
+<!--            line-height: 1;-->
+<!--            vertical-align: baseline;-->
+<!--            white-space: nowrap;-->
+<!--            text-align: center;-->
+<!--            background-color: #4e4d4a;-->
+<!--            border-radius: 10px;-->
+<!--        }-->
 
-<!--&lt;!&ndash;        p {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin: 0 0 10px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--        p {-->
+<!--            margin: 0 0 10px;-->
+<!--        }-->
+<!--    </style>-->
 <!--</head>-->
-
 <!--<body>-->
+
 <!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark">-->
 <!--    <ul class="navbar-nav">-->
 <!--        <li class="nav-item">-->
-<!--            <button class="btn btn-md btn-primary btn-block">Home</button>-->
+<!--            <a th:href="@{/}"> <button class="btn btn-md btn-primary btn-block" style="margin-left: 10px">Home-->
+<!--            </button></a>-->
 <!--        </li>-->
+
+<!--        <li class="nav-item">-->
+<!--            <form th:action="@{/admin/management}" method="get">-->
+<!--                <button class="btn btn-md btn-primary btn-block"-->
+<!--                        style="margin-left: 30px">Management-->
+<!--                </button>-->
+<!--            </form>-->
+<!--        </li>-->
+
 <!--        <li class="nav-item">-->
 <!--            <form th:action="@{/logout}" method="get">-->
 <!--                <button class="btn btn-md btn-primary" name="registration"-->
-<!--                        type="Submit" style="margin-left: 1180px">Logout-->
+<!--                        type="Submit" style="margin-left: 1000px">Logout-->
 <!--                </button>-->
 <!--            </form>-->
 <!--        </li>-->
 <!--    </ul>-->
 <!--</nav>-->
 
-<!--<div class="container-fluid">-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-12">-->
+<!--            <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>-->
+<!--        </div>-->
 
-<!--    <form th:action="search-weather" class="form-inline" method="get">-->
-<!--        <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">-->
-<!--        <button class="btn btn-success" type="submit">Search</button>-->
-<!--    </form>-->
+<!--        <div class="color-jumbotron jumbotron-green">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-sm-12">-->
+<!--                        <form th:action="search-weather" class="form-inline" method="get">-->
+<!--                            <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">-->
+<!--                            <button class="btn btn-success" type="submit">Search</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div> &lt;!&ndash; / .row &ndash;&gt;-->
+<!--            </div> &lt;!&ndash; / .container &ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
 <!--</div>-->
-<!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
-<!--&lt;!&ndash;    <div class="row">&ndash;&gt;-->
 
-<!--&lt;!&ndash;        <div class="col-sm-12">&ndash;&gt;-->
-<!--&lt;!&ndash;            <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <div class="color-jumbotron jumbotron-green">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="container">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="col-sm-12">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <form th:action="search-weather" class="form-inline text-center first-child" method="get">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <button class="btn btn-success" type="submit">Search</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </form>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div> &lt;!&ndash; / .row &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;            </div> &lt;!&ndash; / .container &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <div class="container">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="col-sm-12">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div class="tab-pane active" id="forecast-list">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div id="forecast_list_ul">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <table class="table">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <img src="http://openweathermap.org/img/wn/03d@2x.png" width="50" height="50">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <td><b><a href="/city/1583992"> Danang, VN</a></b>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <img src="http://openweathermap.org/images/flags/vn.png">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <b><i> scattered clouds</i></b>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <span class="badge badge-info">31.2°С </span> temperature from 30 to 32 °С,&ndash;&gt;-->
-<!--&lt;!&ndash;                                            wind 0.5 m/s. clouds 40 %, 1011 hpa</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <p>Geo coords <a href="/weathermap?zoom=12&amp;lat=16.068&amp;lon=108.2119">[16.068,&ndash;&gt;-->
-<!--&lt;!&ndash;                                            108.2119]</a></p></td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </table>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;<p th:text="${weathers.main.temp}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.main.humidity}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.main.pressure}"></p>&ndash;&gt;-->
 <!--</body>-->
 <!--</html>-->
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <style>
-        .container, .container-fluid {
-            margin-right: auto;
-            margin-left: auto;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        .row {
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-
-        .col-sm-12 {
-            width: 100%;
-        }
-
-        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {
-            background: #e96e50;
-            background-image: radial-gradient(#e28d50, #e96e50);
-        }
-        .headline span {
-            padding-bottom: 4px;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-        }
-        .headline {
-            padding-bottom: 1px;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 30px;
-            line-height: 50px;
-        }
-
-        .first-child {
-            margin-top: 0 !important;
-        }
-
-        .h2, h2 {
-            font-size: 30px;
-        }
-
-        .headline span {
-            padding-bottom: 4px;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-        }
-
-        .color-jumbotron {
-            margin-top: -20px;
-            margin-bottom: 30px;
-            padding: 50px 0;
-            color: #fff;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
-        }
-
-        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {
-            background: #e96e50;
-            background-image: radial-gradient(#e28d50, #e96e50);
-        }
-
-        .container {
-            width: 1000px !important;
-        }
-
-        .row {
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-
-        .table, .table.table-bordered td {
-            font-size: 14px;
-        }
-
-        .table {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        table {
-            max-width: 100%;
-            background-color: transparent;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-            padding: 8px;
-            line-height: 1.42857143;
-            vertical-align: top;
-            border-top: 1px solid #ddd;
-        }
-
-        img {
-            vertical-align: middle;
-        }
-
-        img {
-            border: 0;
-        }
-
-        b, strong {
-            font-weight: 700;
-        }
-
-        orange a {
-            color: #e96e50;
-        }
-
-        .badge {
-            display: inline-block;
-            min-width: 10px;
-            padding: 3px 7px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1;
-            vertical-align: baseline;
-            white-space: nowrap;
-            text-align: center;
-            background-color: #4e4d4a;
-            border-radius: 10px;
-        }
-
-        p {
-            margin: 0 0 10px;
-        }
-    </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a th:href="@{/}"> <button class="btn btn-md btn-primary btn-block" style="margin-left: 10px">Home
-            </button></a>
-        </li>
-
-        <li class="nav-item">
-            <form th:action="@{/admin/management}" method="get">
-                <button class="btn btn-md btn-primary btn-block"
-                        style="margin-left: 30px">Management
-                </button>
-            </form>
-        </li>
-
-        <li class="nav-item">
-            <form th:action="@{/logout}" method="get">
-                <button class="btn btn-md btn-primary" name="registration"
-                        type="Submit" style="margin-left: 1000px">Logout
-                </button>
-            </form>
-        </li>
-    </ul>
-</nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>
-        </div>
-
-        <div class="color-jumbotron jumbotron-green">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <form th:action="search-weather" class="form-inline" method="get">
-                            <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">
-                            <button class="btn btn-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div> <!-- / .row -->
-            </div> <!-- / .container -->
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
