@@ -1,222 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
-<!--    <title>Bootstrap Example</title>-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-<!--&lt;!&ndash;    <style>&ndash;&gt;-->
-<!--&lt;!&ndash;        .container, .container-fluid {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-right: auto;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-left: auto;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-left: 15px;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-right: 15px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .row {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-left: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-right: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .col-sm-12 {&ndash;&gt;-->
-<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {&ndash;&gt;-->
-<!--&lt;!&ndash;            background: #e96e50;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-image: radial-gradient(#e28d50, #e96e50);&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .headline {&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-bottom: 1px;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-bottom: 1px solid #eee;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-bottom: 30px;&ndash;&gt;-->
-<!--&lt;!&ndash;            line-height: 50px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .first-child {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-top: 0 !important;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .h2, h2 {&ndash;&gt;-->
-<!--&lt;!&ndash;            font-size: 30px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .headline span {&ndash;&gt;-->
-<!--&lt;!&ndash;            padding-bottom: 4px;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-bottom-width: 1px;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-bottom-style: solid;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .color-jumbotron {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-top: -20px;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-bottom: 30px;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding: 50px 0;&ndash;&gt;-->
-<!--&lt;!&ndash;            color: #fff;&ndash;&gt;-->
-<!--&lt;!&ndash;            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {&ndash;&gt;-->
-<!--&lt;!&ndash;            background: #e96e50;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-image: radial-gradient(#e28d50, #e96e50);&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .container {&ndash;&gt;-->
-<!--&lt;!&ndash;            width: 1000px !important;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .row {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-left: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-right: -15px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .table, .table.table-bordered td {&ndash;&gt;-->
-<!--&lt;!&ndash;            font-size: 14px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .table {&ndash;&gt;-->
-<!--&lt;!&ndash;            width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;            margin-bottom: 20px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        table {&ndash;&gt;-->
-<!--&lt;!&ndash;            max-width: 100%;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-color: transparent;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        table {&ndash;&gt;-->
-<!--&lt;!&ndash;            border-collapse: collapse;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-spacing: 0;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {&ndash;&gt;-->
-<!--&lt;!&ndash;            padding: 8px;&ndash;&gt;-->
-<!--&lt;!&ndash;            line-height: 1.42857143;&ndash;&gt;-->
-<!--&lt;!&ndash;            vertical-align: top;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-top: 1px solid #ddd;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        img {&ndash;&gt;-->
-<!--&lt;!&ndash;            vertical-align: middle;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        img {&ndash;&gt;-->
-<!--&lt;!&ndash;            border: 0;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        b, strong {&ndash;&gt;-->
-<!--&lt;!&ndash;            font-weight: 700;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        orange a {&ndash;&gt;-->
-<!--&lt;!&ndash;            color: #e96e50;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        .badge {&ndash;&gt;-->
-<!--&lt;!&ndash;            display: inline-block;&ndash;&gt;-->
-<!--&lt;!&ndash;            min-width: 10px;&ndash;&gt;-->
-<!--&lt;!&ndash;            padding: 3px 7px;&ndash;&gt;-->
-<!--&lt;!&ndash;            font-size: 12px;&ndash;&gt;-->
-<!--&lt;!&ndash;            font-weight: 700;&ndash;&gt;-->
-<!--&lt;!&ndash;            color: #fff;&ndash;&gt;-->
-<!--&lt;!&ndash;            line-height: 1;&ndash;&gt;-->
-<!--&lt;!&ndash;            vertical-align: baseline;&ndash;&gt;-->
-<!--&lt;!&ndash;            white-space: nowrap;&ndash;&gt;-->
-<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
-<!--&lt;!&ndash;            background-color: #4e4d4a;&ndash;&gt;-->
-<!--&lt;!&ndash;            border-radius: 10px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        p {&ndash;&gt;-->
-<!--&lt;!&ndash;            margin: 0 0 10px;&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-<!--&lt;!&ndash;    </style>&ndash;&gt;-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark">-->
-<!--    <ul class="navbar-nav">-->
-<!--        <li class="nav-item">-->
-<!--            <button class="btn btn-md btn-primary btn-block">Home</button>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <form th:action="@{/logout}" method="get">-->
-<!--                <button class="btn btn-md btn-primary" name="registration"-->
-<!--                        type="Submit" style="margin-left: 1180px">Logout-->
-<!--                </button>-->
-<!--            </form>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</nav>-->
-
-<!--<div class="container-fluid">-->
-
-<!--    <form th:action="search-weather" class="form-inline" method="get">-->
-<!--        <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">-->
-<!--        <button class="btn btn-success" type="submit">Search</button>-->
-<!--    </form>-->
-<!--</div>-->
-<!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
-<!--&lt;!&ndash;    <div class="row">&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <div class="col-sm-12">&ndash;&gt;-->
-<!--&lt;!&ndash;            <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <div class="color-jumbotron jumbotron-green">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="container">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="col-sm-12">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <form th:action="search-weather" class="form-inline text-center first-child" method="get">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <input name="city" class="form-control mr-sm-2" type="text" placeholder="...">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <button class="btn btn-success" type="submit">Search</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </form>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div> &lt;!&ndash; / .row &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;            </div> &lt;!&ndash; / .container &ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <div class="container">&ndash;&gt;-->
-<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="col-sm-12">&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <div class="tab-pane active" id="forecast-list">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <div id="forecast_list_ul">&ndash;&gt;-->
-<!--&lt;!&ndash;                            <table class="table">&ndash;&gt;-->
-<!--&lt;!&ndash;                                <tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <img src="http://openweathermap.org/img/wn/03d@2x.png" width="50" height="50">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <td><b><a href="/city/1583992"> Danang, VN</a></b>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <img src="http://openweathermap.org/images/flags/vn.png">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <b><i> scattered clouds</i></b>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <span class="badge badge-info">31.2°С </span> temperature from 30 to 32 °С,&ndash;&gt;-->
-<!--&lt;!&ndash;                                            wind 0.5 m/s. clouds 40 %, 1011 hpa</p>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <p>Geo coords <a href="/weathermap?zoom=12&amp;lat=16.068&amp;lon=108.2119">[16.068,&ndash;&gt;-->
-<!--&lt;!&ndash;                                            108.2119]</a></p></td>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </tbody>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </table>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;<p th:text="${weathers.common.temp}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.common.humidity}"></p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p th:text="${weathers.common.pressure}"></p>&ndash;&gt;-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -238,11 +19,6 @@
             width: 100%;
         }
 
-        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange .not-found-p {
-            background: #e96e50;
-            background-image: radial-gradient(#e28d50, #e96e50);
-        }
-
         .headline span {
             padding-bottom: 4px;
             border-bottom-width: 1px;
@@ -250,8 +26,6 @@
         }
 
         .headline {
-            /*border-bottom: 1px solid #eee;*/
-            /*margin-bottom: 30px;*/
             line-height: 50px;
         }
 
@@ -259,7 +33,7 @@
             margin-top: 0 !important;
         }
 
-        .h2, h2 {
+        h2 {
             font-size: 30px;
         }
 
@@ -267,19 +41,6 @@
             padding-bottom: 4px;
             border-bottom-width: 1px;
             border-bottom-style: solid;
-        }
-
-        .color-jumbotron {
-            margin-top: -20px;
-            margin-bottom: 30px;
-            padding: 50px 0;
-            color: #fff;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
-        }
-
-        .body-orange .alt-p, .body-orange .color-jumbotron, .body-orange {
-            background: #e96e50;
-            background-image: radial-gradient(#e28d50, #e96e50);
         }
 
         .container {
@@ -350,22 +111,6 @@
             margin: 0 0 10px;
         }
 
-        .btn-danger {
-            color: #fff !important;
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        .color-jumbotron {
-            margin-top: 5px;
-        }
-
-        /*body {*/
-        /*    background-image: url("https://themalaysianreserve.com/wp-content/uploads/2018/11/bmw1.jpg")no-repeat center center fixed;*/
-        /*    background-size: cover;*/
-        /*    overflow: hidden;*/
-        /*}*/
-
         body {
             background: url("https://znews-photo.zadn.vn/w1024/Uploaded/qfrqy/2017_11_30/p90285377_highres.jpg") no-repeat center center fixed;
             background-size: cover;
@@ -377,7 +122,8 @@
             padding-right: 100px;
             margin-top: 5px;
         }
-        #detail{
+
+        #detail {
             margin-top: 50px;
             margin: 30px;
             background-color: #f3fcff;;
@@ -385,7 +131,6 @@
             opacity: 0.8;
             filter: alpha(opacity=60);
             border-radius: 20px;
-
         }
 
     </style>

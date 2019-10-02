@@ -11,10 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-
-
-
-
     <style>
         body {
             background: url("https://d2eohwa6gpdg50.cloudfront.net/content/uploads/2018/08/07064020/BMW-i8-Roadster.jpg") no-repeat center center fixed;
@@ -99,16 +95,17 @@
         $('.checkbox1').change(function () {
             if ($(this).is(":checked")) {
                 var returnVal = confirm("Are you sure change this account to enable?");
-                $(this).attr("checked", returnVal);
                 if (returnVal) {
                     var id = $(this).closest("tr").attr("data-id");
                     $.ajax({
-                        url: "http://localhost:8080/admin/edit-status-user",
+                        url: "/admin/edit-status-user",
                         type: "GET",
                         data: {
                             id: id,
                         },
                     })
+                } else {
+                    $(this).prop('checked', returnVal);
                 }
             } else {
                 var returnVal = confirm("Are you sure change this account to disable?");
@@ -124,8 +121,6 @@
                     })
                 }
             }
-            // $('.textbox1').val($(this).is(':checked'));
-
         });
     })
 </script>

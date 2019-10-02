@@ -26,9 +26,16 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
+    public List<WeatherEntity> findWeatherByNameCity(String city) {
+        return (List<WeatherEntity>) weatherRepository.findByNameCity(city);
+    }
+
+    @Override
     public void deleteWeather(Long id) {
         WeatherEntity weatherEntity = weatherRepository.findByWeatherId(id);
         weatherEntity.getUsers().removeAll(weatherEntity.getUsers());
         weatherRepository.delete(weatherEntity);
     }
+
+
 }

@@ -18,7 +18,7 @@ public class CommonUtil {
         return simpleDateFormat.format(new Date());
     }
 
-    public static String formatToString( Timestamp ts) {
+    public static String formatToString( String ts) {
         String formattedDate = new SimpleDateFormat("yyyyMMdd").format(ts);
         return formattedDate;
     }

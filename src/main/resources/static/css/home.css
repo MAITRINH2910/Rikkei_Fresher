@@ -1,0 +1,194 @@
+body {
+    overflow: auto;
+    background: url("https://cdn.bmwblog.com/wp-content/uploads/2018/04/2018-BMW-i8-Roadster-test-drive-123.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 1000px !important;
+}
+
+.headline span {
+    padding-bottom: 4px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.table, .table.table-bordered td {
+    font-size: 14px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 5px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px #ddd;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+orange a {
+    color: #e96e50;
+}
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #4e4d4a;
+    border-radius: 10px;
+}
+
+.nameCity {
+    margin-top: 7px;
+    margin-bottom: 8px;
+    width: 160px
+}
+
+i {
+    margin: 0 0 10px;
+    width: 173px
+}
+
+.btn-danger {
+    color: #fff !important;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    margin-bottom: -45px
+}
+
+.icon {
+    margin: 5px 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.icon-weather {
+    margin: 10px 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.icon-search {
+    width: 72px;
+}
+
+.property {
+    width: 245px;
+    margin: 5px 20px;
+}
+
+.property-search {
+    width: 245px;
+    margin-left: -20px;
+    margin-top: 12px;
+}
+
+.city-date-search {
+    margin-top: 10px;
+    width: 180px;
+}
+
+.city-date {
+    margin: 5px 10px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+    height: 560px
+}
+
+.detail {
+    margin-top: -285px;
+    margin-left: 145px;
+    margin-right: 167px;
+    background-color: #f3fcff;;
+    filter: alpha(opacity=60);
+    border-radius: 20px;
+    width: 600px;
+    height: 88px
+}
+
+.detailDB {
+    background-color: #f3fcff;
+    border: 1px solid black;
+    opacity: 0.8;
+}
+
+.btnAdmin {
+    margin-left: 5px;
+}
+
+.show-more {
+    cursor: pointer;
+    background-color: gray;
+    border: 1px solid black;
+    width: 600px;
+    margin-left: -287px;
+    text-align: center;
+}
+
+.add {
+    margin-left: -20px;
+    margin-top: 20px;
+    margin-right: 33px;
+}
+
+.chung {
+    margin-left: 130px;
+    margin-right: 150px;
+    margin-top: -365px;
+}
+
+.searchWeather {
+    margin-bottom: 117px;
+    margin-top: 34px;
+    margin-left: 290px;
+}
+
+.input {
+    width: 325px;
+    background-color: #f3fcff;;
+    filter: alpha(opacity=60);
+}
+
+.ty-compact-list {
+    padding: 5px 5px 5px 0px;
+    float: left;
+    width: 100%;
+}

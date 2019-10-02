@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
+import com.example.project.service.RoleService;
 import com.example.project.service.UserService;
 import com.example.project.service.WeatherService;
 import com.example.project.util.Constant;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +30,9 @@ public class MainController {
 
     @Autowired
     public WeatherService weatherService;
+
+    @Autowired
+    public RoleService roleService;
 
     @GetMapping("/register")
     public String registration(Model model) {
@@ -70,39 +73,42 @@ public class MainController {
         return "redirect:/login";
     }
 
-    @GetMapping("/admin/management")
-    public String userManagement(Model model) {
-        List<User> users = userService.findAllUser();
-        model.addAttribute("listUsers", users);
-        return "admin/management";
-    }
-
     @GetMapping("/")
-    public ModelAndView homePage(Authentication authentication) {
-        ModelAndView modelAndView = new ModelAndView();
+    public String homePage(Model model) {
         Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUsername(authUser.getName());
         List<WeatherEntity> weatherList = weatherService.getWeatherByUser(user);
         for (int i = 0; i < weatherList.size(); i++) {
             weatherList.get(i).setIcon(Constant.ICON_PATH + weatherList.get(i).getIcon() + Constant.TAIL_ICON_PATH);
         }
+        model.addAttribute("weatherList", weatherList);
+
         if (user.isActive()) {
-            modelAndView.setViewName("user/home");
+            if (user.getRoleName().size() == 2) {
+                return "user/home";
+            } else {
+                return "user/home";
+            }
         } else {
-            modelAndView.setViewName("error/403");
+            return "error/403";
         }
-        modelAndView.addObject("weatherList", weatherList);
-//        modelAndView.addObject("successMessage", "Added successfully!");
-        boolean isAdmin = false;
-        isAdmin = checkRole(authentication, "ROLE_ADMIN");
-
-
-        return modelAndView;
     }
 
     @GetMapping("/403")
     public String accessDenied() {
         return "error/403";
+    }
+
+    /**
+     * Admin Management
+     * @param model
+     * @return
+     */
+    @GetMapping("/admin/management")
+    public String userManagement(Model model) {
+        List<User> users = userService.findAllUser();
+        model.addAttribute("listUsers", users);
+        return "admin/management";
     }
 
     @GetMapping("/admin/delete/{id}")
@@ -117,23 +123,10 @@ public class MainController {
         return "redirect:/admin/management";
     }
 
-    private boolean checkRole(Authentication authentication, String authority) {
-        boolean isRole = false;
-
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            List<GrantedAuthority> currentAuthority = authentication.getAuthorities().parallelStream()
-                    .collect(Collectors.toList());
-
-            isRole = currentAuthority.stream()
-                    .anyMatch(authotity -> authotity.getAuthority().equalsIgnoreCase(authority));
-        }
-        return isRole;
+    @GetMapping("/admin/change-role")
+    @ResponseBody
+    public void changeRole(@RequestParam Long id, @RequestParam String role) {
+        userService.editRoleUser(id, role);
     }
-
-//    @GetMapping("/admin/change-role")
-//    @ResponseBody
-//    public void changeRole(@RequestParam Long id, @RequestParam String role) {
-//        userService.editRoleUser(id, role);
-//    }
 }
 
