@@ -12,7 +12,9 @@ public interface WeatherService {
 
     List<WeatherEntity> getWeatherByUser(User user);
 
-    List<WeatherEntity> findWeatherByNameCity(String city);
-
     void deleteWeather (Long id);
+
+    List<WeatherEntity> findCity(Long id);
+
+    List<WeatherEntity> findWeatherGroupByCityName(String city, Long id);
 }

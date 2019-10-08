@@ -46,24 +46,24 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    //    @Override
-//    public User saveUser(User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        user.setActive(true);
-//        Roles userRole = roleRepository.findByRoleName("ROLE_USER");
-//        user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
-//        return userRepository.save(user);
-//    }
     @Override
-    public User saveUser(User admin) {
-        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
-        admin.setActive(true);
-        HashSet<Roles> roles = new HashSet<>();
-        roles.add(roleRepository.findByRoleName("ROLE_ADMIN"));
-        roles.add(roleRepository.findByRoleName("ROLE_USER"));
-        admin.setRoleName(roles);
-        return userRepository.save(admin);
+    public User saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setActive(true);
+        Roles userRole = roleRepository.findByRoleName("ROLE_USER");
+        user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
+        return userRepository.save(user);
     }
+//    @Override
+//    public User saveUser(User admin) {
+//        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+//        admin.setActive(true);
+//        HashSet<Roles> roles = new HashSet<>();
+//        roles.add(roleRepository.findByRoleName("ROLE_ADMIN"));
+////        roles.add(roleRepository.findByRoleName("ROLE_USER"));
+//        admin.setRoleName(roles);
+//        return userRepository.save(admin);
+//    }
 
     @Override
     public void editStatusUser(Long id) {
@@ -80,11 +80,18 @@ public class UserServiceImpl implements UserService {
     public void editRoleUser(Long id, String roleName) {
         Optional<User> user = userRepository.findById(id);
         Roles role = roleRepository.findByRoleName(roleName);
-        user.get().setRoleName(new HashSet<Roles>(Arrays.asList(role)));
-        userRepository.save(user.get());
+        if (role.getRoleName().equals("ROLE_ADMIN")) {
+            HashSet<Roles> roles = new HashSet<>();
+            roles.add(roleRepository.findByRoleName("ROLE_ADMIN"));
+            roles.remove(roleRepository.findByRoleName("ROLE_USER"));
+            user.get().setRoleName(roles);
+            userRepository.save(user.get());
+        } else if (role.getRoleName().equals("ROLE_USER")) {
+            HashSet<Roles> roles = new HashSet<>();
+            roles.remove(roleRepository.findByRoleName("ROLE_ADMIN"));
+            roles.add(roleRepository.findByRoleName("ROLE_USER"));
+            user.get().setRoleName(roles);
+            userRepository.save(user.get());
+        }
     }
-
-
-
-
 }

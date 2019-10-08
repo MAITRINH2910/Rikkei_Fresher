@@ -3,14 +3,16 @@ package com.example.project.util;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.sql.Timestamp;
 
 
 public class CommonUtil {
-    public static String FahtoCelsius(double Fah) {
+    public static String KelvintoCelsius(double Kel) {
         NumberFormat degreeFormat =new DecimalFormat("#0.00");
-        return  degreeFormat.format((Fah - 32) * 5/9);
+        return  degreeFormat.format(Kel - 273.15);
     }
 
     public static String formatDate(){
@@ -18,6 +20,11 @@ public class CommonUtil {
         return simpleDateFormat.format(new Date());
     }
 
+//    public static Date formatCurrentDate(){
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        return dtf.format(now);
+//    }
     public static String formatToString( String ts) {
         String formattedDate = new SimpleDateFormat("yyyyMMdd").format(ts);
         return formattedDate;

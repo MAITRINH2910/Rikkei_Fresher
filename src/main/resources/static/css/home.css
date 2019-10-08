@@ -1,15 +1,34 @@
 body {
     overflow: auto;
-    background: url("https://cdn.bmwblog.com/wp-content/uploads/2018/04/2018-BMW-i8-Roadster-test-drive-123.jpg") no-repeat center center fixed;
-    background-size: cover;
+    background: url("https://wallup.net/wp-content/uploads/2016/02/wallpapers-full_moon-moon-night.jpg") no-repeat center center fixed;
+    /*background-size: cover;*/
+    /*background-image: url('image/moon-lake.jpg');*/
 }
 
+/**
+https://wallup.net/wp-content/uploads/2016/02/wallpapers-full_moon-moon-night.jpg
+https://wallup.net/wp-content/uploads/2015/12/59578-landscape-forest-mountain-sun_rays.jpg
+https://wallpaperbro.com/img/50866.jpg
+https://wallpaperbro.com/img/220377.jpg
+https://image.freepik.com/free-vector/natural-desert-landscape-with-sunset_23-2148279191.jpg
+https://image.freepik.com/free-vector/simple-sky-cloud-background_110405-31.jpg
+http://eskipaper.com/images/awesome-mountain-landscape-1.jpg
+https://wallpaperbro.com/img/332902.jpg
+ */
 .container {
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
     width: 1000px !important;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
+}
+
+.btn-grad:hover {
+    background-position: right center;
 }
 
 .headline span {
@@ -28,7 +47,7 @@ h2 {
 
 .table {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 0rem !important;
 }
 
 table {
@@ -57,7 +76,10 @@ b, strong {
 orange a {
     color: #e96e50;
 }
-
+nav {
+    color: black;
+    opacity: 0.8;
+}
 .badge {
     display: inline-block;
     min-width: 10px;
@@ -133,19 +155,29 @@ i {
     height: 560px
 }
 
-.detail {
-    margin-top: -285px;
+.detailWeather {
+    margin-top: -300px;
     margin-left: 145px;
     margin-right: 167px;
-    background-color: #f3fcff;;
+    background-color: white;;
     filter: alpha(opacity=60);
     border-radius: 20px;
     width: 600px;
     height: 88px
 }
 
+.detailMessage {
+    margin-top: -300px;
+    margin-left: 145px;
+    margin-right: 167px;
+    background-color: white;;
+    filter: alpha(opacity=60);
+    border-radius: 20px;
+    width: 600px;
+    height: 88px
+}
 .detailDB {
-    background-color: #f3fcff;
+    background-color: white;
     border: 1px solid black;
     opacity: 0.8;
 }
@@ -158,8 +190,9 @@ i {
     cursor: pointer;
     background-color: gray;
     border: 1px solid black;
-    width: 600px;
-    margin-left: -287px;
+    width: 690px;
+    margin-left: 0px;
+    margin-bottom: 5px;
     text-align: center;
 }
 
@@ -183,12 +216,157 @@ i {
 
 .input {
     width: 325px;
-    background-color: #f3fcff;;
-    filter: alpha(opacity=60);
+    font-family: Poppins-Medium;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #666666;
+    display: block;
+    width: 100%;
+    background: white;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0 30px 0 68px;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+.input100 {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #333333;
+    display: block;
+    width: 400px;
+    background: #ffffff;
+    height: 50px;
+    border-radius: 25px;
+    padding-left: 25px;
+    opacity: 0.8;
+}
+
+.focus-input100 {
+    display: block;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px;
+    color: rgba(0, 91, 234, 0.6);
+}
+
+.symbol-input100 {
+    font-size: 20px;
+    color: black;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 30px;
+    pointer-events: none;
+    transition: all 0.4s;
+}
+
+.fa-search {
+    margin: -85px 800px 30px;
 }
 
 .ty-compact-list {
     padding: 5px 5px 5px 0px;
     float: left;
     width: 100%;
+}
+
+/*.show-more1 {*/
+/*    cursor: pointer;*/
+/*    background-color: gray;*/
+/*    border: 1px solid black;*/
+/*    width: 690px;*/
+/*    margin: -16px 0px 0px 0px;*/
+/*    text-align: center;*/
+/*}*/
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+
+}
+
+.minidiv .Tg7LZd {
+    height: 32px;
+    line-height: 32px;
+}
+
+.Tg7LZd {
+    flex: 0 0 auto;
+    padding-right: 13px;
+}
+
+.Tg7LZd {
+    border-radius: 0;
+    width: 740px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.minidiv .Tg7LZd .rINcab {
+    height: 20px;
+    width: 20px;
+}
+
+.rINcab {
+    background: none;
+    color: #4285f4;
+    margin: auto;
+}
+
+.z1asCe {
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    width: 24px;
+}
+
+.minidiv .Tg7LZd svg {
+    height: 20px;
+    width: 20px;
+}
+
+.z1asCe {
+    fill: currentColor;
+    line-height: 24px;
+}
+
+svg {
+    overflow: hidden;
+    margin-top: -75px;
+}
+
+.message{
+    text-align: center;
+    margin: 30px auto;
+    font-size: larger;
 }

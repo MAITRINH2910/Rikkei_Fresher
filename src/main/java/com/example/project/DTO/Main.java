@@ -1,7 +1,7 @@
 package com.example.project.DTO;
 
 public class Main {
-    private String temp;
+    private Double temp;
 
     private String humidity;
 
@@ -11,11 +11,11 @@ public class Main {
 
     private String tempMax;
 
-    public String getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    public void setTemp(String temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 

@@ -17,6 +17,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public void saveWeather(WeatherEntity weatherEntity) {
+
         weatherRepository.save(weatherEntity);
     }
 
@@ -26,8 +27,8 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public List<WeatherEntity> findWeatherByNameCity(String city) {
-        return (List<WeatherEntity>) weatherRepository.findByNameCity(city);
+    public List<WeatherEntity> findWeatherGroupByCityName(String city, Long id) {
+        return weatherRepository.findWeatherGroupByCityName(city, id);
     }
 
     @Override
@@ -37,5 +38,8 @@ public class WeatherServiceImpl implements WeatherService {
         weatherRepository.delete(weatherEntity);
     }
 
-
+    @Override
+    public List<WeatherEntity> findCity(Long id) {
+        return weatherRepository.findCity(id);
+    }
 }
