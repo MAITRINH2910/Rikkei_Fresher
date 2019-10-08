@@ -1,6 +1,7 @@
 package com.example.project.DTO;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class WeatherDTO {
@@ -24,15 +25,15 @@ public class WeatherDTO {
 
     private Integer cod;
 
-    private String timezone;
+    private Date timezone;
 
     private String base;
 
-    public String getTimezone() {
-        return timezone;
+    public Date getTimezone() {
+        return new Date();
     }
 
-    public void setTimezone(String timezone) {
+    public void setTimezone(Date timezone) {
         this.timezone = timezone;
     }
 

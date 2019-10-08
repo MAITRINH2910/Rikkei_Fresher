@@ -1,28 +1,44 @@
 package com.example.project.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "username"
+        }),
+        @UniqueConstraint(columnNames = {
+                "email"
+        })
+})
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    //    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$",message = "Username should be valid with our regex")
+    @NotEmpty
     @Column
     private String username;
 
+    //    @Email(regexp = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}",message = "Email should be valid")
+    @NotEmpty
     @Column
     private String email;
 
+//    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{5,8}$", message = "Password should be valid with our regex")
+    @NotEmpty
     @Column
     private String password;
 
+    @NotEmpty
     @Column
     private String firstName;
 
+    @NotEmpty
     @Column
     private String lastName;
 

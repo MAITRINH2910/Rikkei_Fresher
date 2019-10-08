@@ -10,14 +10,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
+<!--          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
     <style>
         body {
             background: url("https://d2eohwa6gpdg50.cloudfront.net/content/uploads/2018/08/07064020/BMW-i8-Roadster.jpg") no-repeat center center fixed;
             background-size: cover;
             overflow: hidden;
         }
-        .container{
+
+        .container {
             width: 1050px;
             height: 570px;
             background: white;
@@ -25,76 +31,93 @@
             border-style: solid;
             border-radius: 25px;
         }
+
+        .btnAdmin {
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <form th:action="@{/}" method="get">
-                <button class="btn btn-md btn-primary btn-block" style="margin-left: 10px">Home
-                </button>
-            </form>
+            <a th:href="@{/}" class="btn btn-primary btn-block">Home</a>
         </li>
-
-        <li class="nav-item">
+        <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
             <form th:action="@{/admin/management}" method="get">
-                <button class="btn btn-md btn-primary btn-block"
-                        style="margin-left: 30px">Management
+                <button class="btn btn-primary btnAdmin"
+                > Management
                 </button>
             </form>
         </li>
-
-        <li class="nav-item">
-            <form th:action="@{/logout}" method="get">
-                <button class="btn btn-md btn-primary" name="registration"
-                        type="Submit" style="margin-left: 1000px">Logout
-                </button>
-            </form>
-        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-md btn-primary" name="registration"
+                    type="Submit">Logout
+            </button>
+        </form>
     </ul>
 </nav>
 
 <div class="container">
     <h2>User Management</h2>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>User</th>
-            <th>Email</th>
-            <th>Active</th>
-            <th>Role</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tr th:each="user,iterStat : ${listUsers}" th:data-id="${user.id}">
-            <td th:text="${user.firstName}"></td>
-            <td th:text="${user.email}"></td>
-            <td><input class="checkbox1" type="checkbox" th:checked="${user.active}">
-            </td>
-            <td><select id="idselect" class="form-control">
-                <option th:each="item : ${user.roleName}" th:utext="${item.roleName}"></option>
-                <!--                    <option th:each="role : ${dsRole}"-->
-                <!--                            th:value="${role.roleId}" th:utext="${role.role}"></option>-->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Change Role</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tr th:each="user,iterStat : ${listUsers}" th:data-id="${user.id}">
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.email}"></td>
+                <td><input class="checkbox1" type="checkbox" th:checked="${user.active}">
+                </td>
+                <!--            <td><select id="idselect" class="form-control" multiple>-->
+                <!--                <option value="1" th:each="item : ${user.roleName}" th:utext="${item.roleName}">-->
 
-            </select></td>
-            <!--                <span sec:authentication="principal.authorities"></span>-->
-            <td>
-                <a class="text-info" th:href="@{/admin/delete/__${user.id}__}"
-                   onclick="return confirm('Bạn có muốn xoá tài khoản này hay không?')"
-                   title="Xóa Lead"><i
-                        class="fa fa-trash" style="color: #007bff !important"></i></a>
-            </td>
-        </tr>
-    </table>
+                <!--                </option>-->
+                <!--                &lt;!&ndash;                    <option th:each="role : ${dsRole}"&ndash;&gt;-->
+                <!--                &lt;!&ndash;                            th:value="${role.roleId}" th:utext="${role.role}"></option>&ndash;&gt;-->
+
+                <!--            </select></td>-->
+                <td>
+                    <div class="input-group mb-3">
+                        <select class="role" id="inputGroupSelect02">
+<!--                            <option selected>Choose...</option>-->
+<!--                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>-->
+<!--                            <option value="ROLE_USER">ROLE_USER</option>-->
+                            <option th:each="item : ${user.roleName}" th:utext="${item.roleName}" th:value="${item.roleName}">
+                            <option th:each="item : ${user.roleName}" th:utext="ROLE_ADMIN"  th:if="${item.roleName == 'ROLE_USER'}" value="ROLE_ADMIN" ></option>
+                            <option th:each="item : ${user.roleName}" th:utext="ROLE_USER"  th:if="${item.roleName == 'ROLE_ADMIN'}" value="ROLE_USER" ></option>
+
+                        </select>
+                    </div>
+                </td>
+                <!--                <span sec:authentication="principal.authorities"></span>-->
+                <td>
+                    <a class="text-info" th:href="@{/admin/delete/__${user.id}__}"
+                       onclick="return confirm('Do you want to delete this account?')"
+                       title="Xóa Lead"><i
+                            class="fa fa-trash" style="color: #007bff !important"></i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 <script>
+
     $(document).ready(function () {
         $('.checkbox1').change(function () {
             if ($(this).is(":checked")) {
-                var returnVal = confirm("Are you sure change this account to enable?");
+                var returnVal = confirm("Do you want to enable this account?");
                 if (returnVal) {
                     var id = $(this).closest("tr").attr("data-id");
                     $.ajax({
@@ -108,20 +131,45 @@
                     $(this).prop('checked', returnVal);
                 }
             } else {
-                var returnVal = confirm("Are you sure change this account to disable?");
-                $(this).attr("checked", returnVal);
+                var returnVal = confirm("Do you want to disable this account?");
+                // $(this).attr("checked", returnVal);
                 if (returnVal) {
                     var id = $(this).closest("tr").attr("data-id");
                     $.ajax({
-                        url: "http://localhost:8080/admin/edit-status-user",
+                        url: "/admin/edit-status-user",
                         type: "GET",
                         data: {
                             id: id,
                         },
                     })
+                } else {
+                    $(this).prop('checked', returnVal);
+                    location.reload();
                 }
             }
         });
     })
+
+    $(document).ready(function(){
+        $("select.role").change(function(){
+            var selectedRole = $(this).children("option:selected").val();
+            // $("#inputGroupSelect02").val(selectedRole);
+
+            alert("You has changed ROLE of this account is " + selectedRole);
+            var id = $(this).closest("tr").attr("data-id");
+            console.log(id);
+            $.ajax({
+                url: "/admin/change-role",
+                type: "GET",
+                data: {
+                    id: id,
+                    role: selectedRole
+                },
+            })
+        });
+    });
+
+
+
 </script>
 </html>

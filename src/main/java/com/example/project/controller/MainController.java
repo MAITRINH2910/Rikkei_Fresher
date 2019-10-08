@@ -1,5 +1,7 @@
 package com.example.project.controller;
 
+import com.example.project.DTO.UserDTO;
+import com.example.project.entity.Roles;
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
 import com.example.project.service.RoleService;
@@ -7,9 +9,7 @@ import com.example.project.service.UserService;
 import com.example.project.service.WeatherService;
 import com.example.project.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -81,14 +80,19 @@ public class MainController {
         for (int i = 0; i < weatherList.size(); i++) {
             weatherList.get(i).setIcon(Constant.ICON_PATH + weatherList.get(i).getIcon() + Constant.TAIL_ICON_PATH);
         }
-        model.addAttribute("weatherList", weatherList);
+
+        List<WeatherEntity> listCity = weatherService.findCity(user.getId());
+        model.addAttribute("listCities", listCity);
+
+        List<List<WeatherEntity>> weatherGroupByCity = new ArrayList<>();
+        for (int i = 0; i < listCity.size(); i++) {
+            weatherGroupByCity.add((weatherService.findWeatherGroupByCityName(listCity.get(i).getNameCity(), user.getId())));
+        }
+        model.addAttribute("weatherList0", weatherGroupByCity);
 
         if (user.isActive()) {
-            if (user.getRoleName().size() == 2) {
-                return "user/home";
-            } else {
-                return "user/home";
-            }
+            return "user/home";
+
         } else {
             return "error/403";
         }
@@ -101,12 +105,15 @@ public class MainController {
 
     /**
      * Admin Management
+     *
      * @param model
      * @return
      */
     @GetMapping("/admin/management")
     public String userManagement(Model model) {
         List<User> users = userService.findAllUser();
+//        List<UserDTO>	 users = userService.findAllUser().stream().map(MainController::castUserToDTO).collect(Collectors.toList());
+////        List<RoleEntity> lstRole = roleServiceImpl.findAll();
         model.addAttribute("listUsers", users);
         return "admin/management";
     }
@@ -127,6 +134,22 @@ public class MainController {
     @ResponseBody
     public void changeRole(@RequestParam Long id, @RequestParam String role) {
         userService.editRoleUser(id, role);
+    }
+
+    private static UserDTO castUserToDTO(User userEntity) {
+
+        UserDTO user = new UserDTO(userEntity.getId(), userEntity.getUsername(), userEntity.getEmail()
+                , userEntity.getFirstName(), userEntity.getLastName(), userEntity.isActive());
+
+        Set<Long> roles = new HashSet<Long>();
+
+        userEntity.getRoleName().stream().forEach(i -> {
+            roles.add(i.getId());
+        });
+
+        user.setRoleName(roles);
+
+        return user;
     }
 }
 

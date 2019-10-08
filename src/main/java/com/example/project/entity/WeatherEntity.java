@@ -21,10 +21,10 @@ public class WeatherEntity {
     private String nameCity;
 
     @Column(name = "date")
-    private String date;
+    private Date date;
 
     @Column(name = "temp")
-    private String temp;
+    private Double temp;
 
     @Column(name = "description")
     private String description;
@@ -54,7 +54,7 @@ public class WeatherEntity {
     public WeatherEntity() {
     }
 
-    public WeatherEntity(String icon, String nameCity, String temp, String description, String wind, String humidity, String pressure,String date ) {
+    public WeatherEntity(String icon, String nameCity, Double temp, String description, String wind, String humidity, String pressure, Date date) {
         this.icon = icon;
         this.nameCity = nameCity;
         this.temp = temp;
@@ -62,7 +62,7 @@ public class WeatherEntity {
         this.wind = wind;
         this.humidity = humidity;
         this.pressure = pressure;
-        this.date =date;
+        this.date = date;
     }
 
     public Long getWeatherId() {
@@ -90,19 +90,19 @@ public class WeatherEntity {
         this.nameCity = nameCity;
     }
 
-      public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    public void setTemp(String temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 

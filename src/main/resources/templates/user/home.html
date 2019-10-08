@@ -1,153 +1,264 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+
+
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <ul class="navbar-nav">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+    <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <a th:href="@{/}" class="btn btn-md btn-primary btn-block">Home</a>
         </li>
         <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
             <form th:action="@{/admin/management}" method="get">
-                <button class="btn btn-md btn-primary btnAdmin"
+                <button class="btn btn-primary btnAdmin"
                 > Management
                 </button>
             </form>
         </li>
-
-
-        <li class="nav-item">
-            <form th:action="@{/logout}" method="get">
-                <button class="btn btn-md btn-primary" name="registration"
-                        type="Submit" style="margin-left: 1050px">Logout
-                </button>
-            </form>
-        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <form th:action="@{/logout}" method="get">
+            <button class="btn btn-md btn-primary" name="registration"
+                    type="Submit">Logout
+            </button>
+        </form>
     </ul>
 </nav>
 
 <div class="container">
     <div class="row">
 
-        <form th:action="search-city" method="get" class="searchWeather">
-            <input name="city" type="text" class="input" required="required"/>
-            <button class="btn btn-success" type="submit">Search</button>
+        <form th:action="search-city" method="get" class="searchWeather ">
+            <!--            <input name="city" type="text" class="input" required="required"/>-->
+            <!--            <button class="btn btn-grad" type="submit">Search</button>-->
+            <input class="input100" type="text" name="city" placeholder="..." required="required">
+            <!--            <span class="focus-input100"></span>-->
+            <!--            <span class="symbol-input100" >-->
+            <!--							<i class="fa fa-search" ></i>-->
+            <!--						</span>-->
+            <button class="Tg7LZd" jsname="Tg7LZd" type="submit"
+                    data-ved="0ahUKEwjW2OrLnYjlAhUJUd4KHaHFDHsQ4dUDCAs">
+                <div class="rINcab"><span class="z1asCe MZy1Rb"><svg focusable="false"
+                                                                     xmlns="http://www.w3.org/2000/svg"
+                                                                     viewBox="0 0 24 24"><path
+                        d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></span>
+                </div>
+            </button>
         </form>
 
-        <table class="table detail">
-            <tr th:each="currentWeather : ${currentWeather}">
-                <td>
-                    <div class="icon-search">
-                        <img th:src="${icon}" class="icon-weather"></div>
-                </td>
-                <td>
-                    <div class="city-date-search">
-                        <b><a th:href="@{/weather-detail/__${currentWeather.name}__}"><p
-                                th:text="${currentWeather.name} + ', '+ ${currentWeather.sys.country}">
-                        </a></b>
-                        <p style="margin-top: -6px" th:text="${date}"></p>
-                    </div>
-                </td>
-                <td>
-                    <div class="property-search">
-                        <div class="badge badge-info" th:text="${temp}+'°С'"></div>
-                        <b><i th:text="${description}"></i></b>
-                        <p style="margin-top: 9px" th:text="${general}">
-                    </div>
-                </td>
-                <td th:switch="${status}">
-                    <a class="btn btn-primary add" th:case="'add'"
-                       th:href="@{/save-weather/__${currentWeather.name}__}"
-                       >Add</a>
-                    <a class="btn btn-warning" th:case="'update'"
-                       th:href="@{/update-weather/__${currentWeather.name}__}"
-                       style="margin: 10px 5px;">Update</a>
-                </td>
-            </tr>
+        <table class="table detailWeather" th:if="${currentWeather != null}">
+
+                <tr th:object="${currentWeather}">
+                    <td>
+                        <div class="icon-search">
+<!--                            <img th:src="${icon}" class="icon-weather"></div>-->
+                            <img class="icon-weather" th:src="'http://openweathermap.org/img/w/'+*{icon}+'.png'"width="50" height="50"></div>
+                    </td>
+                    <td>
+                        <div class="city-date-search">
+                            <b><a th:href="@{/weather-detail/__*{nameCity}__}"><p
+                                    th:text="*{nameCity}">
+                            </a></b>
+                            <p style="margin-top: -6px" th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="property-search">
+                            <div class="badge badge-info" th:text="*{temp - 273.15}+'°С'"></div>
+                            <b><i th:text="*{description}"></i></b>
+                            <p th:text="*{wind}+' m/s. '+*{humidity}+' %, '+*{pressure}+' hpa'">win humidity</p>
+                        </div>
+                    </td>
+                    <td th:switch="${status}">
+                        <a class="btn btn-primary add" th:case="'add'"
+                           th:href="@{/save-weather/__*{nameCity}__}"
+                        >Add</a>
+                        <a class="btn btn-warning" th:case="'update'"
+                           th:href="@{/update-weather/__*{nameCity}__}"
+                           style="margin: 10px 5px;">Update</a>
+                    </td>
+                </tr>
+<!--            </th:block>-->
         </table>
+        <div class="table detailMessage" th:if="${message != null}">
+            <h3 class="message" th:text="${message}"></h3>
+        </div>
     </div>
 
     <div class="chung">
-        <table class="table">
-            <th:block th:each="weatherList : ${weatherList}">
-                <tr class="ty-compact-list detailDB"
-                    th:attr="city=${weatherList.nameCity}">
-                    <td>
-                        <img th:src="${weatherList.icon}" class="icon">
-                    </td>
-                    <td>
-                        <div class="city-date">
-                            <b><a th:href="@{/weather-detail/__${weatherList.nameCity}__}">
-                                <p class="nameCity"
-                                   th:text="${weatherList.nameCity}"></p>
-                            </a></b>
-                            <p th:text="${weatherList.date}"></p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="property">
-                            <div class="badge badge-info"
-                                 th:text="${weatherList.temp}+'°С'"></div>
-                            <b><i th:text="${weatherList.description}"></i></b>
-                            <p style="margin-top: 10px"
-                               th:text="${weatherList.wind}+'m/s. '+ ${weatherList.humidity}+'%. '+${weatherList.pressure}+'hpa. '">
-                        </div>
-                    </td>
-                    <td><a class="text-info" th:href="@{/delete-weather/__${weatherList.weatherId}__}"
-                           onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"
-                           title="Xóa Lead">
-                        <button
-                                class="btn btn-danger !important">Delete
-                        </button>
-                    </a></td>
-                </tr>
-                <tr class="detailDB">
-                    <td class="show-more">Show more</td>
-                    <!--                            <div class="show-more">Show more</div>-->
-                </tr>
-            </th:block>
-        </table>
+        <div class="cityList" th:each="weather1,i : ${listCities}" th:attr="weather=${weather1.getNameCity()}">
+            <div class="table-responsive">
+
+                <table class="table detailDB">
+                    <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"
+                              th:attr="wtest=${ci.getNameCity()}">
+                        <th:block th:each="w : ${ci}">
+                            <tr class="detailDB" th:attr="city=${weather1.getNameCity()}">
+                                <div>
+                                    <td>
+                                        <img th:src="${w.getIcon()}" class="icon">
+                                    </td>
+                                    <td>
+                                        <div class="city-date">
+                                            <b><a th:href="@{/weather-detail/__${w.nameCity}__}">
+                                                <p class="nameCity"
+                                                   th:text="${w.nameCity}"></p>
+                                            </a></b>
+                                            <p th:text="${#calendars.format(w.date, 'dd-MM-yyyy')}"></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="property">
+                                            <div class="badge badge-info"
+                                                 th:text="${w.temp}+'°С'"></div>
+                                            <b><i th:text="${w.description}"></i></b>
+                                            <p style="margin-top: 10px"
+                                               th:text="${w.wind}+'m/s. '+ ${w.humidity}+'%. '+${w.pressure}+'hpa. '">
+                                        </div>
+                                    </td>
+                                    <td><a class="text-info" th:href="@{/delete-weather/__${w.weatherId}__}"
+                                           onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"
+                                           title="Xóa Lead">
+                                        <button
+                                                class="btn btn-danger !important">Delete
+                                        </button>
+                                    </a></td>
+                                </div>
+                            </tr>
+                        </th:block>
+                    </th:block>
+                </table>
+
+                <div class="show-more" th:if="${weatherList0.get(i.index).size() > 1}"
+                     th:attr="show=${weather1.getNameCity()}">Show more
+                </div>
+
+            </div>
+        </div>
     </div>
 
 </div>
 </body>
 <script>
-    var cities = $(".ty-compact-list");
-    for (var i = 0; i < cities.length; i++) {
-        for (var j = i + 1; j < cities.length; j++) {
-            console.log(($(cities[i]).attr("city")));
-            console.log(($(cities[j]).attr("city")));
-            console.log(($(cities[i]).attr("city")) === ($(cities[j]).attr("city")));
+    var listCities = $("[weather]");
+    console.log("listCitiesAttr: " + listCities.length);
+    var listRecords = $("[city]");
+    console.log("listRecordsAttr: " + listRecords.length);
 
-            if (($(cities[i]).attr("city")) === ($(cities[j]).attr("city"))) {
-                $('.show-more').hide();
-                // if ($('.ty-compact-list').length > 1) {
-                //     $('.ty-compact-list:gt(0)').hide();
-                //     $('.show-more').show();
-                // }
-                // $('.show-more').on('click', function () {
-                //     //toggle elements with class .ty-compact-list that their index is bigger than 2
-                //     $('.ty-compact-list:gt(0)').toggle();
-                //     //change text of show more element just for demonstration purposes to this demo
-                //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-                // });
+    var cities = $(".cityList");
+    console.log("listCitiesClass: " + cities.length);
+    var weathers = $(".detailDB");
+    console.log("listRecordsClass: " + weathers.length);
 
-            } else {
-                $('.show-more').show();
-            }
-            break;
-        }
+    if ($('.cityList').length > 1) {
+        $('tr[city]:visible').each(function () {
+            var city = $(this).attr('city');
+            $(this).nextAll('tr[city="' + city + '"]').hide();
+        });
     }
+
+    $(".show-more").click(function () {
+        var cityName = $(this).attr("show");
+        console.log(cityName);
+        $('[city="' + cityName + '"]:gt(0)').toggle();
+        $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    });
+
+    // $('div[show]:visible').each(function () {
+    //     var city = $(this).attr('city');
+    //     $(this).nextAll('div[city="' + city + '"]').hide();
+    // });
+    // $('.show-more').click(function (e) {
+    //     e.preventDefault(); //to prevent standard click event
+    //     console.log("aa");
+    //     $('div[city]:visible').each(function () {
+    //         var rel = $(this).attr('city');
+    //         $(this).nextAll('div[city="' + rel + '"]').show();
+    //
+    //     });
+    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    // });
+    //show by one
+    // $('div[city]:visible').each(function () {
+    //     var rel = $(this).attr('city');
+    //     $(this).nextAll('div[city="' + rel + '"]').show();
+    // });
+    //hide by one
+    // $('div[show]:visible').click(function () {
+    //     var show = $(this).attr('show');
+    //     $(this).nextAll('div[show="' + show + '"]').show();
+    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    //
+    // });
+    // $('#showmenu').click(function() {
+    //     var $menu = $('.menu');
+    //     if ($menu.is(':visible')) {
+    //         // Slide away
+    //         $menu.animate({left: -($menu.outerWidth() + 10)}, function() {
+    //             $menu.hide();
+    //         });
+    //     }
+    //     else {
+    //         // Slide in
+    //         $menu.show().css("left", -($menu.outerWidth() + 10)).animate({left: 0});
+    //     }
+    // });
+    // $(this).attr('show').on('click', function () {
+    //     $('div[city]:visible').each(function () {
+    //         var rel = $(this).attr('city');
+    //         $(this).nextAll('div[city="' + rel + '"]').show();
+    //     });
+    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    // });
+    // $('#btn').click(function(e){
+    //     e.preventDefault(); //to prevent standard click event
+    //     $('div[city]:visible').each(function () {
+    //         var rel = $(this).attr('city');
+    //         $(this).nextAll('div[city="' + rel + '"]').show();
+    //     });
+    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    // });
+
+    //     $('[show=Danang]').on('click', function () {
+    //         //toggle elements with class .ty-compact-list that their index is bigger than 2
+    //         $('[city=Danang]:gt(0)').toggle();
+    //         //change text of show more element just for demonstration purposes to this demo
+    //         $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    //     });
+    // });
+    //
+    // start: hide all
+
+    // $('[show="' + cityName + '"]').on('click', function () {
+    //     //toggle elements with class .ty-compact-list that their index is bigger than 2
+    //     $('[city="' + cityName + '"]:gt(0)').toggle();
+    //     //change text of show more element just for demonstration purposes to this demo
+    //
+    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
+    // });
+    // if ($('[city="' + cityName + '"]').length > 1) {
+    //     $('[city="' + cityName + '"]:gt(0)').hide();
+    //     $('[show="' + cityName + '"]').show();
+    // }
+
+
 </script>
 
 </html>
