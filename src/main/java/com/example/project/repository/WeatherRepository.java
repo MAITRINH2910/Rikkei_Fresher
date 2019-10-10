@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Date;
 import java.util.List;
@@ -25,5 +26,6 @@ public interface WeatherRepository extends JpaRepository<WeatherEntity, Long> {
 
     @Query(value = "SELECT weather.weather_id, name_city FROM weather_project.weather JOIN weather_project.user_weather ON user_weather.weather_id = weather.weather_id WHERE user_weather.user_id= :userId GROUP BY name_city", nativeQuery = true)
     List<WeatherEntity> findCity(@Param("userId") Long id);
+
 
 }

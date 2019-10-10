@@ -151,28 +151,34 @@
                             <div id="forecast_list_ul">
                                 <table class="table">
                                     <tbody>
-                                    <tr th:each="detail : ${detail}">
-                                        <td>
-                                            <img th:src="${detail.icon}" width="50" style="margin: 5px -220px"
-                                                 height="50">
-                                        </td>
-                                        <td>
-                                            <div style="margin: 5px -170px;">
-                                                <b>
-                                                    <p th:text="${detail.nameCity}">
-                                                </b>
-                                                <p th:text="${detail.date}"></p>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div style="margin: 5px -65px;">
-                                                <div class="badge badge-info" th:text="${detail.temp}+'°С'"></div>
-                                                <b><i th:text="${detail.description}"></i></b>
-                                                <p style="margin-top: 10px"
-                                                   th:text="${detail.wind}+'m/s. '+ ${detail.humidity}+'%. '+${detail.pressure}+'hpa. '">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <th:block th:each="detail : ${detail}">
+
+                                        <tr th:object="${detail}">
+                                            <td>
+                                                <img th:src="*{icon}" width="50" style="margin: 5px -220px"
+                                                     height="50">
+                                            </td>
+                                            <td>
+                                                <div style="margin: 5px -170px;">
+                                                    <b>
+                                                        <p th:text="*{nameCity}">
+                                                    </b>
+                                                    <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div style="margin: 5px -65px;">
+                                                    <div class="badge badge-info"
+                                                         th:text="*{#numbers.formatDecimal(temp,2,2)}+'°С'"></div>
+                                                    <b><i th:text="*{description}"></i></b>
+                                                    <p style="margin-top: 10px"
+                                                       th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </th:block>
+
                                     </tbody>
                                 </table>
                             </div>

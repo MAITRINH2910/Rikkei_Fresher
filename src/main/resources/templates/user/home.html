@@ -26,7 +26,7 @@
             <a th:href="@{/}" class="btn btn-md btn-primary btn-block">Home</a>
         </li>
         <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-            <form th:action="@{/admin/management}" method="get">
+            <form th:action="@{/admin}" method="get">
                 <button class="btn btn-primary btnAdmin"
                 > Management
                 </button>
@@ -81,7 +81,7 @@
                     </td>
                     <td>
                         <div class="property-search">
-                            <div class="badge badge-info" th:text="*{temp - 273.15}+'°С'"></div>
+                            <div class="badge badge-info" th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>
                             <b><i th:text="*{description}"></i></b>
                             <p th:text="*{wind}+' m/s. '+*{humidity}+' %, '+*{pressure}+' hpa'">win humidity</p>
                         </div>
@@ -110,30 +110,30 @@
                     <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"
                               th:attr="wtest=${ci.getNameCity()}">
                         <th:block th:each="w : ${ci}">
-                            <tr class="detailDB" th:attr="city=${weather1.getNameCity()}">
+                            <tr class="detailDB" th:object="${w}" th:attr="city=${weather1.getNameCity()}">
                                 <div>
                                     <td>
-                                        <img th:src="${w.getIcon()}" class="icon">
+                                        <img th:src="*{icon}" class="icon">
                                     </td>
                                     <td>
                                         <div class="city-date">
-                                            <b><a th:href="@{/weather-detail/__${w.nameCity}__}">
+                                            <b><a th:href="@{/weather-detail/__*{nameCity}__}">
                                                 <p class="nameCity"
-                                                   th:text="${w.nameCity}"></p>
+                                                   th:text="*{nameCity}"></p>
                                             </a></b>
-                                            <p th:text="${#calendars.format(w.date, 'dd-MM-yyyy')}"></p>
+                                            <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="property">
                                             <div class="badge badge-info"
-                                                 th:text="${w.temp}+'°С'"></div>
-                                            <b><i th:text="${w.description}"></i></b>
+                                                 th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>
+                                            <b><i th:text="*{description}"></i></b>
                                             <p style="margin-top: 10px"
-                                               th:text="${w.wind}+'m/s. '+ ${w.humidity}+'%. '+${w.pressure}+'hpa. '">
+                                               th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">
                                         </div>
                                     </td>
-                                    <td><a class="text-info" th:href="@{/delete-weather/__${w.weatherId}__}"
+                                    <td><a class="text-info" th:href="@{/delete-weather/__*{weatherId}__}"
                                            onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"
                                            title="Xóa Lead">
                                         <button

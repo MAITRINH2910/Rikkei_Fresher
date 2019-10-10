@@ -2,7 +2,7 @@ package com.example.project.DTO;
 
 public class MainDetail {
 
-    private String temp;
+    private Double temp;
 
     private String humidity;
 
@@ -20,11 +20,11 @@ public class MainDetail {
 
     private String grnd_level;
 
-    public String getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    public void setTemp(String temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 

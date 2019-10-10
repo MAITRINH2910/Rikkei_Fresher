@@ -12,8 +12,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
-<!--          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"-->
+    <!--          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
     <style>
@@ -45,7 +45,7 @@
             <a th:href="@{/}" class="btn btn-primary btn-block">Home</a>
         </li>
         <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-            <form th:action="@{/admin/management}" method="get">
+            <form th:action="@{/admin}" method="get">
                 <button class="btn btn-primary btnAdmin"
                 > Management
                 </button>
@@ -79,23 +79,18 @@
                 <td th:text="${user.email}"></td>
                 <td><input class="checkbox1" type="checkbox" th:checked="${user.active}">
                 </td>
-                <!--            <td><select id="idselect" class="form-control" multiple>-->
-                <!--                <option value="1" th:each="item : ${user.roleName}" th:utext="${item.roleName}">-->
-
-                <!--                </option>-->
-                <!--                &lt;!&ndash;                    <option th:each="role : ${dsRole}"&ndash;&gt;-->
-                <!--                &lt;!&ndash;                            th:value="${role.roleId}" th:utext="${role.role}"></option>&ndash;&gt;-->
-
-                <!--            </select></td>-->
                 <td>
                     <div class="input-group mb-3">
                         <select class="role" id="inputGroupSelect02">
-<!--                            <option selected>Choose...</option>-->
-<!--                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>-->
-<!--                            <option value="ROLE_USER">ROLE_USER</option>-->
-                            <option th:each="item : ${user.roleName}" th:utext="${item.roleName}" th:value="${item.roleName}">
-                            <option th:each="item : ${user.roleName}" th:utext="ROLE_ADMIN"  th:if="${item.roleName == 'ROLE_USER'}" value="ROLE_ADMIN" ></option>
-                            <option th:each="item : ${user.roleName}" th:utext="ROLE_USER"  th:if="${item.roleName == 'ROLE_ADMIN'}" value="ROLE_USER" ></option>
+                            <!--                            <option selected>Choose...</option>-->
+                            <!--                            <option value="ROLE_ADMIN">ROLE_ADMIN</option>-->
+                            <!--                            <option value="ROLE_USER">ROLE_USER</option>-->
+                            <option th:each="item : ${user.roleName}" th:utext="${item.roleName}"
+                                    th:value="${item.roleName}">
+                            <option th:each="item : ${user.roleName}" th:utext="ROLE_ADMIN"
+                                    th:if="${item.roleName == 'ROLE_USER'}" value="ROLE_ADMIN"></option>
+                            <option th:each="item : ${user.roleName}" th:utext="ROLE_USER"
+                                    th:if="${item.roleName == 'ROLE_ADMIN'}" value="ROLE_USER"></option>
 
                         </select>
                     </div>
@@ -114,6 +109,43 @@
 </body>
 <script>
 
+    // $(document).ready(function () {
+    //     $('.checkbox1').change(function () {
+    //         if ($(this).is(":checked")) {
+    //             var returnVal = confirm("Do you want to enable this account?");
+    //             if (returnVal) {
+    //                 var id = $(this).closest("tr").attr("data-id");
+    //                 $.ajax({
+    //                     url: "/admin/edit-status-user",
+    //                     type: "GET",
+    //                     data: {
+    //                         id: id,
+    //                     },
+    //                 })
+    //             } else {
+    //                 $(this).prop('checked', returnVal);
+    //             }
+    //         } else {
+    //             var returnVal = confirm("Do you want to disable this account?");
+    //             // $(this).attr("checked", returnVal);
+    //             if (returnVal) {
+    //                 var id = $(this).closest("tr").attr("data-id");
+    //                 $.ajax({
+    //                     url: "/admin/edit-status-user",
+    //                     type: "GET",
+    //                     data: {
+    //                         id: id,
+    //                     },
+    //                 })
+    //             } else {
+    //                 $(this).prop('checked', returnVal);
+    //                 location.reload();
+    //             }
+    //         }
+    //     });
+    // })
+
+    //$("#txt_name").attr('value')
     $(document).ready(function () {
         $('.checkbox1').change(function () {
             if ($(this).is(":checked")) {
@@ -125,6 +157,7 @@
                         type: "GET",
                         data: {
                             id: id,
+
                         },
                     })
                 } else {
@@ -149,9 +182,8 @@
             }
         });
     })
-
-    $(document).ready(function(){
-        $("select.role").change(function(){
+    $(document).ready(function () {
+        $("select.role").change(function () {
             var selectedRole = $(this).children("option:selected").val();
             // $("#inputGroupSelect02").val(selectedRole);
 
@@ -168,7 +200,6 @@
             })
         });
     });
-
 
 
 </script>

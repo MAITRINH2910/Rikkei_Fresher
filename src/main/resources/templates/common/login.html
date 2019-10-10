@@ -135,7 +135,7 @@
                    th:placeholder="Password" class="form-control" required="required"/>
         </div>
         <div align="center" th:if="${param.error}">
-            <p style="font-size: 20; color: #FF1C19;">Username or Password invalid, please verify</p>
+            <p style="font-size: 20; color: #FF1C19;" th:text="${errorMessage}"></p>
         </div>
         <div class="form-group">
             <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit"

@@ -31,6 +31,8 @@ public class WeatherServiceImpl implements WeatherService {
         return weatherRepository.findWeatherGroupByCityName(city, id);
     }
 
+
+
     @Override
     public void deleteWeather(Long id) {
         WeatherEntity weatherEntity = weatherRepository.findByWeatherId(id);

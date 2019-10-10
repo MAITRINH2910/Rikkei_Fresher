@@ -1,13 +1,11 @@
 package com.example.project.controller;
 
-import com.example.project.DTO.UserDTO;
-import com.example.project.entity.Roles;
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
 import com.example.project.service.RoleService;
 import com.example.project.service.UserService;
 import com.example.project.service.WeatherService;
-import com.example.project.util.Constant;
+import com.example.project.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,13 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.*;
 
 @Controller
+@RequestMapping("/")
 public class MainController {
     @Autowired
     public UserService userService;
@@ -58,27 +55,14 @@ public class MainController {
         }
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "common/login";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login";
-    }
-
-    @GetMapping("/")
+    @GetMapping
     public String homePage(Model model) {
         Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUsername(authUser.getName());
+
         List<WeatherEntity> weatherList = weatherService.getWeatherByUser(user);
         for (int i = 0; i < weatherList.size(); i++) {
-            weatherList.get(i).setIcon(Constant.ICON_PATH + weatherList.get(i).getIcon() + Constant.TAIL_ICON_PATH);
+            weatherList.get(i).setIcon(Constants.ICON_PATH + weatherList.get(i).getIcon() + Constants.TAIL_ICON_PATH);
         }
 
         List<WeatherEntity> listCity = weatherService.findCity(user.getId());
@@ -90,66 +74,30 @@ public class MainController {
         }
         model.addAttribute("weatherList0", weatherGroupByCity);
 
-        if (user.isActive()) {
-            return "user/home";
-
-        } else {
-            return "error/403";
-        }
-    }
-
-    @GetMapping("/403")
-    public String accessDenied() {
-        return "error/403";
+        return "user/home";
     }
 
     /**
-     * Admin Management
-     *
-     * @param model
+     * PAGE 403
      * @return
      */
-    @GetMapping("/admin/management")
-    public String userManagement(Model model) {
-        List<User> users = userService.findAllUser();
-//        List<UserDTO>	 users = userService.findAllUser().stream().map(MainController::castUserToDTO).collect(Collectors.toList());
-////        List<RoleEntity> lstRole = roleServiceImpl.findAll();
-        model.addAttribute("listUsers", users);
-        return "admin/management";
+    @GetMapping("/403")
+    public ModelAndView accesssDenied() {
+        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByUsername(authUser.getName());
+        ModelAndView model = new ModelAndView();
+
+        if (user != null) {
+            model.addObject("msg", "Hi " + user.getFirstName()
+                    + ", you do not have permission to access this page!");
+        } else {
+            model.addObject("msg",
+                    "You do not have permission to access this page!");
+        }
+        model.setViewName("error/403");
+        return model;
     }
 
-    @GetMapping("/admin/delete/{id}")
-    public String deleteStudent(@PathVariable long id) {
-        userService.delete(id);
-        return "redirect:/admin/management";
-    }
 
-    @GetMapping("/admin/edit-status-user")
-    public String edit(@RequestParam Long id) {
-        userService.editStatusUser(id);
-        return "redirect:/admin/management";
-    }
-
-    @GetMapping("/admin/change-role")
-    @ResponseBody
-    public void changeRole(@RequestParam Long id, @RequestParam String role) {
-        userService.editRoleUser(id, role);
-    }
-
-    private static UserDTO castUserToDTO(User userEntity) {
-
-        UserDTO user = new UserDTO(userEntity.getId(), userEntity.getUsername(), userEntity.getEmail()
-                , userEntity.getFirstName(), userEntity.getLastName(), userEntity.isActive());
-
-        Set<Long> roles = new HashSet<Long>();
-
-        userEntity.getRoleName().stream().forEach(i -> {
-            roles.add(i.getId());
-        });
-
-        user.setRoleName(roles);
-
-        return user;
-    }
 }
 

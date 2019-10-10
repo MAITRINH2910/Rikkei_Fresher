@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -21,6 +22,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private UserAuthenticationFailureHandler failureHandler;
+
+    @Autowired
+    private UserAuthenticationSuccessHandler successHandler;
 
     //	@Bean
 //	public BCryptPasswordEncoder passwordEncoder() {
@@ -42,20 +49,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+    @Autowired
+    public CustomFilter customFilter;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.csrf()
+                .disable()
+                .addFilterAt(customFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/").hasAnyRole("USER","ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/register")
+                .permitAll()
+                .antMatchers("/")
+                .hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
-                .failureUrl("/login?error")
+//                .defaultSuccessUrl("/processURL")
+                .successHandler(successHandler)
+                .failureHandler(failureHandler)
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/403");

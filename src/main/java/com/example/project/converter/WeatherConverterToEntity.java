@@ -2,16 +2,15 @@ package com.example.project.converter;
 
 import com.example.project.DTO.WeatherDTO;
 import com.example.project.entity.WeatherEntity;
-import org.apache.el.parser.ParseException;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class WeatherConverterToEntity {
 
+    ModelMapper modelMapper = new ModelMapper();
+
     public WeatherEntity weatherEntityConverter(WeatherDTO weatherDTO) {
-        ModelMapper modelMapper = new ModelMapper();
         WeatherEntity weatherEntity = modelMapper.map(weatherDTO, WeatherEntity.class);
         weatherEntity.setIcon(weatherDTO.getWeather().get(0).getIcon());
         weatherEntity.setNameCity(weatherDTO.getName());
@@ -23,4 +22,5 @@ public class WeatherConverterToEntity {
         weatherEntity.setPressure(weatherDTO.getMain().getPressure());
         return weatherEntity;
     }
+
 }

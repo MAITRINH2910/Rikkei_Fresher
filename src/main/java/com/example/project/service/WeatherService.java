@@ -17,4 +17,5 @@ public interface WeatherService {
     List<WeatherEntity> findCity(Long id);
 
     List<WeatherEntity> findWeatherGroupByCityName(String city, Long id);
+
 }

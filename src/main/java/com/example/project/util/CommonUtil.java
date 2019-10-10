@@ -2,6 +2,7 @@ package com.example.project.util;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,14 +11,19 @@ import java.sql.Timestamp;
 
 
 public class CommonUtil {
-    public static String KelvintoCelsius(double Kel) {
-        NumberFormat degreeFormat =new DecimalFormat("#0.00");
-        return  degreeFormat.format(Kel - 273.15);
+    public static Double KelvintoCelsius(double Kel) {
+//        NumberFormat degreeFormat =new DecimalFormat("#0.00");
+        return  Kel - 273.15;
     }
 
-    public static String formatDate(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMMM dd, yyyy");
-        return simpleDateFormat.format(new Date());
+    public static String formatDate(Date date){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(date);
+    }
+
+    public static Date stringToDate(String dateString) throws ParseException {
+        Date dateDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
+        return dateDate;
     }
 
 //    public static Date formatCurrentDate(){

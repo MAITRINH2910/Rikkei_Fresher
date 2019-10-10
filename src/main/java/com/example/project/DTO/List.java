@@ -1,8 +1,5 @@
 package com.example.project.DTO;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-
 public class List {
     private Long dt;
     private MainDetail main;
