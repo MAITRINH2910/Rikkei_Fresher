@@ -1,7 +1,7 @@
 package com.example.project.controller;
 
-import com.example.project.DTO.WeatherDTO;
 import com.example.project.DTO.WeatherDetailDTO;
+import com.example.project.api.UserApi;
 import com.example.project.api.WeatherApi;
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
@@ -10,14 +10,10 @@ import com.example.project.service.WeatherService;
 import com.example.project.util.CommonUtil;
 import com.example.project.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.text.ParseException;
 import java.util.*;
@@ -26,6 +22,7 @@ import java.util.stream.Collectors;
 @Controller
 public class WeatherController {
 
+    private static final int days=8;
     @Autowired
     WeatherService weatherService;
 
@@ -34,6 +31,9 @@ public class WeatherController {
 
     @Autowired
     WeatherApi weatherApi;
+
+    @Autowired
+    UserApi userApi;
 
     /**
      * SEARCH WEATHER
@@ -45,69 +45,47 @@ public class WeatherController {
      */
     @GetMapping("/search-city")
     public String findWeatherByCity(@RequestParam String city, Model model, ModelMap modelMap) {
-        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(authUser.getName());
-        List<WeatherEntity> weatherList = weatherService.getWeatherByUser(user);
-        for (int i = 0; i < weatherList.size(); i++) {
-            weatherList.get(i).setIcon(Constants.ICON_PATH + weatherList.get(i).getIcon() + Constants.TAIL_ICON_PATH);
-        }
-
-        List<WeatherEntity> listCity = weatherService.findCity(user.getId());
-        model.addAttribute("listCities", listCity);
-        List<List<WeatherEntity>> weatherGroupByCity = new ArrayList<>();
-        for (int i = 0; i < listCity.size(); i++) {
-            weatherGroupByCity.add((weatherService.findWeatherGroupByCityName(listCity.get(i).getNameCity(), user.getId())));
-        }
-        model.addAttribute("weatherList0", weatherGroupByCity);
-
-        // filter weather by city
-        List<WeatherEntity> listWeatherByCity = weatherList.stream()
-                .filter(x -> x.getNameCity().equals(city)).collect(Collectors.toList());
-        Date currentDate = new Date();
-//        WeatherEntity curWeather = listWeatherByCity.stream().
-//                filter(x -> x.getDate().equals(CommonUtil.formatDate())).findAny().orElse(null);
-        WeatherEntity curWeather = listWeatherByCity.stream().
-                filter(x -> CommonUtil.formatDate(x.getDate()).equalsIgnoreCase(CommonUtil.formatDate(currentDate))).findAny().orElse(null);
-        if (curWeather != null) {
-            modelMap.addAttribute("status", "update");
-        } else {
-            modelMap.addAttribute("status", "add");
-        }
-
+        // Return Weather or Not Found
         try {
-            WeatherEntity currentWeather = weatherApi.restJsonData(city);
+            WeatherEntity currentWeather = weatherApi.restJsonWeather(city);
             model.addAttribute("currentWeather", currentWeather);
         } catch (Exception e) {
             model.addAttribute("message", "City is not found!!!");
         }
-
+        // Show History Weathers
+        User user = userApi.getAuthUser();
+        List<WeatherEntity> listCity = weatherApi.getCitiesByUser(user);
+        model.addAttribute("listCities", listCity);
+        List<List<WeatherEntity>> weatherGroupByCity = weatherApi.weatherGroupByCity(user);
+        model.addAttribute("weatherList0", weatherGroupByCity);
+        // Handle Button ADD --> UPDATE by Comparing Current Date and Latest Date of Current Weather
+        WeatherEntity oldWeather = weatherApi.filterWeather(city);
+        if (oldWeather != null) {
+            modelMap.addAttribute("status", "update");
+        } else {
+            modelMap.addAttribute("status", "add");
+        }
         return "user/home";
     }
 
     /**
      * WEATHER DETAIL
-     *
+     * 40 records for 5 continuous days => days = 40/5
      * @param city
      * @param model
      * @return
      */
     @GetMapping("/weather-detail/{city}")
     public String getWeatherDetail(@PathVariable String city, Model model) throws ParseException {
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<WeatherDetailDTO> response = restTemplate.
-                getForEntity(Constants.FORECAST_URL + city +
-                                Constants.APPID,
-                        WeatherDetailDTO.class);
-        WeatherDetailDTO futureWeather = response.getBody();
+        WeatherDetailDTO futureWeather = weatherApi.restJsonWeatherDetail(city);
         List<WeatherEntity> futureWeatherList = new ArrayList<WeatherEntity>();
-
-        for (int j = 0; j < 40; j = j + 8) {
+        for (int j = 0; j < 40; j = j + days) {
             String icon = (Constants.ICON_PATH + futureWeather.getList().get(j).getWeather().get(0).getIcon() + Constants.TAIL_ICON_PATH);
             String clouds = futureWeather.getList().get(j).getWeather().get(0).getDescription();
             String humidity = futureWeather.getList().get(j).getMain().getHumidity();
             String pressure = futureWeather.getList().get(j).getMain().getPressure();
             String wind = futureWeather.getList().get(j).getWind().getSpeed();
-            Double temp = CommonUtil.KelvintoCelsius(futureWeather.getList().get(j).getMain().getTemp());
+            Double temp = CommonUtil.kelvinToCelsius(futureWeather.getList().get(j).getMain().getTemp());
             String city1 = futureWeather.getCity().getName();
             Date date = CommonUtil.stringToDate(futureWeather.getList().get(j).getDt_txt());
             WeatherEntity detail = new WeatherEntity(icon, city1, temp, clouds, wind, humidity, pressure, date);
@@ -119,25 +97,22 @@ public class WeatherController {
 
     /**
      * ADD WEATHER
-     * DATABASE < 3 RECORDS
      *
      * @param city
      * @return
      */
     @GetMapping("/save-weather/{city}")
     public String saveWeather(@PathVariable String city) {
-        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(authUser.getName());
-
-        WeatherEntity currentWeather = weatherApi.restJsonData(city);
+        User user = userApi.getUser();
+        WeatherEntity currentWeather = weatherApi.restJsonWeather(city);
 
         WeatherEntity weather1 = new WeatherEntity(currentWeather.getIcon(), currentWeather.getNameCity(),
                 currentWeather.getTemp(), currentWeather.getDescription(), currentWeather.getWind(),
                 currentWeather.getHumidity(), currentWeather.getPressure(), currentWeather.getDate());
         weather1.setUsers(new HashSet<>(Arrays.asList(userService.findUserByUsername(user.getUsername()))));
-        // lst weather by user
+        // Get List Weather by User
         List<WeatherEntity> lstByUser = weatherService.getWeatherByUser(user);
-        // lay ra ds city theo iduser va nameCity
+        // Get List City By idUser va cityName
         List<WeatherEntity> lstByUserByCity = lstByUser.stream()
                 .filter(weather -> city.trim().toLowerCase().equals(weather.getNameCity().trim().toLowerCase()))
                 .collect(Collectors.toList());
@@ -155,7 +130,7 @@ public class WeatherController {
     }
 
     public void insertWeather(String name, User userEntity) {
-        WeatherEntity result = weatherApi.restJsonData(name);
+        WeatherEntity result = weatherApi.restJsonWeather(name);
         result.setDate(new Date());
         result.setUsers(new HashSet<>(Arrays.asList(userEntity)));
         weatherService.saveWeather(result);
@@ -169,32 +144,20 @@ public class WeatherController {
      */
     @GetMapping("/update-weather/{city}")
     public String updateWeather(@PathVariable String city, Model model) {
-        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(authUser.getName());
+        User user = userApi.getUser();
         List<WeatherEntity> weatherList = weatherService.getWeatherByUser(user);
+        WeatherEntity oldWeather = weatherApi.filterWeather(city);
+        WeatherEntity currentWeather = weatherApi.restJsonWeather(city);
+        //Set Data of Current Weather
+        oldWeather.setIcon(currentWeather.getIcon());
+        oldWeather.setTemp(CommonUtil.kelvinToCelsius(currentWeather.getTemp()));
+        oldWeather.setWind(currentWeather.getWind());
+        oldWeather.setHumidity(currentWeather.getHumidity());
+        oldWeather.setPressure(currentWeather.getPressure());
+        oldWeather.setDescription(currentWeather.getDescription());
+        weatherService.saveWeather(oldWeather);
+
         model.addAttribute("weatherList", weatherList);
-
-        // filter weather by city
-        List<WeatherEntity> listWeatherByCity = weatherList.stream()
-                .filter(x -> x.getNameCity().equals(city)).collect(Collectors.toList());
-        // filter weather by date
-        WeatherEntity curWeather = listWeatherByCity.stream().
-                filter(x -> CommonUtil.formatDate(x.getDate()).equalsIgnoreCase(CommonUtil.formatDate(new Date()))).findAny().orElse(null);
-
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<WeatherDTO> responseWeather = restTemplate.
-                getForEntity(Constants.WEATHER_URL + city +
-                                Constants.APPID,
-                        WeatherDTO.class);
-
-        WeatherDTO currentWeather = responseWeather.getBody();
-        curWeather.setIcon(currentWeather.getWeather().get(0).getIcon());
-        curWeather.setTemp(CommonUtil.KelvintoCelsius(currentWeather.getMain().getTemp()));
-        curWeather.setWind(currentWeather.getWind().getSpeed());
-        curWeather.setHumidity(currentWeather.getMain().getHumidity());
-        curWeather.setPressure(currentWeather.getMain().getPressure());
-        curWeather.setDescription(currentWeather.getWeather().get(0).getDescription());
-        weatherService.saveWeather(curWeather);
         return "redirect:/";
     }
 

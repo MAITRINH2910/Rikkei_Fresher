@@ -1,17 +1,7 @@
 package com.example.project.config;
 
-import com.example.project.entity.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.DefaultRedirectStrategy;
-import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
@@ -38,13 +28,6 @@ public class UserAuthenticationFailureHandler implements AuthenticationFailureHa
         } else {
             httpServletResponse.sendRedirect(contextPath + redirectPathLoginError);
         }
-//        if(e.getClass() == UsernameNotFoundException.class) {
-//            message = "cannot find a user";
-//        } else if(e.getClass() == BadCredentialsException.class) {
-//            message = "check your password";
-//        }
-//        httpServletRequest.getRequestDispatcher(String.format("/error?message=%s", message)).forward(httpServletRequest, httpServletResponse);
-
     }
 }
 

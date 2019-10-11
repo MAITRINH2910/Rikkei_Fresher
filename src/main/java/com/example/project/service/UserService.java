@@ -9,8 +9,6 @@ import java.util.Optional;
 @Service
 public interface UserService {
 
-//    User findUserByEmail(String email);
-
     User findUserByUsername(String username);
 
     List<User> findAllUser();

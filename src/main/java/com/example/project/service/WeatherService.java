@@ -4,6 +4,7 @@ import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,6 +17,8 @@ public interface WeatherService {
 
     List<WeatherEntity> findCity(Long id);
 
-    List<WeatherEntity> findWeatherGroupByCityName(String city, Long id);
+    List<WeatherEntity> findWeatherGroupByCityName(String city, Long userId);
+
+    Date getMaxDateByNameCity(String city, Long userId);
 
 }

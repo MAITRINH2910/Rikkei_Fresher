@@ -14,7 +14,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -29,11 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserAuthenticationSuccessHandler successHandler;
 
-    //	@Bean
-//	public BCryptPasswordEncoder passwordEncoder() {
-//		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-//		return bCryptPasswordEncoder;
-//	}
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();
@@ -69,7 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-//                .defaultSuccessUrl("/processURL")
                 .successHandler(successHandler)
                 .failureHandler(failureHandler)
                 .and()

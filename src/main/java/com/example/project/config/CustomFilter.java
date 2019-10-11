@@ -43,18 +43,18 @@ public class CustomFilter extends GenericFilterBean {
                         // get username of user logged saved by getPrincipal()
                         String username = ((UserDetails) authentication.getPrincipal()).getUsername();
                         if (!username.isEmpty()) {
-                            UserDetails userDetailsQuery = null;
+                            UserDetails userDetails = null;
 
                             try {
-                                userDetailsQuery = userDetailsService.loadUserByUsername(username);
+                                userDetails = userDetailsService.loadUserByUsername(username);
 
-                                if (!userDetailsQuery.isEnabled()) {
+                                if (!userDetails.isEnabled()) {
                                     new SecurityContextLogoutHandler().logout(req, res, authentication);
                                 }
 
                             } catch (Exception e) {}
 
-                            if (userDetailsQuery == null) {
+                            if (userDetails == null) {
                                 new SecurityContextLogoutHandler().logout(req, res, authentication);
                             }
                         }

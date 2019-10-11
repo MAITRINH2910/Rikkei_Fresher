@@ -1,49 +1,40 @@
 package com.example.project.util;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.sql.Timestamp;
 
-
+/**
+ * Business: change Temp, Date
+ */
 public class CommonUtil {
-    public static Double KelvintoCelsius(double Kel) {
-//        NumberFormat degreeFormat =new DecimalFormat("#0.00");
+    /**
+     * Change Temperature (Kelvin To Celcius)
+     * @param Kel
+     * @return
+     */
+    public static Double kelvinToCelsius(double Kel) {
         return  Kel - 273.15;
     }
 
-    public static String formatDate(Date date){
+    /**
+     * Format Date Type DATE --> Date Type STRING
+     * @param date
+     * @return
+     */
+    public static String dateToString(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
         return simpleDateFormat.format(date);
     }
 
-    public static Date stringToDate(String dateString) throws ParseException {
-        Date dateDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateString);
-        return dateDate;
-    }
-
-//    public static Date formatCurrentDate(){
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        return dtf.format(now);
-//    }
-    public static String formatToString( String ts) {
-        String formattedDate = new SimpleDateFormat("yyyyMMdd").format(ts);
-        return formattedDate;
-    }
-
     /**
-     * Parse curTime to String
+     * Format Date Type STRING --> Date Type DATE
+     * @param dateTypeString
      * @return
+     * @throws ParseException
      */
-    public static String curTimeToString() {
-        Timestamp ts= new Timestamp(System.currentTimeMillis());
-        String formattedDate = new SimpleDateFormat("yyyyMMdd").format(ts);
-        return formattedDate;
+    public static Date stringToDate(String dateTypeString) throws ParseException {
+        Date dateTypeDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTypeString);
+        return dateTypeDate;
     }
-
 }

@@ -65,37 +65,38 @@
 
         <table class="table detailWeather" th:if="${currentWeather != null}">
 
-                <tr th:object="${currentWeather}">
-                    <td>
-                        <div class="icon-search">
-<!--                            <img th:src="${icon}" class="icon-weather"></div>-->
-                            <img class="icon-weather" th:src="'http://openweathermap.org/img/w/'+*{icon}+'.png'"width="50" height="50"></div>
-                    </td>
-                    <td>
-                        <div class="city-date-search">
-                            <b><a th:href="@{/weather-detail/__*{nameCity}__}"><p
-                                    th:text="*{nameCity}">
-                            </a></b>
-                            <p style="margin-top: -6px" th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="property-search">
-                            <div class="badge badge-info" th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>
-                            <b><i th:text="*{description}"></i></b>
-                            <p th:text="*{wind}+' m/s. '+*{humidity}+' %, '+*{pressure}+' hpa'">win humidity</p>
-                        </div>
-                    </td>
-                    <td th:switch="${status}">
-                        <a class="btn btn-primary add" th:case="'add'"
-                           th:href="@{/save-weather/__*{nameCity}__}"
-                        >Add</a>
-                        <a class="btn btn-warning" th:case="'update'"
-                           th:href="@{/update-weather/__*{nameCity}__}"
-                           style="margin: 10px 5px;">Update</a>
-                    </td>
-                </tr>
-<!--            </th:block>-->
+            <tr th:object="${currentWeather}">
+                <td>
+                    <div class="icon-search">
+                        <!--                            <img th:src="${icon}" class="icon-weather"></div>-->
+                        <img class="icon-weather" th:src="'http://openweathermap.org/img/w/'+*{icon}+'.png'" width="50"
+                             height="50"></div>
+                </td>
+                <td>
+                    <div class="city-date-search">
+                        <b><a th:href="@{/weather-detail/__*{nameCity}__}"><p
+                                th:text="*{nameCity}">
+                        </a></b>
+                        <p style="margin-top: -6px" th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
+                    </div>
+                </td>
+                <td>
+                    <div class="property-search">
+                        <div class="badge badge-info" th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>
+                        <b><i th:text="*{description}"></i></b>
+                        <p th:text="*{wind}+' m/s. '+*{humidity}+' %, '+*{pressure}+' hpa'">win humidity</p>
+                    </div>
+                </td>
+                <td th:switch="${status}">
+                    <a class="btn btn-primary add" th:case="'add'"
+                       th:href="@{/save-weather/__*{nameCity}__}"
+                    >Add</a>
+                    <a class="btn btn-warning" th:case="'update'"
+                       th:href="@{/update-weather/__*{nameCity}__}"
+                       style="margin: 10px 5px;">Update</a>
+                </td>
+            </tr>
+            <!--            </th:block>-->
         </table>
         <div class="table detailMessage" th:if="${message != null}">
             <h3 class="message" th:text="${message}"></h3>
@@ -145,11 +146,9 @@
                         </th:block>
                     </th:block>
                 </table>
-
                 <div class="show-more" th:if="${weatherList0.get(i.index).size() > 1}"
                      th:attr="show=${weather1.getNameCity()}">Show more
                 </div>
-
             </div>
         </div>
     </div>
@@ -157,16 +156,6 @@
 </div>
 </body>
 <script>
-    var listCities = $("[weather]");
-    console.log("listCitiesAttr: " + listCities.length);
-    var listRecords = $("[city]");
-    console.log("listRecordsAttr: " + listRecords.length);
-
-    var cities = $(".cityList");
-    console.log("listCitiesClass: " + cities.length);
-    var weathers = $(".detailDB");
-    console.log("listRecordsClass: " + weathers.length);
-
     if ($('.cityList').length > 1) {
         $('tr[city]:visible').each(function () {
             var city = $(this).attr('city');
@@ -180,85 +169,6 @@
         $('[city="' + cityName + '"]:gt(0)').toggle();
         $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
     });
-
-    // $('div[show]:visible').each(function () {
-    //     var city = $(this).attr('city');
-    //     $(this).nextAll('div[city="' + city + '"]').hide();
-    // });
-    // $('.show-more').click(function (e) {
-    //     e.preventDefault(); //to prevent standard click event
-    //     console.log("aa");
-    //     $('div[city]:visible').each(function () {
-    //         var rel = $(this).attr('city');
-    //         $(this).nextAll('div[city="' + rel + '"]').show();
-    //
-    //     });
-    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-    // });
-    //show by one
-    // $('div[city]:visible').each(function () {
-    //     var rel = $(this).attr('city');
-    //     $(this).nextAll('div[city="' + rel + '"]').show();
-    // });
-    //hide by one
-    // $('div[show]:visible').click(function () {
-    //     var show = $(this).attr('show');
-    //     $(this).nextAll('div[show="' + show + '"]').show();
-    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-    //
-    // });
-    // $('#showmenu').click(function() {
-    //     var $menu = $('.menu');
-    //     if ($menu.is(':visible')) {
-    //         // Slide away
-    //         $menu.animate({left: -($menu.outerWidth() + 10)}, function() {
-    //             $menu.hide();
-    //         });
-    //     }
-    //     else {
-    //         // Slide in
-    //         $menu.show().css("left", -($menu.outerWidth() + 10)).animate({left: 0});
-    //     }
-    // });
-    // $(this).attr('show').on('click', function () {
-    //     $('div[city]:visible').each(function () {
-    //         var rel = $(this).attr('city');
-    //         $(this).nextAll('div[city="' + rel + '"]').show();
-    //     });
-    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-    // });
-    // $('#btn').click(function(e){
-    //     e.preventDefault(); //to prevent standard click event
-    //     $('div[city]:visible').each(function () {
-    //         var rel = $(this).attr('city');
-    //         $(this).nextAll('div[city="' + rel + '"]').show();
-    //     });
-    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-    // });
-
-    //     $('[show=Danang]').on('click', function () {
-    //         //toggle elements with class .ty-compact-list that their index is bigger than 2
-    //         $('[city=Danang]:gt(0)').toggle();
-    //         //change text of show more element just for demonstration purposes to this demo
-    //         $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-    //     });
-    // });
-    //
-    // start: hide all
-
-    // $('[show="' + cityName + '"]').on('click', function () {
-    //     //toggle elements with class .ty-compact-list that their index is bigger than 2
-    //     $('[city="' + cityName + '"]:gt(0)').toggle();
-    //     //change text of show more element just for demonstration purposes to this demo
-    //
-    //     $(this).text() === 'Show more' ? $(this).text('Show less') : $(this).text('Show more');
-    // });
-    // if ($('[city="' + cityName + '"]').length > 1) {
-    //     $('[city="' + cityName + '"]:gt(0)').hide();
-    //     $('[show="' + cityName + '"]').show();
-    // }
-
-
 </script>
 
 </html>

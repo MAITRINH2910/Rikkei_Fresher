@@ -30,7 +30,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             for (Roles role : roles) {
                 grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName()));
             }
-//
 
             return new UserDetails() {
                 @Override

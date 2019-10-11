@@ -7,6 +7,7 @@ import com.example.project.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,7 +18,6 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public void saveWeather(WeatherEntity weatherEntity) {
-
         weatherRepository.save(weatherEntity);
     }
 
@@ -27,11 +27,14 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public List<WeatherEntity> findWeatherGroupByCityName(String city, Long id) {
-        return weatherRepository.findWeatherGroupByCityName(city, id);
+    public List<WeatherEntity> findWeatherGroupByCityName(String city, Long userId) {
+        return weatherRepository.findWeatherGroupByCityName(city, userId);
     }
 
-
+    @Override
+    public Date getMaxDateByNameCity(String city, Long userId) {
+        return weatherRepository.getMaxDateByNameCity(city, userId);
+    }
 
     @Override
     public void deleteWeather(Long id) {
