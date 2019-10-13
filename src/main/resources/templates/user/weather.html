@@ -1,193 +1,2355 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <title>Bootstrap Example</title>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+<!--    <style>-->
+<!--        .row {-->
+<!--            margin-left: -15px;-->
+<!--            margin-right: -15px;-->
+<!--        }-->
+
+<!--        .col-sm-12 {-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        .headline span {-->
+<!--            padding-bottom: 4px;-->
+<!--            border-bottom-width: 1px;-->
+<!--            border-bottom-style: solid;-->
+<!--        }-->
+
+<!--        .headline {-->
+<!--            line-height: 50px;-->
+<!--        }-->
+
+<!--        .first-child {-->
+<!--            margin-top: 0 !important;-->
+<!--        }-->
+
+<!--        h2 {-->
+<!--            font-size: 30px;-->
+<!--        }-->
+
+<!--        .headline span {-->
+<!--            padding-bottom: 4px;-->
+<!--            border-bottom-width: 1px;-->
+<!--            border-bottom-style: solid;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            width: 1000px !important;-->
+<!--        }-->
+
+<!--        .row {-->
+<!--            margin-left: -15px;-->
+<!--            margin-right: -15px;-->
+<!--        }-->
+
+<!--        .table, .table.table-bordered td {-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .table {-->
+<!--            width: 100%;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        table {-->
+<!--            max-width: 100%;-->
+<!--            background-color: transparent;-->
+<!--            border-collapse: collapse;-->
+<!--            border-spacing: 0;-->
+<!--        }-->
+
+<!--        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {-->
+<!--            padding: 8px;-->
+<!--            line-height: 1.42857143;-->
+<!--            vertical-align: top;-->
+<!--            border-top: 1px #ddd;-->
+<!--        }-->
+
+<!--        img {-->
+<!--            vertical-align: middle;-->
+
+<!--        }-->
+
+<!--        img {-->
+<!--            border: 0;-->
+<!--        }-->
+
+<!--        b, strong {-->
+<!--            font-weight: 700;-->
+<!--        }-->
+
+<!--        orange a {-->
+<!--            color: #e96e50;-->
+<!--        }-->
+
+<!--        .badge {-->
+<!--            display: inline-block;-->
+<!--            min-width: 10px;-->
+<!--            padding: 3px 7px;-->
+<!--            font-size: 12px;-->
+<!--            font-weight: 700;-->
+<!--            color: #fff;-->
+<!--            line-height: 1;-->
+<!--            vertical-align: baseline;-->
+<!--            white-space: nowrap;-->
+<!--            text-align: center;-->
+<!--            background-color: #4e4d4a;-->
+<!--            border-radius: 10px;-->
+<!--        }-->
+
+<!--        p {-->
+<!--            margin: 0 0 10px;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            background: url("https://znews-photo.zadn.vn/w1024/Uploaded/qfrqy/2017_11_30/p90285377_highres.jpg") no-repeat center center fixed;-->
+<!--            background-size: cover;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            padding-left: 100px;-->
+<!--            padding-right: 100px;-->
+<!--            margin-top: 5px;-->
+<!--        }-->
+
+<!--        #detail {-->
+<!--            margin-top: 50px;-->
+<!--            margin: 30px;-->
+<!--            background-color: #f3fcff;;-->
+<!--            border: 1px solid black;-->
+<!--            opacity: 0.8;-->
+<!--            filter: alpha(opacity=60);-->
+<!--            border-radius: 20px;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="weather">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-sm-12">-->
+<!--                <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>-->
+<!--                <a class="btn btn-primary" th:href="@{/}">Back</a>-->
+<!--            </div>-->
+
+<!--            <div class="container" id="detail">-->
+<!--                <div class="row" id="frame">-->
+<!--                    <div class="col-sm-12" style="margin-left: 215px">-->
+<!--                        <div class="tab-pane active" id="forecast-list">-->
+<!--                            <div id="forecast_list_ul">-->
+<!--                                <table class="table">-->
+<!--                                    <tbody>-->
+<!--                                    <th:block th:each="detail : ${detail}">-->
+
+<!--                                        <tr th:object="${detail}">-->
+<!--                                            <td>-->
+<!--                                                <img th:src="*{icon}" width="50" style="margin: 5px -220px"-->
+<!--                                                     height="50">-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <div style="margin: 5px -170px;">-->
+<!--                                                    <b>-->
+<!--                                                        <p th:text="*{nameCity}">-->
+<!--                                                    </b>-->
+<!--                                                    <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>-->
+<!--                                                </div>-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <div style="margin: 5px -65px;">-->
+<!--                                                    <div class="badge badge-info"-->
+<!--                                                         th:text="*{#numbers.formatDecimal(temp,2,2)}+'°С'"></div>-->
+<!--                                                    <b><i th:text="*{description}"></i></b>-->
+<!--                                                    <p style="margin-top: 10px"-->
+<!--                                                       th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">-->
+<!--                                                </div>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+
+<!--                                    </th:block>-->
+
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<html lang="en" id="location" class="fio">
 <head>
-    <title>Bootstrap Example</title>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-342083-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments)
+        };
+        gtag('js', new Date());
+        gtag('config', 'UA-342083-4');
+    </script>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>New York, NY, USA - Weather Forecast</title>
+    <meta name="description" content="New York, NY, USA | Weather Forecast | Next 24 hours | Next 7 days">
 
+    <link rel="canonical" href="https://forecast7.com/en/40d71n74d01/new-york/"/>
+
+    <link rel="alternate" hreflang="bg" href="https://forecast7.com/bg/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="cs" href="https://forecast7.com/cs/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="da" href="https://forecast7.com/da/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="de" href="https://forecast7.com/de/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="en" href="https://forecast7.com/en/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="el" href="https://forecast7.com/el/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="es" href="https://forecast7.com/es/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="fr" href="https://forecast7.com/fr/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="hr" href="https://forecast7.com/hr/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="hu" href="https://forecast7.com/hu/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="it" href="https://forecast7.com/it/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="no" href="https://forecast7.com/no/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="nl" href="https://forecast7.com/nl/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="pl" href="https://forecast7.com/pl/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="pt" href="https://forecast7.com/pt/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="ro" href="https://forecast7.com/ro/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="ru" href="https://forecast7.com/ru/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="sk" href="https://forecast7.com/sk/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="sr" href="https://forecast7.com/sr/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="sv" href="https://forecast7.com/sv/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="tr" href="https://forecast7.com/tr/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="uk" href="https://forecast7.com/uk/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="ja" href="https://forecast7.com/ja/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="zh" href="https://forecast7.com/zh/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="zh-tw" href="https://forecast7.com/zh-tw/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="he" href="https://forecast7.com/he/40d71n74d01/new-york/"/>
+    <link rel="alternate" hreflang="ar" href="https://forecast7.com/ar/40d71n74d01/new-york/"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link href='css/weather.css' rel='stylesheet'>
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2197c9">
+    <meta name="apple-mobile-web-app-title" content="Forecast7">
+    <meta name="application-name" content="Forecast7">
+    <meta name="theme-color" content="#3880a8">
     <style>
-        .row {
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-
-        .col-sm-12 {
-            width: 100%;
-        }
-
-        .headline span {
-            padding-bottom: 4px;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-        }
-
-        .headline {
-            line-height: 50px;
-        }
-
-        .first-child {
-            margin-top: 0 !important;
-        }
-
-        h2 {
-            font-size: 30px;
-        }
-
-        .headline span {
-            padding-bottom: 4px;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-        }
-
-        .container {
-            width: 1000px !important;
-        }
-
-        .row {
-            margin-left: -15px;
-            margin-right: -15px;
-        }
-
-        .table, .table.table-bordered td {
-            font-size: 14px;
-        }
-
-        .table {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        table {
-            max-width: 100%;
-            background-color: transparent;
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-            padding: 8px;
-            line-height: 1.42857143;
-            vertical-align: top;
-            border-top: 1px #ddd;
-        }
-
-        img {
-            vertical-align: middle;
-
-        }
-
-        img {
-            border: 0;
-        }
-
-        b, strong {
-            font-weight: 700;
-        }
-
-        orange a {
-            color: #e96e50;
-        }
-
-        .badge {
-            display: inline-block;
-            min-width: 10px;
-            padding: 3px 7px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1;
-            vertical-align: baseline;
-            white-space: nowrap;
-            text-align: center;
-            background-color: #4e4d4a;
-            border-radius: 10px;
-        }
-
-        p {
-            margin: 0 0 10px;
+        /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
         }
 
         body {
-            background: url("https://znews-photo.zadn.vn/w1024/Uploaded/qfrqy/2017_11_30/p90285377_highres.jpg") no-repeat center center fixed;
-            background-size: cover;
-            overflow: hidden;
+            margin: 0
+            background: rgb(63,101,251);
+            background: radial-gradient(circle, rgba(63,101,251,1) 0%, rgba(65,143,243,1) 45%, rgba(70,252,226,1) 100%);
+        }
+
+        article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+            display: block
+        }
+
+        audio, canvas, progress, video {
+            display: inline-block
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0
+        }
+
+        progress {
+            vertical-align: baseline
+        }
+
+        [hidden], template {
+            display: none
+        }
+
+        a {
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects
+        }
+
+        a:active, a:hover {
+            outline-width: 0
+        }
+
+        abbr[title] {
+            border-bottom: none;
+            text-decoration: underline;
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        b, strong {
+            font-weight: inherit
+        }
+
+        b, strong {
+            font-weight: bolder
+        }
+
+        dfn {
+            font-style: italic
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0.67em 0
+        }
+
+        mark {
+            background-color: #ff0;
+            color: #000
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        sub, sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline
+        }
+
+        sub {
+            bottom: -0.25em
+        }
+
+        sup {
+            top: -0.5em
+        }
+
+        img {
+            border-style: none
+        }
+
+        svg:not(:root) {
+            overflow: hidden
+        }
+
+        code, kbd, pre, samp {
+            font-family: monospace, monospace;
+            font-size: 1em
+        }
+
+        figure {
+            margin: 1em 40px
+        }
+
+        hr {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            height: 0;
+            overflow: visible
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+            margin: 0
+        }
+
+        optgroup {
+            font-weight: bold
+        }
+
+        button, input {
+            overflow: visible
+        }
+
+        button, select {
+            text-transform: none
+        }
+
+        [type=reset], [type=submit], button, html [type=button] {
+            -webkit-appearance: button
+        }
+
+        [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
+            border-style: none;
+            padding: 0
+        }
+
+        [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
+            outline: 1px dotted ButtonText
+        }
+
+        fieldset {
+            border: 1px solid #c0c0c0;
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em
+        }
+
+        legend {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            color: inherit;
+            display: table;
+            max-width: 100%;
+            padding: 0;
+            white-space: normal
+        }
+
+        textarea {
+            overflow: auto
+        }
+
+        [type=checkbox], [type=radio] {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+            height: auto
+        }
+
+        [type=search] {
+            -webkit-appearance: textfield;
+            outline-offset: -2px
+        }
+
+        [type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
+            -webkit-appearance: none
+        }
+
+        ::-webkit-input-placeholder {
+            color: inherit;
+            opacity: 0.54
+        }
+
+        ::-webkit-file-upload-button {
+            -webkit-appearance: button;
+            font: inherit
+        }
+
+        body {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        *, :after, :before {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
         }
 
         .container {
-            padding-left: 100px;
-            padding-right: 100px;
-            margin-top: 5px;
+            max-width: 1024px;
+            margin: 0 auto
         }
 
-        #detail {
-            margin-top: 50px;
-            margin: 30px;
-            background-color: #f3fcff;;
-            border: 1px solid black;
-            opacity: 0.8;
-            filter: alpha(opacity=60);
-            border-radius: 20px;
+        .container.page {
+            padding: 1rem
         }
 
+        .scroll {
+            width: 100%;
+            overflow: auto
+        }
+
+        .details-sign {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e4e4e4;
+            -webkit-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out
+        }
+
+        .details-sign svg {
+            fill: black
+        }
+
+        .pac-container {
+            font-family: Tahoma, Roboto, Arial, monospace;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border: none;
+            border-bottom: 1px solid white;
+            background-color: #f9f9f9
+        }
+
+        #location .pac-container {
+            width: 100% !important;
+            left: 0 !important
+        }
+
+        .pac-icon {
+            display: none
+        }
+
+        .pac-item {
+            text-align: center
+        }
+
+        .pac-item:hover {
+            background-color: white;
+            cursor: pointer
+        }
+
+        .pac-item-selected {
+            background-color: white
+        }
+
+        .pac-logo:after {
+            background-color: #F1F1F1;
+            background-position: 50% 50%;
+            padding: 1.5rem
+        }
+
+        .container {
+            position: relative
+        }
+
+        .drop-down-content {
+            display: none;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            z-index: 100;
+            background-color: #f9f9f9;
+            left: 0;
+            overflow: auto;
+            top: 100%;
+            border-bottom: 1px solid #e4e4e4
+        }
+
+        .drop-down-content li {
+            width: 25%;
+            float: left;
+            border-left: 1px solid #F1F1F1
+        }
+
+        .drop-down-content li.selected {
+            background-color: black
+        }
+
+        .drop-down-content li.selected a {
+            color: white
+        }
+
+        .drop-down-content li.selected a:hover {
+            background-color: inherit;
+            cursor: default
+        }
+
+        .drop-down-content a {
+            white-space: nowrap;
+            color: black;
+            padding: 0.5rem;
+            text-decoration: none;
+            display: block
+        }
+
+        @media only screen and (max-width: 480px) {
+            .drop-down-content a {
+                padding: 0.5rem 0.1rem
+            }
+        }
+
+        .drop-down a:hover {
+            background-color: white
+        }
+
+        .show {
+            display: block
+        }
+
+        header {
+            background: #F1F1F1;
+            font-size: 13px;
+            font-family: Tahoma, Roboto, Arial, monospace;
+        }
+
+        header > .container {
+            height: 30px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 1rem;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end
+        }
+
+        header #topLogo {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 135px;
+            flex: 0 0 135px;
+            min-width: 135px
+        }
+
+        header .flex-wrap {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        header .header-search {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 0 0 0 1rem;
+            border-left: 1px solid white;
+            height: 30px
+        }
+
+        header .header-search #pac-input {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            border: none;
+            background: transparent;
+            outline: none;
+            text-align: center
+        }
+
+        header .header-button-group {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 30px
+        }
+
+        header .header-button {
+            border-right: 1px solid white;
+            height: 30px
+        }
+
+        header .header-button:first-child {
+            border-left: 1px solid white
+        }
+
+        header .header-button a {
+            text-decoration: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 100%;
+            padding: 0 15px;
+            color: black;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        header .header-button.selected {
+            background: black
+        }
+
+        header .header-button.selected a {
+            color: white;
+            cursor: default
+        }
+
+        header .lang {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 100%;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            cursor: pointer;
+            text-transform: capitalize;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            padding-left: 26.5px;
+            text-align: right
+        }
+
+        header .lang .lang-globe-group {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        header .lang #lang-globe {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px
+        }
+
+        @media only screen and (max-width: 600px) {
+            #location header > .container, #page header > .container {
+                height: 75px;
+                display: block;
+                padding: 0
+            }
+
+            #location header #topLogo, #page header #topLogo {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                text-align: center;
+                padding: 5px;
+                height: 45px
+            }
+
+            #location header #topLogo img, #page header #topLogo img {
+                height: 35px
+            }
+
+            #location header .header-button a, #page header .header-button a {
+                padding: 0 0.5rem
+            }
+
+            #location header .header-search, #page header .header-search {
+                margin: 0;
+                border-left: none
+            }
+
+            #location header .lang, #page header .lang {
+                height: 1rem;
+                padding-left: 10px
+            }
+        }
+
+        footer {
+            background: #F1F1F1;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-family: Tahoma, Roboto, Arial, monospace;
+            text-align: center;
+            font-size: 0.75rem
+        }
+
+        footer .container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            max-width: 400px;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -webkit-box-pack: center
+        }
+
+        footer a {
+            padding: 0.1rem;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            color: black;
+            text-decoration: none;
+            min-width: 3rem
+        }
+
+        footer .copyright {
+            display: block;
+            font-weight: bold
+        }
+
+        footer .attribution {
+            border-bottom: 1px solid darkgray;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem
+        }
+
+        footer .attribution img {
+            width: 150px
+        }
+
+        #home {
+            height: 100%
+        }
+
+        #home body {
+            height: 100%
+        }
+
+        #home .allContent {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between
+        }
+
+        #home .content {
+            -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+            align-self: center
+        }
+
+        #home .home-search {
+            width: 285px;
+            margin: 0 auto
+        }
+
+        #home .home-search input {
+            width: 100%;
+            outline: none;
+            padding: 5px;
+            border: 1px solid #F1F1F1
+        }
+
+        #location {
+        }
+
+        #location .current-weather {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 1rem;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        #location .current-weather > * {
+            text-align: center
+        }
+
+        #location h1 {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            margin: 0 0 0 3px;
+            padding: 0;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            font-weight: normal;
+            line-height: 1;
+            color: #585858
+        }
+
+        #location h1 b {
+            display: block;
+            font-size: 1.5rem
+        }
+
+        #location .current-icon {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 120px;
+            flex: 0 0 120px
+        }
+
+        #location .current-icon .icon {
+            margin: 0 auto;
+            width: 120px;
+            height: 120px
+        }
+
+        #location .current-conditions {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            line-height: 1
+        }
+
+        #location .current-conditions .temp {
+            font-size: 2.5rem;
+            color: #585858
+        }
+
+        #location .current-more-info ul {
+            list-style: none;
+            padding: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            max-width: 700px;
+            margin: 0 auto
+        }
+
+        #location .current-more-info li {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+            text-align: center;
+            font-style: italic
+        }
+
+        #location .current-more-info li:first-of-type {
+            text-align: right
+        }
+
+        #location .current-more-info li:last-of-type {
+            text-align: left
+        }
+
+        #location .forecast {
+            padding: 2rem 0
+        }
+
+        #location .forecast .forecast-summary {
+            padding: 0.8rem 1rem;
+            background: #F1F1F1;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: baseline;
+            -ms-flex-align: baseline;
+            align-items: baseline;
+            border-top: 2px solid #e4e4e4
+        }
+
+        #location .forecast .forecast-summary h2, #location .forecast .forecast-summary p {
+            display: inline;
+            margin: 0
+        }
+
+        #location .forecast .forecast-summary h2 {
+            font-size: 1rem;
+            padding-right: 0.5rem;
+            -ms-flex-negative: 0;
+            flex-shrink: 0
+        }
+
+        #location .next-24-hours .hourly {
+            padding: 1rem 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        #location .next-24-hours .hourly .hour {
+            text-align: center;
+            padding: 5px 0;
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 79px;
+            flex: 1 1 79px
+        }
+
+        #location .next-24-hours .hourly .hour:nth-child(2n) {
+            background: rgba(0, 0, 0, 0.03)
+        }
+
+        #location .next-24-hours .hourly .icon {
+            margin: 5px auto 0
+        }
+
+        #location .next-24-hours .hourly .icon svg {
+            width: 45px;
+            height: 45px
+        }
+
+        #location .next-7-days .show-hide-details {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: end;
+            -ms-flex-pack: end;
+            justify-content: flex-end
+        }
+
+        #location .next-7-days #hide-all-details, #location .next-7-days #show-all-details {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin: 1rem 1rem 0 2rem;
+            cursor: pointer
+        }
+
+        #location .next-7-days #hide-all-details .details-sign, #location .next-7-days #show-all-details .details-sign {
+            margin: 0 0.3rem
+        }
+
+        #location .next-7-days #hide-all-details .details-sign {
+            -webkit-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg)
+        }
+
+        #location .next-7-days .daily {
+            padding: 0 1rem
+        }
+
+        #location .next-7-days .day {
+            background: #F1F1F1;
+            position: relative;
+            border-bottom: 3px solid #e4e4e4;
+            margin: 1rem 0 2rem;
+            padding: 0.5rem 0 0;
+            cursor: pointer
+        }
+
+        #location .next-7-days .main-data {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        #location .next-7-days .main-data .time {
+            text-align: right;
+            font-weight: bold;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 7rem;
+            flex: 0 0 7rem;
+            min-width: 7rem;
+            margin-left: 3px;
+            text-transform: capitalize
+        }
+
+        #location .next-7-days .main-data .icon {
+            text-align: center;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 90px;
+            flex: 0 0 90px;
+            min-width: 90px
+        }
+
+        #location .next-7-days .main-data .icon svg {
+            width: 75px;
+            height: 75px
+        }
+
+        #location .next-7-days .main-data .summary {
+            text-align: left;
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto
+        }
+
+        #location .next-7-days .main-data .temp {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 14rem;
+            flex: 0 0 14rem;
+            min-width: 14rem;
+            font-size: 1.7rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            -webkit-box-ordinal-group: 3;
+            -ms-flex-order: 2;
+            order: 2
+        }
+
+        #location .next-7-days .main-data .hiTemp {
+            color: #585858
+        }
+
+        #location .next-7-days .main-data .loTemp {
+            color: #8a8a8a
+        }
+
+        #location .next-7-days .more-details {
+            text-align: center;
+            line-height: 1;
+            font-family: Tahoma, Roboto, Arial, monospace;
+            background: #e4e4e4;
+            margin: 0;
+            max-height: 0;
+            overflow-y: hidden;
+            -webkit-transition: max-height 0.5s ease-in-out;
+            -o-transition: max-height 0.5s ease-in-out;
+            transition: max-height 0.5s ease-in-out
+        }
+
+        #location .next-7-days .more-details span {
+            display: inline-block;
+            margin: 0.5rem;
+            white-space: nowrap
+        }
+
+        #location .next-7-days .more-details .row:first-child {
+            margin-top: 0.5rem
+        }
+
+        #location .next-7-days .more-details .row:last-child {
+            margin-bottom: 0.5rem
+        }
+
+        #location .next-7-days .show-details .more-details {
+            max-height: 120px
+        }
+
+        #location .next-7-days .day .details-sign {
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            margin-left: -12px;
+            -webkit-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out
+        }
+
+        #location .next-7-days .day .details-sign svg {
+            fill: black
+        }
+
+        #location .next-7-days .show-details .details-sign {
+            -webkit-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg)
+        }
+
+        #location .rtl .current-more-info li:first-of-type {
+            text-align: left
+        }
+
+        #location .rtl .current-more-info li:last-of-type {
+            text-align: right
+        }
+
+        #location .rtl .next-7-days .main-data .time {
+            text-align: left
+        }
+
+        #location .rtl .next-7-days .main-data .summary {
+            text-align: right
+        }
+
+        #location .rtl .forecast .forecast-summary h2 {
+            padding: 0 0 0 0.5rem
+        }
+
+        @media only screen and (min-width: 1024px) {
+            #location .next-7-days .daily {
+                padding-left: 0;
+                padding-right: 0
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            #location .next-7-days .daily, #location .rtl .next-7-days .daily {
+                padding: 0
+            }
+
+            #location .next-7-days .main-data, #location .rtl .next-7-days .main-data {
+                display: block;
+                position: relative
+            }
+
+            #location .next-7-days .main-data .time, #location .rtl .next-7-days .main-data .time {
+                float: left;
+                width: 42%;
+                line-height: 75px;
+                text-align: center;
+                min-width: 3rem
+            }
+
+            #location .next-7-days .main-data .summary, #location .rtl .next-7-days .main-data .summary {
+                width: 100%;
+                clear: both;
+                text-align: center;
+                padding-bottom: 1rem
+            }
+
+            #location .next-7-days .main-data .temp, #location .rtl .next-7-days .main-data .temp {
+                float: right;
+                width: 41%;
+                line-height: 75px;
+                font-size: 1rem;
+                min-width: 3rem
+            }
+
+            #location .next-7-days .main-data .icon, #location .rtl .next-7-days .main-data .icon {
+                position: absolute;
+                left: 50%;
+                margin-left: -45px;
+                width: 90px
+            }
+
+            #location .next-7-days .show-details .more-details, #location .rtl .next-7-days .show-details .more-details {
+                max-height: 230px
+            }
+
+            #location .next-7-days .show-hide-details, #location .rtl .next-7-days .show-hide-details {
+                -ms-flex-pack: distribute;
+                justify-content: space-around
+            }
+
+            #location .next-7-days #hide-all-details, #location .next-7-days #show-all-details, #location .rtl .next-7-days #hide-all-details, #location .rtl .next-7-days #show-all-details {
+                margin: 1rem 0 0 0
+            }
+
+            #location .rtl .next-7-days .main-data .time {
+                float: right
+            }
+
+            #location .rtl .next-7-days .main-data .temp {
+                float: left
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            #location, #location .rtl {
+            }
+
+            #location .forecast .forecast-summary, #location .rtl .forecast .forecast-summary {
+                display: block;
+                padding: 0.5rem
+            }
+
+            #location .forecast .forecast-summary h2, #location .rtl .forecast .forecast-summary h2 {
+                padding: 0
+            }
+
+            #location .current-weather, #location .rtl .current-weather {
+                padding: 1rem 0
+            }
+
+            #location .rtl h1, #location h1 {
+                font-size: 0.9rem
+            }
+
+            #location .rtl h1 b, #location h1 b {
+                font-size: 1.1rem
+            }
+
+            #location .current-icon, #location .rtl .current-icon {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 80px;
+                flex: 0 0 80px
+            }
+
+            #location .current-icon .icon, #location .rtl .current-icon .icon {
+                width: 80px;
+                height: 80px
+            }
+
+            #location .current-conditions .temp, #location .rtl .current-conditions .temp {
+                font-size: 1.5rem
+            }
+
+            #location .current-more-info ul, #location .rtl .current-more-info ul {
+                display: block
+            }
+
+            #location .current-more-info li, #location .rtl .current-more-info li {
+                padding: 0.1rem
+            }
+
+            #location .current-more-info li:first-of-type, #location .rtl .current-more-info li:first-of-type {
+                text-align: center
+            }
+
+            #location .current-more-info li:last-of-type, #location .rtl .current-more-info li:last-of-type {
+                text-align: center
+            }
+        }
+
+        #location.cw .forecast .forecast-summary, #location.wwo .forecast .forecast-summary {
+            display: block;
+            text-align: center
+        }
+
+        #location.cw .forecast .forecast-summary h2, #location.wwo .forecast .forecast-summary h2 {
+            font-variant: small-caps
+        }
+
+        #location.cw .current-more-info li:first-of-type, #location.cw .rtl .current-more-info li:first-of-type {
+            text-align: center
+        }
+
+        #location.cw .current-more-info li:last-of-type, #location.cw .rtl .current-more-info li:last-of-type {
+            text-align: center
+        }
+
+        .page h1 {
+            font-size: 1.5em
+        }
+
+        .page h2 {
+            font-size: 1.2em
+        }
+
+        @media only screen and (max-width: 360px) {
+            .page h1 {
+                font-size: 1.35em
+            }
+
+            .page h2 {
+                font-size: 1.1em
+            }
+        }
+
+        .hiTemp {
+            fill: #585858
+        }
+
+        .loTemp {
+            fill: #8a8a8a
+        }
+
+        .lightning, .sun {
+            fill: #f98629
+        }
+
+        .moon {
+            fill: #585858
+        }
+
+        .cloud, .fog {
+            fill: #585858
+        }
+
+        .rain {
+            fill: #1279c2
+        }
+
+        .hail, .snow {
+            fill: #1279c2
+        }
+
+        .wind {
+            fill: #585858
+        }
+
+        /*.ad {*/
+        /*    height: 90px;*/
+        /*    text-align: center*/
+        /*}*/
+
+        @media only screen and (max-width: 727px) {
+            .ad {
+                height: 60px
+            }
+        }
+
+        @media only screen and (max-width: 467px) {
+            .ad {
+                height: 250px
+            }
+        }
+
+        .ad.sys {
+            height: auto;
+            text-align: inherit;
+            -webkit-animation: fadein 1s;
+            animation: fadein 1s
+        }
+
+        @-webkit-keyframes fadein {
+            0% {
+                opacity: 0
+            }
+            35% {
+                opacity: 1
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0
+            }
+            35% {
+                opacity: 1
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        /*.col-sm {*/
+        /*    max-width: 52%;*/
+        /*    padding-right: 70px;*/
+        /*    padding-left: 55px;*/
+        /*}*/
+        .col-sm {
+            padding: 0.6em 0.3em;
+            width: 14.2857%;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .dayIcon .w-icon {
+            width: 5.1875rem;
+        }
+
+        .weatherForecast {
+            -webkit-box-flex: 12;
+            flex-grow: 12;
+            font-size: 0.8em;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+        }
+
+        #weatherWidget[max-width~="19.6875rem"] .day {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            padding: 0.2em 0.2em 0.2em 0.6em;
+            width: auto;
+        }
+
+        #weatherWidget[max-width~="19.6875rem"] .day .dayName {
+            display: inline;
+            text-align: left;
+        }
+
+        /*# sourceMappingURL=styles.css.map */
     </style>
 </head>
 <body>
-<div id="weather">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="headline first-child text-color"><span class="border-color">Weather in your city</span></h2>
-                <a class="btn btn-primary" th:href="@{/}">Back</a>
+<div class="allContent">
+
+    <header>
+        <div class="container">
+
+            <div id="topLogo"><a href="/en/"><img src="/img/1.png" style="width: 25%;height:130%;   background-size: 100% auto;"
+
+                                                  alt="Forecast7.com Logo"></a></div>
+            <div class="flex-wrap">
+                <div class="header-search ad sys">
+                    <!--<input id="pac-input" type="text" placeholder="Search for another location" autocomplete="off" />-->
+                </div>
+
+                <div class="header-button-group ad sys">
+                    <div class="header-button selected"><a href="/en/40d71n74d01/new-york/">&deg;C</a></div>
+                    <div class="header-button"><a href="/en/40d71n74d01/new-york/?unit=us">&deg;F</a></div>
+                </div>
+                <div id="language-btn" class="lang drop-down drop-btn ad sys">
+                    <div class="lang-name">en</div>
+                    <div class="lang-globe-group">
+                        <svg id="lang-globe" viewBox="0 0 24 24">
+                            <path fill="#000000"
+                                  d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                        </svg>
+                        <svg id="lang-globe-arrow" style="width:18px;height:18px" viewBox="0 0 24 24">
+                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+                        </svg>
+                    </div>
+                    <ul id="language-menu" class="drop-down-content">
+                        <li>
+                            <a href="/bg/40d71n74d01/new-york/">Български</a>
+                        </li>
+                        <li>
+                            <a href="/cs/40d71n74d01/new-york/">Čeština</a>
+                        </li>
+                        <li>
+                            <a href="/da/40d71n74d01/new-york/">Dansk</a>
+                        </li>
+                        <li>
+                            <a href="/de/40d71n74d01/new-york/">Deutsch</a>
+                        </li>
+                        <li class="selected">
+                            <a href="/en/40d71n74d01/new-york/">English</a>
+                        </li>
+                        <li>
+                            <a href="/el/40d71n74d01/new-york/">Ελληνικά</a>
+                        </li>
+                        <li>
+                            <a href="/es/40d71n74d01/new-york/">Español</a>
+                        </li>
+                        <li>
+                            <a href="/fr/40d71n74d01/new-york/">Français</a>
+                        </li>
+                        <li>
+                            <a href="/hr/40d71n74d01/new-york/">Hrvatski</a>
+                        </li>
+                        <li>
+                            <a href="/hu/40d71n74d01/new-york/">Magyar</a>
+                        </li>
+                        <li>
+                            <a href="/it/40d71n74d01/new-york/">Italiano</a>
+                        </li>
+                        <li>
+                            <a href="/no/40d71n74d01/new-york/">Norsk</a>
+                        </li>
+                        <li>
+                            <a href="/nl/40d71n74d01/new-york/">Nederlands</a>
+                        </li>
+                        <li>
+                            <a href="/pl/40d71n74d01/new-york/">Polski</a>
+                        </li>
+                        <li>
+                            <a href="/pt/40d71n74d01/new-york/">Português</a>
+                        </li>
+                        <li>
+                            <a href="/ro/40d71n74d01/new-york/">Română</a>
+                        </li>
+                        <li>
+                            <a href="/ru/40d71n74d01/new-york/">Русский</a>
+                        </li>
+                        <li>
+                            <a href="/sk/40d71n74d01/new-york/">Slovenčina</a>
+                        </li>
+                        <li>
+                            <a href="/sr/40d71n74d01/new-york/">Srpski</a>
+                        </li>
+                        <li>
+                            <a href="/sv/40d71n74d01/new-york/">Svenska</a>
+                        </li>
+                        <li>
+                            <a href="/tr/40d71n74d01/new-york/">Türkçe</a>
+                        </li>
+                        <li>
+                            <a href="/uk/40d71n74d01/new-york/">Українська</a>
+                        </li>
+                        <li>
+                            <a href="/ja/40d71n74d01/new-york/">日本語</a>
+                        </li>
+                        <li>
+                            <a href="/zh/40d71n74d01/new-york/">简体中文</a>
+                        </li>
+                        <li>
+                            <a href="/zh-tw/40d71n74d01/new-york/">繁體中文</a>
+                        </li>
+                        <li>
+                            <a href="/he/40d71n74d01/new-york/">עברית</a>
+                        </li>
+                        <li>
+                            <a href="/ar/40d71n74d01/new-york/">العربية</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="container" id="detail">
-                <div class="row" id="frame">
-                    <div class="col-sm-12" style="margin-left: 215px">
-                        <div class="tab-pane active" id="forecast-list">
-                            <div id="forecast_list_ul">
-                                <table class="table">
-                                    <tbody>
-                                    <th:block th:each="detail : ${detail}">
+        </div>
+    </header>
 
-                                        <tr th:object="${detail}">
-                                            <td>
-                                                <img th:src="*{icon}" width="50" style="margin: 5px -220px"
-                                                     height="50">
-                                            </td>
-                                            <td>
-                                                <div style="margin: 5px -170px;">
-                                                    <b>
-                                                        <p th:text="*{nameCity}">
-                                                    </b>
-                                                    <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div style="margin: 5px -65px;">
-                                                    <div class="badge badge-info"
-                                                         th:text="*{#numbers.formatDecimal(temp,2,2)}+'°С'"></div>
-                                                    <b><i th:text="*{description}"></i></b>
-                                                    <p style="margin-top: 10px"
-                                                       th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">
-                                                </div>
-                                            </td>
-                                        </tr>
+    <div class="container ltr" lang="en" dir="ltr">
 
-                                    </th:block>
+        <div class="current-weather">
 
-                                    </tbody>
-                                </table>
+            <h1 title="New York, NY, USA"><b>New York</b> Weather</h1>
+
+            <div class="current-icon">
+                <div class="icon">
+                    <div class="w-icon iconvault partly-cloudy-day">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
+                             enable-background="new 0 0 300 300">
+                            <path class="cloud"
+                                  d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>
+                            <g class="sun">
+                                <path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/>
+                                <g class="sunRays">
+                                    <path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/>
+                                    <path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/>
+                                    <path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/>
+                                    <path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/>
+                                    <path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="current-conditions">
+                <div class="temp">17&deg;C</div>
+                <div class="summary">Mostly Cloudy</div>
+            </div>
+
+        </div>
+
+        <div class="current-more-info">
+            <ul>
+                <li>humidity: 59%</li>
+                <li>wind: 1m/s</li>
+                <li>cloud cover: 76%</li>
+            </ul>
+        </div>
+        <div class="forecast next-24-hours">
+
+<!--            <div class="forecast-summary">-->
+<!--                <h2>Next 24 hours:</h2>-->
+                <hr>
+            <!--            </div>-->
+            <div class="container">
+                <div class="weatherWidget">
+                    <div class="row weatherForecast">
+                        <!--                    <div class="hourly">-->
+                        <div class="col-sm">
+                            <time class="dayName">01:00</time>
+                            <div class="dayIcon" title="Humid and Mostly Cloudy">
+                                <div class="w-icon iconvault partly-cloudy-night">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
+                                         enable-background="new 0 0 300 300">
+                                        <path class="cloud"
+                                              d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>
+                                        <path class="moon"
+                                              d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/>
+                                    </svg>
+                                </div>
                             </div>
+                            <div class="temp">26&deg;C</div>
                         </div>
+                        <div class="col-sm">
+                            <time class="dayName">02:00</time>
+                            <div class="dayIcon" title="Humid and Mostly Cloudy">
+                                <div class="w-icon iconvault partly-cloudy-night">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
+                                         enable-background="new 0 0 300 300">
+                                        <path class="cloud"
+                                              d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>
+                                        <path class="moon"
+                                              d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="temp">26&deg;C</div>
+                        </div>
+                        <div class="col-sm">
+                            <time class="dayName">03:00</time>
+                            <div class="dayIcon" title="Humid and Mostly Cloudy">
+                                <div class="w-icon iconvault partly-cloudy-night">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
+                                         enable-background="new 0 0 300 300">
+                                        <path class="cloud"
+                                              d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>
+                                        <path class="moon"
+                                              d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="temp">25&deg;C</div>
+                        </div>
+                        <div class="col-sm">
+                            <time class="dayName">04:00</time>
+                            <div class="dayIcon" title="Humid and Mostly Cloudy">
+                                <div class="w-icon iconvault partly-cloudy-night">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
+                                         enable-background="new 0 0 300 300">
+                                        <path class="cloud"
+                                              d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>
+                                        <path class="moon"
+                                              d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="temp">24&deg;C</div>
+                        </div>
+                        <div class="col-sm">
+                            <time class="dayName">05:00</time>
+                            <div class="dayIcon" title="Humid and Overcast">
+                                <div id="cloudy" class="w-icon iconvault">
+                                    <div class="cloud">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
+                                             enable-background="new 0 0 300 300">
+                                            <path d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="temp">24&deg;C</div>
+                        </div>
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>06:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Overcast">-->
+                        <!--                            <div id="cloudy" class="w-icon iconvault"><div class="cloud"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/></svg></div></div>				</div>-->
+                        <!--                        <div class="temp">25&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>07:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Overcast">-->
+                        <!--                            <div id="cloudy" class="w-icon iconvault"><div class="cloud"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/></svg></div></div>				</div>-->
+                        <!--                        <div class="temp">26&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>08:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">27&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>09:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">29&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>10:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">31&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>11:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">31&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>12:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">32&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>13:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">32&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>14:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">31&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>15:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Partly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">31&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>16:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Partly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">30&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>17:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Partly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-day"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><g class="sun"><path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/><g class="sunRays"><path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/><path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/><path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/><path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/><path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/></g></g></svg></div>				</div>-->
+                        <!--                        <div class="temp">29&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>18:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Partly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">28&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>19:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Partly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">27&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>20:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Partly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">27&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>21:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">27&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>22:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">26&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>23:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">26&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="hour">-->
+                        <!--                        <time>00:00</time>-->
+                        <!--                        <div class="icon" title="Humid and Mostly Cloudy">-->
+                        <!--                            <div class="w-icon iconvault partly-cloudy-night"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" enable-background="new 0 0 300 300"><path class="cloud" d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/><path class="moon" d="m289.6 118.4c-4.3 6.6-10.1 12.1-17.5 16.3-5.1 3.5-10.7 5.8-16.9 7-4.3 1.2-8.6 1.8-12.8 1.8h-.6c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7.4 0 .8 0 1.2 0 3.5 0 7-.4 10.5-1.2 5.1-1.2 9.7-3.1 14-5.8 1.2-.8 2.1-1.4 2.9-1.8-8.6.8-16.5-.2-23.9-2.9-9.7-3.9-17.5-9.9-23.4-18.1-5.1-8.2-7.5-16.7-7.3-25.7.2-8.9 2.8-17.3 7.9-25.1-1.2.8-2.3 1.4-3.5 1.8-7 4.7-12.5 10.7-16.3 18.1-.8 2.3-2.3 3.5-4.7 3.5-3.1 0-4.7-1.6-4.7-4.7 0-1.2.4-2.1 1.2-2.9 4.3-8.9 10.9-16.1 19.9-21.6 5.4-3.5 11.1-5.8 16.9-7 1.9-.4 3.9-.8 5.8-1.2 2.7-.4 4.5.6 5.3 2.9.8 2.3.2 4.3-1.8 5.8-8.6 5.8-13.8 13.6-15.8 23.4-2 9.7-.2 18.9 5.3 27.4 4.3 6.6 10.3 11.5 18.1 14.6 7.8 3.1 15.8 3.7 23.9 1.8 3.5-.8 7-2.1 10.5-4.1 1.9-1.2 3.7-.9 5.3.9 1.5 1.8 1.7 3.9.5 6.2"/></svg></div>				</div>-->
+                        <!--                        <div class="temp">26&deg;C</div>-->
+                        <!--                    </div>-->
+                        <!--                    </div>-->
+
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
+    <div class="ad" align="center">
+        <!-- Forecast7 Responsive -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-0301140740489036"
+             data-ad-slot="7655964799"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <!--        <div class="forecast next-7-days">-->
+
+    <!--            <div class="forecast-summary">-->
+    <!--                <h2>Next 7 days:</h2>-->
+    <!--                <p>Rain on Monday and Wednesday, with high temperatures peaking at 23°C on Monday.</p>-->
+    <!--            </div>-->
+
+    <!--            <div class="show-hide-details">-->
+    <!--                <div id="show-all-details">-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                    <div>show all details</div>-->
+    <!--                </div>-->
+    <!--                <div id="hide-all-details">-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                    <div>hide all details</div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+
+    <!--            <div class="daily">-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Today</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault partly-cloudy-day">-->
+    <!--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                     enable-background="new 0 0 300 300">-->
+    <!--                                    <path class="cloud"-->
+    <!--                                          d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>-->
+    <!--                                    <g class="sun">-->
+    <!--                                        <path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/>-->
+    <!--                                        <g class="sunRays">-->
+    <!--                                            <path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/>-->
+    <!--                                            <path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/>-->
+    <!--                                            <path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/>-->
+    <!--                                            <path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/>-->
+    <!--                                            <path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/>-->
+    <!--                                        </g>-->
+    <!--                                    </g>-->
+    <!--                                </svg>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">22&deg;C</span> / <span class="loTemp">12&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Mostly cloudy throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:05</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:22</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 66%</span>-->
+    <!--                            <span><strong>wind:</strong> 2m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 10&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1015mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 12%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 64%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Sunday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault partly-cloudy-day">-->
+    <!--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                     enable-background="new 0 0 300 300">-->
+    <!--                                    <path class="cloud"-->
+    <!--                                          d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>-->
+    <!--                                    <g class="sun">-->
+    <!--                                        <path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/>-->
+    <!--                                        <g class="sunRays">-->
+    <!--                                            <path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/>-->
+    <!--                                            <path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/>-->
+    <!--                                            <path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/>-->
+    <!--                                            <path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/>-->
+    <!--                                            <path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/>-->
+    <!--                                        </g>-->
+    <!--                                    </g>-->
+    <!--                                </svg>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">21&deg;C</span> / <span class="loTemp">14&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Mostly cloudy throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:06</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:20</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 73%</span>-->
+    <!--                            <span><strong>wind:</strong> 3m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 11&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1018mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 12%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 50%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Monday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault rain">-->
+    <!--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                     enable-background="new 0 0 300 300">-->
+    <!--                                    <path class="cloud"-->
+    <!--                                          d="m253.5 184c0 10.3-3.6 19.1-10.7 26.2-7.2 7.2-15.7 10.7-25.6 10.7-.8 0-1.6 0-2.4 0h-13.7c-.4 0-.8 0-1.2 0-3.6-.8-5.4-2.8-5.4-6 0-2 .6-3.6 1.8-4.8 1.2-1.2 2.6-1.8 4.2-1.8h.6 14.3c.8 0 1.4 0 1.8 0 6.4 0 11.9-2.4 16.7-7.2 4.8-4.8 7.2-10.5 7.2-17.3 0-5.6-1.8-10.6-5.4-15.2-3.6-4.6-8.3-7.4-14.3-8.6l-5.4-.6.6-6c.4-2 .6-4 .6-6 0-16.7-6-31-17.9-42.9-11.9-11.9-26.4-17.9-43.5-17.9-13.5 0-25.7 4.1-36.6 12.2-10.9 8.1-18.2 18.8-21.8 31.9l-1.2 4.2-4.2.6c-9.5.8-17.5 4.7-23.8 11.6-6.4 7-9.5 15.2-9.5 24.7 0 8 2.4 15.2 7.2 21.8 4.8 6.6 10.9 11 18.5 13.4 3.6.4 5.4 2.4 5.4 6 0 1.6-.6 3-1.8 4.2s-2.8 1.8-4.8 1.8c-.8 0-1.6-.2-2.4-.6-9.9-2.8-18.2-8.5-24.7-17.3-6.6-8.7-9.8-18.5-9.8-29.2 0-12.7 4.4-23.8 13.1-33.4 7.5-7.9 16.7-12.9 27.4-14.9 5.2-14.7 14.1-26.6 26.8-35.8 12.7-9.1 26.8-13.7 42.3-13.7 20.3 0 37.5 7.2 51.8 21.5 14.3 14.3 21.5 31.6 21.5 51.8 0 .8 0 1.4 0 1.8 7.2 2.8 13 7.4 17.6 13.7 4.5 6.6 6.7 13.6 6.7 21.1"/>-->
+    <!--                                    <path class="drizzle"-->
+    <!--                                          d="m125.1 233.5c-4.1.9-7.8.3-11.2-1.9-3.4-2.1-5.6-5.2-6.7-9.1-1.1-3.9-.5-7.7 1.6-11.2 2.8-4.6 7.9-9.9 15.2-15.8 7.3-5.9 12.6-7.9 15.8-6.1 2.5 3.2 2.8 9.1 1.1 17.6-1.8 8.6-3.9 15.2-6.4 19.8-2.2 3.6-5.3 5.8-9.4 6.7"/>-->
+    <!--                                    <path class="drizzle"-->
+    <!--                                          d="m154.8 227.4c2.8 3.2 3.4 9.1 1.6 17.6-1.8 8.6-4.1 15.1-6.9 19.8-2.1 3.6-5.2 5.9-9.1 6.9-3.9 1.1-7.7.5-11.2-1.6-3.6-2.1-5.9-5.3-6.9-9.4-1.1-4.1-.5-7.9 1.6-11.5 2.8-4.3 7.9-9.4 15.2-15.5 7.2-6 12.5-8.1 15.7-6.3"/>-->
+    <!--                                    <path class="drizzle"-->
+    <!--                                          d="m180.4 179.3c2.8 3.2 3.4 9.1 1.6 17.6-1.8 8.6-4.1 15.2-6.9 19.8-2.1 3.6-5.2 5.8-9.1 6.7-3.9.9-7.7.3-11.2-1.9-3.6-2.1-5.8-5.2-6.7-9.1-.9-3.9-.3-7.7 1.9-11.2 2.8-4.6 7.8-9.9 15-15.8 7-5.9 12.2-7.9 15.4-6.1"/>-->
+    <!--                                </svg>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">23&deg;C</span> / <span class="loTemp">11&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Partly cloudy throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:07</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:19</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 65%</span>-->
+    <!--                            <span><strong>wind:</strong> 3m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 10&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1016mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 41%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 35%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Tuesday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault clear-day">-->
+    <!--                                <div class="sun">-->
+    <!--                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                         enable-background="new 0 0 300 300">-->
+    <!--                                        <g class="sunRays">-->
+    <!--                                            <path d="m65.3 157.2h-20.9c-1.8 0-3.5-.7-5-2.2-1.5-1.5-2.2-3.1-2.2-5 0-1.8.7-3.5 2.2-5 1.5-1.5 3.1-2.2 5-2.2h20.9c2.2 0 3.9.7 5.2 2.2 1.3 1.5 1.9 3.1 1.9 5 0 1.8-.6 3.5-1.9 5-1.3 1.4-3 2.2-5.2 2.2"/>-->
+    <!--                                            <path d="m70.2 80.1c-3.3-3.3-3.3-6.6 0-9.9 3.3-3.3 6.6-3.3 9.9 0l14.9 14.9c3.7 3.3 3.8 6.6.3 9.9-3.5 3.3-6.9 3.3-10.2 0l-14.9-14.9"/>-->
+    <!--                                            <path d="m95.3 205c3.5 3.3 3.4 6.6-.3 9.9l-14.9 14.9c-3.3 3.3-6.6 3.3-9.9 0-3.3-3.3-3.3-6.6 0-9.9l14.9-14.9c3.3-3.3 6.7-3.3 10.2 0"/>-->
+    <!--                                            <path d="m142.8 65.3v-20.9c0-1.8.7-3.5 2.2-5 1.5-1.5 3.1-2.2 5-2.2 1.8 0 3.5.7 5 2.2 1.5 1.5 2.2 3.1 2.2 5v20.9c0 2.2-.7 3.9-2.2 5.2-1.5 1.3-3.1 1.9-5 1.9-1.8 0-3.5-.6-5-1.9-1.4-1.3-2.2-3-2.2-5.2"/>-->
+    <!--                                            <path d="m157.2 234.7v20.9c0 1.8-.7 3.5-2.2 5-1.5 1.5-3.1 2.2-5 2.2-1.8 0-3.5-.7-5-2.2-1.5-1.5-2.2-3.1-2.2-5v-20.9c0-2.2.7-3.9 2.2-5.2 1.5-1.3 3.1-1.9 5-1.9 1.8 0 3.5.6 5 1.9 1.4 1.3 2.2 3 2.2 5.2"/>-->
+    <!--                                            <path d="m229.8 219.9c3.3 3.3 3.3 6.6 0 9.9-3.3 3.3-6.6 3.3-9.9 0l-14.9-14.9c-3.7-3.3-3.8-6.7-.3-10.2 3.5-3.5 6.9-3.4 10.2.3l14.9 14.9"/>-->
+    <!--                                            <path d="m204.7 95c-3.5-3.3-3.4-6.6.3-9.9l14.9-14.9c3.3-3.3 6.6-3.3 9.9 0 3.3 3.3 3.3 6.6 0 9.9l-14.9 14.9c-3.3 3.3-6.7 3.3-10.2 0"/>-->
+    <!--                                            <path d="m260.6 145c1.5 1.5 2.2 3.1 2.2 5 0 1.8-.7 3.5-2.2 5-1.5 1.5-3.1 2.2-5 2.2h-20.9c-2.2 0-3.9-.7-5.2-2.2-1.3-1.5-1.9-3.1-1.9-5 0-1.8.6-3.5 1.9-5 1.3-1.5 3-2.2 5.2-2.2h20.9c1.8 0 3.5.8 5 2.2"/>-->
+    <!--                                        </g>-->
+    <!--                                        <path d="m195.1 104.9c-12.5-12.5-27.5-18.7-45.1-18.7-17.6 0-32.6 6.2-45.1 18.7-12.5 12.5-18.7 27.5-18.7 45.1 0 17.6 6.2 32.6 18.7 45.1 12.5 12.5 27.5 18.7 45.1 18.7 17.6 0 32.6-6.2 45.1-18.7 12.5-12.5 18.7-27.5 18.7-45.1 0-17.6-6.2-32.6-18.7-45.1m-10.4 79.8c-9.5 9.5-21.1 14.3-34.7 14.3-13.6 0-25.1-4.8-34.7-14.3-9.5-9.5-14.3-21.1-14.3-34.7 0-13.6 4.8-25.1 14.3-34.7 9.5-9.5 21.1-14.3 34.7-14.3 13.6 0 25.1 4.8 34.7 14.3 9.5 9.5 14.3 21.1 14.3 34.7 0 13.6-4.8 25.1-14.3 34.7"/>-->
+    <!--                                    </svg>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">19&deg;C</span> / <span class="loTemp">13&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Clear throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:08</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:17</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 57%</span>-->
+    <!--                            <span><strong>wind:</strong> 2m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 6&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1020mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 3%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 27%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Wednesday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault rain">-->
+    <!--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                     enable-background="new 0 0 300 300">-->
+    <!--                                    <path class="cloud"-->
+    <!--                                          d="m253.5 184c0 10.3-3.6 19.1-10.7 26.2-7.2 7.2-15.7 10.7-25.6 10.7-.8 0-1.6 0-2.4 0h-13.7c-.4 0-.8 0-1.2 0-3.6-.8-5.4-2.8-5.4-6 0-2 .6-3.6 1.8-4.8 1.2-1.2 2.6-1.8 4.2-1.8h.6 14.3c.8 0 1.4 0 1.8 0 6.4 0 11.9-2.4 16.7-7.2 4.8-4.8 7.2-10.5 7.2-17.3 0-5.6-1.8-10.6-5.4-15.2-3.6-4.6-8.3-7.4-14.3-8.6l-5.4-.6.6-6c.4-2 .6-4 .6-6 0-16.7-6-31-17.9-42.9-11.9-11.9-26.4-17.9-43.5-17.9-13.5 0-25.7 4.1-36.6 12.2-10.9 8.1-18.2 18.8-21.8 31.9l-1.2 4.2-4.2.6c-9.5.8-17.5 4.7-23.8 11.6-6.4 7-9.5 15.2-9.5 24.7 0 8 2.4 15.2 7.2 21.8 4.8 6.6 10.9 11 18.5 13.4 3.6.4 5.4 2.4 5.4 6 0 1.6-.6 3-1.8 4.2s-2.8 1.8-4.8 1.8c-.8 0-1.6-.2-2.4-.6-9.9-2.8-18.2-8.5-24.7-17.3-6.6-8.7-9.8-18.5-9.8-29.2 0-12.7 4.4-23.8 13.1-33.4 7.5-7.9 16.7-12.9 27.4-14.9 5.2-14.7 14.1-26.6 26.8-35.8 12.7-9.1 26.8-13.7 42.3-13.7 20.3 0 37.5 7.2 51.8 21.5 14.3 14.3 21.5 31.6 21.5 51.8 0 .8 0 1.4 0 1.8 7.2 2.8 13 7.4 17.6 13.7 4.5 6.6 6.7 13.6 6.7 21.1"/>-->
+    <!--                                    <path class="drizzle"-->
+    <!--                                          d="m125.1 233.5c-4.1.9-7.8.3-11.2-1.9-3.4-2.1-5.6-5.2-6.7-9.1-1.1-3.9-.5-7.7 1.6-11.2 2.8-4.6 7.9-9.9 15.2-15.8 7.3-5.9 12.6-7.9 15.8-6.1 2.5 3.2 2.8 9.1 1.1 17.6-1.8 8.6-3.9 15.2-6.4 19.8-2.2 3.6-5.3 5.8-9.4 6.7"/>-->
+    <!--                                    <path class="drizzle"-->
+    <!--                                          d="m154.8 227.4c2.8 3.2 3.4 9.1 1.6 17.6-1.8 8.6-4.1 15.1-6.9 19.8-2.1 3.6-5.2 5.9-9.1 6.9-3.9 1.1-7.7.5-11.2-1.6-3.6-2.1-5.9-5.3-6.9-9.4-1.1-4.1-.5-7.9 1.6-11.5 2.8-4.3 7.9-9.4 15.2-15.5 7.2-6 12.5-8.1 15.7-6.3"/>-->
+    <!--                                    <path class="drizzle"-->
+    <!--                                          d="m180.4 179.3c2.8 3.2 3.4 9.1 1.6 17.6-1.8 8.6-4.1 15.2-6.9 19.8-2.1 3.6-5.2 5.8-9.1 6.7-3.9.9-7.7.3-11.2-1.9-3.6-2.1-5.8-5.2-6.7-9.1-.9-3.9-.3-7.7 1.9-11.2 2.8-4.6 7.8-9.9 15-15.8 7-5.9 12.2-7.9 15.4-6.1"/>-->
+    <!--                                </svg>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">22&deg;C</span> / <span class="loTemp">10&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Rain until evening.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:09</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:16</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 81%</span>-->
+    <!--                            <span><strong>wind:</strong> 6m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 14&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1007mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 96%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 64%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Thursday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault partly-cloudy-day">-->
+    <!--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                     enable-background="new 0 0 300 300">-->
+    <!--                                    <path class="cloud"-->
+    <!--                                          d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>-->
+    <!--                                    <g class="sun">-->
+    <!--                                        <path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/>-->
+    <!--                                        <g class="sunRays">-->
+    <!--                                            <path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/>-->
+    <!--                                            <path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/>-->
+    <!--                                            <path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/>-->
+    <!--                                            <path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/>-->
+    <!--                                            <path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/>-->
+    <!--                                        </g>-->
+    <!--                                    </g>-->
+    <!--                                </svg>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">15&deg;C</span> / <span class="loTemp">9&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Mostly cloudy throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:10</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:14</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 68%</span>-->
+    <!--                            <span><strong>wind:</strong> 7m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 6&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1005mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 17%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 32%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Friday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault clear-day">-->
+    <!--                                <div class="sun">-->
+    <!--                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                         enable-background="new 0 0 300 300">-->
+    <!--                                        <g class="sunRays">-->
+    <!--                                            <path d="m65.3 157.2h-20.9c-1.8 0-3.5-.7-5-2.2-1.5-1.5-2.2-3.1-2.2-5 0-1.8.7-3.5 2.2-5 1.5-1.5 3.1-2.2 5-2.2h20.9c2.2 0 3.9.7 5.2 2.2 1.3 1.5 1.9 3.1 1.9 5 0 1.8-.6 3.5-1.9 5-1.3 1.4-3 2.2-5.2 2.2"/>-->
+    <!--                                            <path d="m70.2 80.1c-3.3-3.3-3.3-6.6 0-9.9 3.3-3.3 6.6-3.3 9.9 0l14.9 14.9c3.7 3.3 3.8 6.6.3 9.9-3.5 3.3-6.9 3.3-10.2 0l-14.9-14.9"/>-->
+    <!--                                            <path d="m95.3 205c3.5 3.3 3.4 6.6-.3 9.9l-14.9 14.9c-3.3 3.3-6.6 3.3-9.9 0-3.3-3.3-3.3-6.6 0-9.9l14.9-14.9c3.3-3.3 6.7-3.3 10.2 0"/>-->
+    <!--                                            <path d="m142.8 65.3v-20.9c0-1.8.7-3.5 2.2-5 1.5-1.5 3.1-2.2 5-2.2 1.8 0 3.5.7 5 2.2 1.5 1.5 2.2 3.1 2.2 5v20.9c0 2.2-.7 3.9-2.2 5.2-1.5 1.3-3.1 1.9-5 1.9-1.8 0-3.5-.6-5-1.9-1.4-1.3-2.2-3-2.2-5.2"/>-->
+    <!--                                            <path d="m157.2 234.7v20.9c0 1.8-.7 3.5-2.2 5-1.5 1.5-3.1 2.2-5 2.2-1.8 0-3.5-.7-5-2.2-1.5-1.5-2.2-3.1-2.2-5v-20.9c0-2.2.7-3.9 2.2-5.2 1.5-1.3 3.1-1.9 5-1.9 1.8 0 3.5.6 5 1.9 1.4 1.3 2.2 3 2.2 5.2"/>-->
+    <!--                                            <path d="m229.8 219.9c3.3 3.3 3.3 6.6 0 9.9-3.3 3.3-6.6 3.3-9.9 0l-14.9-14.9c-3.7-3.3-3.8-6.7-.3-10.2 3.5-3.5 6.9-3.4 10.2.3l14.9 14.9"/>-->
+    <!--                                            <path d="m204.7 95c-3.5-3.3-3.4-6.6.3-9.9l14.9-14.9c3.3-3.3 6.6-3.3 9.9 0 3.3 3.3 3.3 6.6 0 9.9l-14.9 14.9c-3.3 3.3-6.7 3.3-10.2 0"/>-->
+    <!--                                            <path d="m260.6 145c1.5 1.5 2.2 3.1 2.2 5 0 1.8-.7 3.5-2.2 5-1.5 1.5-3.1 2.2-5 2.2h-20.9c-2.2 0-3.9-.7-5.2-2.2-1.3-1.5-1.9-3.1-1.9-5 0-1.8.6-3.5 1.9-5 1.3-1.5 3-2.2 5.2-2.2h20.9c1.8 0 3.5.8 5 2.2"/>-->
+    <!--                                        </g>-->
+    <!--                                        <path d="m195.1 104.9c-12.5-12.5-27.5-18.7-45.1-18.7-17.6 0-32.6 6.2-45.1 18.7-12.5 12.5-18.7 27.5-18.7 45.1 0 17.6 6.2 32.6 18.7 45.1 12.5 12.5 27.5 18.7 45.1 18.7 17.6 0 32.6-6.2 45.1-18.7 12.5-12.5 18.7-27.5 18.7-45.1 0-17.6-6.2-32.6-18.7-45.1m-10.4 79.8c-9.5 9.5-21.1 14.3-34.7 14.3-13.6 0-25.1-4.8-34.7-14.3-9.5-9.5-14.3-21.1-14.3-34.7 0-13.6 4.8-25.1 14.3-34.7 9.5-9.5 21.1-14.3 34.7-14.3 13.6 0 25.1 4.8 34.7 14.3 9.5 9.5 14.3 21.1 14.3 34.7 0 13.6-4.8 25.1-14.3 34.7"/>-->
+    <!--                                    </svg>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">16&deg;C</span> / <span class="loTemp">9&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Clear throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:11</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:13</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 61%</span>-->
+    <!--                            <span><strong>wind:</strong> 5m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 5&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1015mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 10%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 12%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="day">-->
+    <!--                    <div class="main-data">-->
+    <!--                        <div class="time">Saturday</div>-->
+    <!--                        <div class="icon">-->
+    <!--                            <div class="w-icon iconvault partly-cloudy-day">-->
+    <!--                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"-->
+    <!--                                     enable-background="new 0 0 300 300">-->
+    <!--                                    <path class="cloud"-->
+    <!--                                          d="m247.1 163.5c-4.6-6.3-10.4-10.7-17.5-13.5 0-.7 0-1.3 0-2 0-20.3-7.2-37.7-21.6-52.1-14.4-14.4-31.8-21.6-52.1-21.6-15.6 0-29.8 4.7-42.7 14-12.9 9.3-21.8 21.3-26.9 35.8-10.8 2-20 7.1-27.4 15.2-8.8 9.1-13.2 20.2-13.2 33 0 13.5 4.8 25.1 14.5 34.8 9.7 9.7 21.3 14.5 34.8 14.5h120.4c.7 0 1.2 0 1.5 0 10.2 0 18.9-3.6 26.2-10.9 7.3-7.3 10.9-16 10.9-26.2 0-7.7-2.3-14.7-6.9-21m-12.7 38.3c-4.9 4.7-10.8 7.1-17.5 7.1-.3 0-.7 0-1 0h-.5-120.4c-10.2 0-18.9-3.6-26.2-10.7-7.3-7.1-10.9-15.8-10.9-25.9 0-9.5 3.3-17.7 9.9-24.6 6.6-6.9 14.5-10.9 23.6-11.9h4.6l1-4.6c3.7-12.9 11.1-23.4 22.1-31.8 11-8.3 23.3-12.4 36.8-12.4 16.9 0 31.3 5.9 43.2 17.8 11.9 11.9 17.8 26.3 17.8 43.2 0 2 0 4.1 0 6.1l-.5 5.6 5.6 1c5.8 1 10.5 3.8 14.2 8.4 3.7 4.6 5.6 9.7 5.6 15.5 0 6.8-2.5 12.5-7.4 17.2"/>-->
+    <!--                                    <g class="sun">-->
+    <!--                                        <path d="m214.3 56.5c12.1-.4 22.6 3.3 31.4 11.1 8.8 7.8 13.6 17.8 14.4 29.9.4 13.3-4.3 24.6-14.1 34-.8 1.2-2.2 1.8-4.1 1.8-3.1.4-4.9-1.2-5.3-4.7 0-2 .8-3.5 2.3-4.7 7.8-7 11.3-15.6 10.6-25.8-.4-9.4-4-17.1-10.8-23.2-6.8-6.1-14.8-8.7-23.7-7.9-5.9 0-11.1 1.6-15.8 4.7-.8 1.2-2 1.8-3.5 1.8-3.5.4-5.3-1.2-5.3-4.7-.4-2 .4-3.5 2.3-4.7 6.5-4.7 13.8-7.2 21.6-7.6"/>-->
+    <!--                                        <g class="sunRays">-->
+    <!--                                            <path d="m169.1 44.2l10 10c2.3 2.3 2.4 4.7.3 7-2.2 2.3-4.4 2.3-6.7 0l-10-10c-2.3-2.3-2.4-4.7-.3-7 2.1-2.4 4.4-2.4 6.7 0"/>-->
+    <!--                                            <path d="m212.5 43.6v-14.1c0-3.1 1.6-4.7 4.7-4.7 3.1 0 4.7 1.6 4.7 4.7v14.1c0 3.1-1.6 4.7-4.7 4.7-3.1 0-4.7-1.6-4.7-4.7"/>-->
+    <!--                                            <path d="m260 61.2c-2.3 2.3-4.6 2.3-6.7 0-2.2-2.3-2.3-4.7-.3-7l10-10c2.3-2.3 4.7-2.3 7 0 2.3 2.3 2.3 4.7 0 7l-10 10"/>-->
+    <!--                                            <path d="m260 135l10 10c2.3 2.3 2.3 4.6 0 6.7-2.3 2.2-4.7 2.1-7-.3l-10-10c-2-2-1.9-4.1.3-6.5 2.1-2.2 4.4-2.2 6.7.1"/>-->
+    <!--                                            <path d="m287.6 93.4c3.1 0 4.7 1.6 4.7 4.7 0 3.1-1.6 4.7-4.7 4.7h-14.7c-3.1 0-4.7-1.6-4.7-4.7 0-3.1 1.6-4.7 4.7-4.7h14.7"/>-->
+    <!--                                        </g>-->
+    <!--                                    </g>-->
+    <!--                                </svg>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="temp">-->
+    <!--                            <span class="hiTemp">20&deg;C</span> / <span class="loTemp">11&deg;C</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="summary">Mostly cloudy throughout the day.</div>-->
+    <!--                    </div>-->
+    <!--                    <div class="more-details">-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>sunrise:</strong> 07:12</span>-->
+    <!--                            <span><strong>sunset:</strong> 18:11</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>humidity:</strong> 64%</span>-->
+    <!--                            <span><strong>wind:</strong> 3m/s</span>-->
+    <!--                            <span><strong>dew point:</strong> 7&deg;C</span>-->
+    <!--                            <span><strong>pressure:</strong> 1022mb</span>-->
+    <!--                        </div>-->
+    <!--                        <div class="row">-->
+    <!--                            <span><strong>chance of rain:</strong> 5%</span>-->
+    <!--                            <span><strong>visibility:</strong> 16km</span>-->
+    <!--                            <span><strong>cloud cover:</strong> 62%</span>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="details-sign">-->
+    <!--                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">-->
+    <!--                            <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>-->
+    <!--                        </svg>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="ad" align="center">-->
+    <!--            &lt;!&ndash; Forecast7 Responsive &ndash;&gt;-->
+    <!--            <ins class="adsbygoogle"-->
+    <!--                 style="display:block"-->
+    <!--                 data-ad-client="ca-pub-0301140740489036"-->
+    <!--                 data-ad-slot="7655964799"-->
+    <!--                 data-ad-format="auto"></ins>-->
+    <!--            <script>-->
+    <!--                (adsbygoogle = window.adsbygoogle || []).push({});-->
+    <!--            </script>-->
+    <!--        </div>-->
 </div>
+
+
+<script>
+
+    // Toggle More Details panel
+    var days = document.getElementsByClassName("day");
+    for (var i = 0; i < days.length; i++) {
+        (function () {
+            var j = i;
+            days[j].addEventListener('click', function () {
+                days[j].classList.toggle('show-details');
+            }, false);
+        }());
+    }
+
+    // Show All Details Panels
+    var showAll = document.getElementById("show-all-details");
+    showAll.addEventListener('click', function () {
+        for (var i = 0; i < days.length; i++) {
+            days[i].classList.add('show-details');
+        }
+    }, false);
+
+    // Hide  All Details Panels
+    var hideAll = document.getElementById("hide-all-details");
+    hideAll.addEventListener('click', function () {
+        for (var i = 0; i < days.length; i++) {
+            days[i].classList.remove('show-details');
+        }
+    }, false);
+
+
+</script>
+
+
+<!--<footer>-->
+<!--        <div class="attribution">-->
+<!--            <a href="https://darksky.net/poweredby/" rel="nofollow">-->
+<!--                <img src="/img/1.png" alt="poweredby">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="container">-->
+<!--            <a href="/en/privacy/" class="privacy">Privacy Policy</a>-->
+<!--            <a href="/en/terms/" class="terms">Terms of Service</a>-->
+<!--            <a href="/en/contact/" class="help">Contact Us</a>-->
+<!--        </div>-->
+<!--    <div class="copyright">copyright &copy; Mai Trinh</div>-->
+<!--</footer>-->
+
+</div>
+
+<script>
+    document.getElementById('language-btn').onclick = function (event) {
+        event.stopPropagation();
+        document.getElementById("language-menu").classList.toggle("show");
+    };
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        var matches = event.target.matches ? event.target.matches('.drop-btn') : event.target.msMatchesSelector ? event.target.msMatchesSelector('.drop-btn') : event.target.webkitMatchesSelector ? event.target.webkitMatchesSelector('.drop-btn') : event.target.matchesSelector ? event.target.matchesSelector('.drop-btn') : true;
+        if (!matches) {
+            document.getElementById('language-menu').classList.remove('show');
+        }
+    }
+</script>
+
 </body>
 </html>

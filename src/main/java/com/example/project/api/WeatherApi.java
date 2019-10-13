@@ -29,14 +29,14 @@ public class WeatherApi {
     @Autowired
     WeatherConverterToEntity weatherConverter;
 
-    public WeatherEntity restJsonWeather(String name) {
+    public WeatherEntity getJsonWeather(String name) {
         String URL = Constants.WEATHER_URL + name + Constants.APPID;
         RestTemplate restTemplate = new RestTemplate();
         WeatherDTO weatherDTO = restTemplate.getForObject(URL, WeatherDTO.class);
         return weatherConverter.weatherEntityConverter(weatherDTO);
     }
 
-    public WeatherDetailDTO restJsonWeatherDetail(String name) {
+    public WeatherDetailDTO getJsonWeatherDetail(String name) {
         String URL = Constants.FORECAST_URL + name + Constants.APPID;
         RestTemplate restTemplate = new RestTemplate();
         WeatherDetailDTO futureWeather = restTemplate.

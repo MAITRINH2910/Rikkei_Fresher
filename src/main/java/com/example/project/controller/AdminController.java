@@ -17,7 +17,7 @@ public class AdminController {
     UserService userService;
 
     /**
-     * Admin Management
+     * Dashboard Admin Management
      *
      * @param model
      * @return
@@ -25,11 +25,17 @@ public class AdminController {
     @GetMapping
     public String listUsers(Model model) {
         List<User> users = userService.findAllUser();
-        System.out.println("***********");
         model.addAttribute("listUsers", users);
-        return "admin/management";
+        return "admin/table";
     }
 
+    /**
+     *
+     */
+    @GetMapping("/table")
+    public String list(){
+        return "admin/table";
+    }
     /**
      * Delete User
      * @param id
@@ -38,7 +44,7 @@ public class AdminController {
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable long id) {
         userService.delete(id);
-        return "redirect:/admin/management";
+        return "redirect:/admin";
     }
 
     /**
@@ -49,7 +55,7 @@ public class AdminController {
     @GetMapping("/edit-status-user")
     public String editStatusUser(@RequestParam Long id) {
         userService.editStatusUser(id);
-        return "redirect:/admin/management";
+        return "redirect:/admin";
     }
 
     /**

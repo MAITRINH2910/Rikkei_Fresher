@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Controller
 public class WeatherController {
 
-    private static final int days=8;
+    private static final int days = 8;
     @Autowired
     WeatherService weatherService;
 
@@ -47,17 +47,18 @@ public class WeatherController {
     public String findWeatherByCity(@RequestParam String city, Model model, ModelMap modelMap) {
         // Return Weather or Not Found
         try {
-            WeatherEntity currentWeather = weatherApi.restJsonWeather(city);
+            WeatherEntity currentWeather = weatherApi.getJsonWeather(city);
             model.addAttribute("currentWeather", currentWeather);
+            // Show History Weathers
+            User user = userApi.getAuthUser();
+            List<WeatherEntity> listCity = weatherApi.getCitiesByUser(user);
+            model.addAttribute("listCities", listCity);
+            List<List<WeatherEntity>> weatherGroupByCity = weatherApi.weatherGroupByCity(user);
+            model.addAttribute("weatherList0", weatherGroupByCity);
         } catch (Exception e) {
             model.addAttribute("message", "City is not found!!!");
         }
-        // Show History Weathers
-        User user = userApi.getAuthUser();
-        List<WeatherEntity> listCity = weatherApi.getCitiesByUser(user);
-        model.addAttribute("listCities", listCity);
-        List<List<WeatherEntity>> weatherGroupByCity = weatherApi.weatherGroupByCity(user);
-        model.addAttribute("weatherList0", weatherGroupByCity);
+
         // Handle Button ADD --> UPDATE by Comparing Current Date and Latest Date of Current Weather
         WeatherEntity oldWeather = weatherApi.filterWeather(city);
         if (oldWeather != null) {
@@ -71,13 +72,14 @@ public class WeatherController {
     /**
      * WEATHER DETAIL
      * 40 records for 5 continuous days => days = 40/5
+     *
      * @param city
      * @param model
      * @return
      */
     @GetMapping("/weather-detail/{city}")
     public String getWeatherDetail(@PathVariable String city, Model model) throws ParseException {
-        WeatherDetailDTO futureWeather = weatherApi.restJsonWeatherDetail(city);
+        WeatherDetailDTO futureWeather = weatherApi.getJsonWeatherDetail(city);
         List<WeatherEntity> futureWeatherList = new ArrayList<WeatherEntity>();
         for (int j = 0; j < 40; j = j + days) {
             String icon = (Constants.ICON_PATH + futureWeather.getList().get(j).getWeather().get(0).getIcon() + Constants.TAIL_ICON_PATH);
@@ -104,7 +106,7 @@ public class WeatherController {
     @GetMapping("/save-weather/{city}")
     public String saveWeather(@PathVariable String city) {
         User user = userApi.getUser();
-        WeatherEntity currentWeather = weatherApi.restJsonWeather(city);
+        WeatherEntity currentWeather = weatherApi.getJsonWeather(city);
 
         WeatherEntity weather1 = new WeatherEntity(currentWeather.getIcon(), currentWeather.getNameCity(),
                 currentWeather.getTemp(), currentWeather.getDescription(), currentWeather.getWind(),
@@ -130,7 +132,7 @@ public class WeatherController {
     }
 
     public void insertWeather(String name, User userEntity) {
-        WeatherEntity result = weatherApi.restJsonWeather(name);
+        WeatherEntity result = weatherApi.getJsonWeather(name);
         result.setDate(new Date());
         result.setUsers(new HashSet<>(Arrays.asList(userEntity)));
         weatherService.saveWeather(result);
@@ -147,7 +149,7 @@ public class WeatherController {
         User user = userApi.getUser();
         List<WeatherEntity> weatherList = weatherService.getWeatherByUser(user);
         WeatherEntity oldWeather = weatherApi.filterWeather(city);
-        WeatherEntity currentWeather = weatherApi.restJsonWeather(city);
+        WeatherEntity currentWeather = weatherApi.getJsonWeather(city);
         //Set Data of Current Weather
         oldWeather.setIcon(currentWeather.getIcon());
         oldWeather.setTemp(CommonUtil.kelvinToCelsius(currentWeather.getTemp()));

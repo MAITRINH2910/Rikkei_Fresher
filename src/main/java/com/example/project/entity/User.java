@@ -19,17 +19,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    //    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$",message = "Username should be valid with our regex")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$", message = "Username should be valid with our regex")
     @NotEmpty
     @Column
     private String username;
 
-    //    @Email(regexp = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}",message = "Email should be valid")
+    @Email
+    @Pattern(regexp = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}$", message = "Email should be valid")
     @NotEmpty
     @Column
     private String email;
 
-//    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{5,8}$", message = "Password should be valid with our regex")
+    @Size(min = 8, message = "At least 8 characters")
     @NotEmpty
     @Column
     private String password;

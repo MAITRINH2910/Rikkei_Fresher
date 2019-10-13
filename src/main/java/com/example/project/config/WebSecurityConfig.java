@@ -23,10 +23,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private UserAuthenticationFailureHandler failureHandler;
+    private UserAuthFailureHandler failureHandler;
 
     @Autowired
-    private UserAuthenticationSuccessHandler successHandler;
+    private UserAuthSuccessHandler successHandler;
 
     @Bean
     public ModelMapper modelMapper() {
