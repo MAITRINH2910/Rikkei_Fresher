@@ -19,25 +19,22 @@ public class UserAuthSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        boolean hasUserRole = false;
         boolean hasAdminRole = false;
 
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (GrantedAuthority grantedAuthority: authorities){
-            if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")){
+        for (GrantedAuthority grantedAuthority : authorities) {
+            if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 hasAdminRole = true;
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_USER")){
-                hasUserRole = true;
+            } else {
+                hasAdminRole = false;
                 break;
             }
         }
-        if (hasAdminRole){
+        if (hasAdminRole) {
             redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/admin");
-        } else if (hasUserRole){
-            redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/");
         } else {
-            throw new IllegalStateException();
+            redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "/");
         }
     }
 }

@@ -7,9 +7,8 @@ import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
 import com.example.project.service.WeatherService;
 import com.example.project.util.CommonUtil;
-import com.example.project.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,18 +28,27 @@ public class WeatherApi {
     @Autowired
     WeatherConverterToEntity weatherConverter;
 
+    @Value("${host.http}")
+    private String host_http;
+    @Value("${domain}")
+    private String domain;
+    @Value("${ver.app}")
+    private String ver_app;
+    @Value("${key}")
+    private String key;
+
     public WeatherEntity getJsonWeather(String name) {
-        String URL = Constants.WEATHER_URL + name + Constants.APPID;
+        String weatherUrl = host_http + "api." + domain + "/data/" + ver_app + "weather?q=" + name + key;
         RestTemplate restTemplate = new RestTemplate();
-        WeatherDTO weatherDTO = restTemplate.getForObject(URL, WeatherDTO.class);
+        WeatherDTO weatherDTO = restTemplate.getForObject(weatherUrl, WeatherDTO.class);
         return weatherConverter.weatherEntityConverter(weatherDTO);
     }
 
     public WeatherDetailDTO getJsonWeatherDetail(String name) {
-        String URL = Constants.FORECAST_URL + name + Constants.APPID;
+        String weatherDetailUrl = host_http + "api." + domain + "/data/" + ver_app + "forecast?q=" + name + key;
         RestTemplate restTemplate = new RestTemplate();
         WeatherDetailDTO futureWeather = restTemplate.
-                getForObject(URL, WeatherDetailDTO.class);
+                getForObject(weatherDetailUrl, WeatherDetailDTO.class);
         return futureWeather;
     }
 

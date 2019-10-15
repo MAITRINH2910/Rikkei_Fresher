@@ -8,8 +8,8 @@ import com.example.project.entity.WeatherEntity;
 import com.example.project.service.UserService;
 import com.example.project.service.WeatherService;
 import com.example.project.util.CommonUtil;
-import com.example.project.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -34,6 +34,13 @@ public class WeatherController {
 
     @Autowired
     UserApi userApi;
+
+    @Value("${host.http}")
+    private String host_http;
+    @Value("${domain}")
+    private String domain_http;
+    @Value("${tail.icon.path}")
+    private String tail_icon_path;
 
     /**
      * SEARCH WEATHER
@@ -82,7 +89,7 @@ public class WeatherController {
         WeatherDetailDTO futureWeather = weatherApi.getJsonWeatherDetail(city);
         List<WeatherEntity> futureWeatherList = new ArrayList<WeatherEntity>();
         for (int j = 0; j < 40; j = j + days) {
-            String icon = (Constants.ICON_PATH + futureWeather.getList().get(j).getWeather().get(0).getIcon() + Constants.TAIL_ICON_PATH);
+            String icon = (host_http + domain_http + "/img/w/" + futureWeather.getList().get(j).getWeather().get(0).getIcon() + tail_icon_path);
             String clouds = futureWeather.getList().get(j).getWeather().get(0).getDescription();
             String humidity = futureWeather.getList().get(j).getMain().getHumidity();
             String pressure = futureWeather.getList().get(j).getMain().getPressure();

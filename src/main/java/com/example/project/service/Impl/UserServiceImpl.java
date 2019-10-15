@@ -1,5 +1,6 @@
 package com.example.project.service.Impl;
 
+import com.example.project.DTO.request.SignUpForm;
 import com.example.project.entity.Roles;
 import com.example.project.entity.User;
 import com.example.project.repository.RoleRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -32,6 +34,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
+
+    @Override
     public List<User> findAllUser() {
         return userRepository.findAll();
     }
@@ -53,6 +61,28 @@ public class UserServiceImpl implements UserService {
         Roles userRole = roleRepository.findByRoleName("ROLE_USER");
         user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
         return userRepository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public User registerNewUserAccount(SignUpForm accountDto) {
+        User user = new User();
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setEmail(accountDto.getEmail());
+        user.setUsername(accountDto.getFirstName());
+        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
+        Roles userRole = roleRepository.findByRoleName("ROLE_USER");
+        user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
+        user.setActive(true);
+        return userRepository.save(user);
+    }
+    private boolean emailExists(String email) {
+        User user = userRepository.findUserByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
     }
 //    @Override
 //    public User saveUser(User admin) {

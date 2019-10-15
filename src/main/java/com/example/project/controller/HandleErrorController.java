@@ -15,7 +15,7 @@ public class HandleErrorController {
     UserService userService;
 
     /**
-     * PAGE 401
+     * PAGE 401 - Disable Account
      *
      * @return
      */
@@ -29,7 +29,7 @@ public class HandleErrorController {
     }
 
     /**
-     * PAGE 403
+     * PAGE 403 - User Attempt to Access Page Admin
      *
      * @return
      */

@@ -223,3 +223,7 @@ form a:hover {
 .signup-form .small {
     font-size: 14px;
 }
+label{
+    color: red;
+    font-size: 12px;
+}

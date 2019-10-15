@@ -18356,7 +18356,7 @@ body.landing-page .left-block .cookie-agreement-btn-block .btn-agree {
 /* line 1103, ../wl/signup/signup.scss */
 body.landing-page .right-block .sidebar-block {
     position: fixed;
-    top: 0;
+    top: 220px;
     right: 0;
     width: 330px;
     background: #fff;
@@ -18368,12 +18368,12 @@ body.landing-page .right-block .sidebar-block {
 @media (max-width: 576px) {
     body.landing-page .right-block .sidebar-block {
         position: fixed;
-        top: 0;
+        top: 230px;
         right: 0;
         width: 330px;
         background: #fff;
         margin-top: 35px;
-        margin-right: 25px;
+        margin-right: 40px;
         border-radius: 20px;
     }
 }

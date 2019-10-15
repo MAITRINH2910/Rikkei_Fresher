@@ -1,22 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <!--
-        ===
-        This comment should NOT be removed.
 
-        Charisma v2.0.0
-
-        Copyright 2012-2014 Muhammad Usman
-        Licensed under the Apache License v2.0
-        http://www.apache.org/licenses/LICENSE-2.0
-
-        http://usman.it
-        http://twitter.com/halalit_usman
-        ===
-    -->
     <meta charset="utf-8">
-    <title>Free HTML5 Bootstrap Admin Template</title>
+    <title>Table Users</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
     <meta name="author" content="Muhammad Usman">
@@ -216,7 +203,8 @@
                                 <tr th:each="user,iterStat : ${listUsers}" th:data-id="${user.id}">
                                     <td class="center" th:text="${user.firstName}"></td>
                                     <td class="center" th:text="${user.email}"></td>
-                                    <td class="center"><input class="checkbox1" type="checkbox" th:checked="${user.active}">
+                                    <td class="center"><input class="checkbox1" type="checkbox"
+                                                              th:checked="${user.active}">
                                     </td>
                                     <td class="center">
                                         <div class="input-group mb-3">
@@ -224,9 +212,11 @@
                                                 <option th:each="item : ${user.roleName}" th:utext="${item.roleName}"
                                                         th:value="${item.roleName}">
                                                 <option th:each="item : ${user.roleName}" th:utext="ROLE_ADMIN"
-                                                        th:if="${item.roleName == 'ROLE_USER'}" value="ROLE_ADMIN"></option>
+                                                        th:if="${item.roleName == 'ROLE_USER'}"
+                                                        value="ROLE_ADMIN"></option>
                                                 <option th:each="item : ${user.roleName}" th:utext="ROLE_USER"
-                                                        th:if="${item.roleName == 'ROLE_ADMIN'}" value="ROLE_USER"></option>
+                                                        th:if="${item.roleName == 'ROLE_ADMIN'}"
+                                                        value="ROLE_USER"></option>
                                             </select>
                                         </div>
                                     </td>

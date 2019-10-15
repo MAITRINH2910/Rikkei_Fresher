@@ -22,7 +22,7 @@ public class UserAuthFailureHandler implements AuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         ServletContext ctx = httpServletRequest.getSession().getServletContext();
         String contextPath = ctx.getContextPath();
-
+        System.out.println(contextPath);
         if(e.getClass() == DisabledException.class){
             httpServletResponse.sendRedirect(contextPath + redirectPathForDisabledUser);
         } else {

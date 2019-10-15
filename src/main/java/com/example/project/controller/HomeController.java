@@ -13,7 +13,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/")
-public class MainController {
+public class HomeController {
     @Autowired
     public UserApi userApi;
 
