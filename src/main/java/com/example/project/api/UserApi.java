@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Create Common Class for AdminController, HomeController
+ */
 @Component
 public class UserApi {
 
@@ -28,6 +31,11 @@ public class UserApi {
     @Value("${tail.icon.path}")
     private String tail_icon_path;
 
+    /**
+     * Get Authentication User from Security Context Holder of Spring Security
+     * Set icon of weather for user
+     * @return
+     */
     public User getAuthUser() {
         Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUsername(authUser.getName());
@@ -38,6 +46,10 @@ public class UserApi {
         return user;
     }
 
+    /**
+     * Get Authentication User from Security Context Holder of Spring Security
+     * @return
+     */
     public User getUser(){
         Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUsername(authUser.getName());

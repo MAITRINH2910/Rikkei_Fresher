@@ -19,25 +19,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotEmpty
     @Column
     private String username;
 
-//    @Email
-//    @Pattern(regexp = "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}$", message = "Email should be valid")
-//    @NotEmpty
     @Column
     private String email;
 
-    @NotEmpty
     @Column
     private String password;
 
-    @NotEmpty
     @Column
     private String firstName;
 
-    @NotEmpty
     @Column
     private String lastName;
 

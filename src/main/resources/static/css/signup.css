@@ -18227,6 +18227,7 @@ body.landing-page.mobile-device {
 /* line 1001, ../wl/signup/signup.scss */
 body.landing-page.mobile-device .left-block .mobile-center-block {
     width: 90%;
+    height: 50%;
 }
 
 /* line 1003, ../wl/signup/signup.scss */
@@ -18277,7 +18278,7 @@ body.landing-page .left-block .center-block {
     max-width: 498px;
     width: 50vw;
     position: absolute;
-    top: 40%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
@@ -18356,7 +18357,7 @@ body.landing-page .left-block .cookie-agreement-btn-block .btn-agree {
 /* line 1103, ../wl/signup/signup.scss */
 body.landing-page .right-block .sidebar-block {
     position: fixed;
-    top: 220px;
+    top: -5px;
     right: 0;
     width: 330px;
     background: #fff;
@@ -18368,8 +18369,8 @@ body.landing-page .right-block .sidebar-block {
 @media (max-width: 576px) {
     body.landing-page .right-block .sidebar-block {
         position: fixed;
-        top: 230px;
-        right: 0;
+        top: 20px;
+        right: -10px;
         width: 330px;
         background: #fff;
         margin-top: 35px;
@@ -18377,6 +18378,7 @@ body.landing-page .right-block .sidebar-block {
         border-radius: 20px;
     }
 }
+
 /* line 1110, ../wl/signup/signup.scss */
 body.landing-page .right-block .sidebar-block .login-form {
     margin-top: 78px;
@@ -18474,15 +18476,17 @@ body.landing-page .right-block .sidebar-block .sign-up a {
     border-radius: 2px;
     margin-left: 10px;
 }
+
 .navbar-default .navbar-brand {
-    color: #ffffff;
+    color: #ffffff !important;
 }
+
 .navbar-brand {
     font-family: 'Shojumaru', cursive, Arial, serif;
     letter-spacing: 2px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     font-size: 17px;
-    background:#ffffff00;
+    background: #ffffff00;
 }
 
 .navbar-brand img {
@@ -18495,9 +18499,11 @@ body.landing-page .right-block .sidebar-block .sign-up a {
 .navbar-brand span {
     float: left;
 }
+
 img {
     vertical-align: middle;
 }
+
 /* line 1188, ../wl/signup/signup.scss */
 body.landing-page .mobile-center-block {
     width: 90%;

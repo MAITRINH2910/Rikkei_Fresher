@@ -11,10 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Handle Authentication Failure User
+ * Redirect to page 401 if User attempt to access page for Admin
+ * Reload page login if credential user is wrong
+ */
 @Component
 public class UserAuthFailureHandler implements AuthenticationFailureHandler {
 
-    private String redirectPathLoginError="/login?error=true";
+    private String redirectPathLoginError = "/login?error=true";
 
     private String redirectPathForDisabledUser = "/401";
 
@@ -22,8 +27,7 @@ public class UserAuthFailureHandler implements AuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         ServletContext ctx = httpServletRequest.getSession().getServletContext();
         String contextPath = ctx.getContextPath();
-        System.out.println(contextPath);
-        if(e.getClass() == DisabledException.class){
+        if (e.getClass() == DisabledException.class) {
             httpServletResponse.sendRedirect(contextPath + redirectPathForDisabledUser);
         } else {
             httpServletResponse.sendRedirect(contextPath + redirectPathLoginError);

@@ -1,18 +1,12 @@
 package com.example.project.DTO.request;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 public class LoginForm {
-    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$", message = "Username should be valid with our regex")
-    @NotEmpty
-    @Size(min=3, max = 60)
+    @NotEmpty(message = "Please enter your username!")
     private String username;
 
-    @Size(min = 8, message = "At least 8 characters")
-    @NotEmpty
-    @Size(min = 8, max = 32)
+    @NotEmpty(message = "Please enter your password!")
     private String password;
 
     public String getUsername() {
@@ -31,3 +25,4 @@ public class LoginForm {
         this.password = password;
     }
 }
+

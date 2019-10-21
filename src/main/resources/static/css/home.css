@@ -1,10 +1,3 @@
-body {
-    overflow: auto;
-    background: url("https://wallup.net/wp-content/uploads/2016/02/wallpapers-full_moon-moon-night.jpg") no-repeat center center fixed;
-    /*background-size: cover;*/
-    /*background-img: url('img/moon-lake.jpg');*/
-}
-
 /**
 https://wallup.net/wp-content/uploads/2016/02/wallpapers-full_moon-moon-night.jpg
 https://wallup.net/wp-content/uploads/2015/12/59578-landscape-forest-mountain-sun_rays.jpg
@@ -15,13 +8,21 @@ https://image.freepik.com/free-vector/simple-sky-cloud-background_110405-31.jpg
 http://eskipaper.com/images/awesome-mountain-landscape-1.jpg
 https://wallpaperbro.com/img/332902.jpg
  */
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 1000px !important;
+/*.container {*/
+/*    margin-right: auto;*/
+/*    margin-left: auto;*/
+/*    padding-left: 15px;*/
+/*    padding-right: 15px;*/
+/*    width: 1000px !important;*/
+/*}*/
+
+
+.chung {
+    height: 420px;
+    overflow-y: auto;
+    width: 100%;
 }
+
 
 .btn-grad {
     background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
@@ -58,7 +59,6 @@ table {
 }
 
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    padding: 5px;
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 1px #ddd;
@@ -76,10 +76,12 @@ b, strong {
 orange a {
     color: #e96e50;
 }
+
 nav {
     color: black;
     opacity: 0.8;
 }
+
 .badge {
     display: inline-block;
     min-width: 10px;
@@ -101,11 +103,6 @@ nav {
     width: 160px
 }
 
-i {
-    margin: 0 0 10px;
-    width: 173px
-}
-
 .btn-danger {
     color: #fff !important;
     background-color: #dc3545;
@@ -114,9 +111,8 @@ i {
 }
 
 .icon {
-    margin: 5px 15px;
-    width: 50px;
-    height: 50px;
+    margin: -5px 0px;
+    width: 6%;
 }
 
 .icon-weather {
@@ -130,7 +126,7 @@ i {
 }
 
 .property {
-    width: 245px;
+    width: 160px;
     margin: 5px 20px;
 }
 
@@ -147,18 +143,49 @@ i {
 
 .city-date {
     margin: 5px 10px;
+    width: 80px
 }
 
-.row {
-    margin-left: -15px;
-    margin-right: -15px;
-    height: 560px
+@media screen and (max-width: 812px) {
+    .city-date {
+        width: 34px;
+    }
+
+    .table {
+        font-size: 11px;
+    }
+
+    .property {
+        width: 160px
+    }
+
+    .icon {
+        margin-left: -10px;
+        /*margin-top: 10px;*/
+        width: 250%;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .city-date {
+        width: 34px;
+    }
+
+    .table {
+        font-size: 11px;
+    }
+
+    .property {
+        width: 160px
+    }
+
+    .icon {
+        margin-left: -3px;
+        width: 130%;
+    }
 }
 
 .detailWeather {
-    margin-top: -300px;
-    margin-left: 145px;
-    margin-right: 167px;
     background-color: white;;
     filter: alpha(opacity=60);
     border-radius: 20px;
@@ -176,8 +203,9 @@ i {
     width: 600px;
     height: 88px
 }
+
 .detailDB {
-    background-color: white;
+    background-color: #faefef00;
     border: 1px solid black;
     opacity: 0.8;
 }
@@ -186,26 +214,16 @@ i {
     margin-left: 5px;
 }
 
+td {
+    color: white;
+}
+
 .show-more {
     cursor: pointer;
-    background-color: gray;
-    border: 1px solid black;
-    width: 690px;
+    background-color: #2896ebb5;
+    border: 0.5px solid #2c28287d;
     margin-left: 0px;
-    margin-bottom: 5px;
     text-align: center;
-}
-
-.add {
-    margin-left: -20px;
-    margin-top: 20px;
-    margin-right: 33px;
-}
-
-.chung {
-    margin-left: 130px;
-    margin-right: 150px;
-    margin-top: -365px;
 }
 
 .searchWeather {
@@ -226,11 +244,6 @@ i {
     height: 50px;
     border-radius: 25px;
     padding: 0 30px 0 68px;
-}
-
-input {
-    outline: none;
-    border: none;
 }
 
 .input100 {
@@ -365,8 +378,29 @@ svg {
     margin-top: -75px;
 }
 
-.message{
+.message {
     text-align: center;
     margin: 30px auto;
     font-size: larger;
 }
+wob_ds {
+    background-color: #fcfcfc;
+    border: 1px solid #e9e9e9;
+    border-radius: 1px;
+    margin: 0;
+}
+.vk_lgy {
+    color: #bababa !important;
+}
+
+.gic {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    margin-bottom: -1px;
+    padding: 0;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+
+/**/

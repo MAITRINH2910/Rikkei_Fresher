@@ -23,4 +23,6 @@ public class WeatherConverterToEntity {
         return weatherEntity;
     }
 
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.project.controller;
 
+import com.example.project.DTO.WeatherDTO;
 import com.example.project.api.UserApi;
 import com.example.project.api.WeatherApi;
 import com.example.project.entity.User;
@@ -29,6 +30,13 @@ public class HomeController {
         model.addAttribute("weatherList0", weatherGroupByCity);
         return "user/home";
     }
+
+    @GetMapping("/forecast-current")
+    @ResponseBody
+    public WeatherDTO forecastCurrentWeather(@RequestParam String lat, @RequestParam String lon) {
+        return weatherApi.restCurWeather(lat, lon);
+    }
+
 
 }
 

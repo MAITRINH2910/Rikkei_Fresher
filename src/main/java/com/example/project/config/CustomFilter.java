@@ -18,10 +18,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Check Status User
+ * If Status is Un Active -> block User
+ * Authentication Account By Filtering Before Forwarding To Controller
+ *
+ */
 @Component
 public class CustomFilter extends GenericFilterBean {
 
-    @Qualifier("userDetailsServiceImpl")
+    @Qualifier("userDetailsServiceImpl")  /* Distinguish @Bean because there are more bean with name "UserDetailsService"*/
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -35,41 +41,33 @@ public class CustomFilter extends GenericFilterBean {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication != null) {
-            if (authentication.getPrincipal() != null) {
-                if (authentication.getPrincipal() instanceof UserDetails) {
-                    // if login then authentication.getCredentials() null
-                    if (authentication.getCredentials() == null) {
-                        // get username of user logged saved by getPrincipal()
-                        String username = ((UserDetails) authentication.getPrincipal()).getUsername();
-                        if (!username.isEmpty()) {
-                            UserDetails userDetails = null;
-
-                            try {
-                                userDetails = userDetailsService.loadUserByUsername(username);
-
-                                if (!userDetails.isEnabled()) {
-                                    new SecurityContextLogoutHandler().logout(req, res, authentication);
-                                }
-
-                            } catch (Exception e) {}
-
-                            if (userDetails == null) {
-                                new SecurityContextLogoutHandler().logout(req, res, authentication);
-                            }
-                        }
+        if (authentication != null && authentication.getPrincipal() != null
+                && authentication.getPrincipal() instanceof UserDetails && authentication.getCredentials() == null) {
+            // get username of user logged saved by getPrincipal()
+            String username = ((UserDetails) authentication.getPrincipal()).getUsername();
+            if (!username.isEmpty()) {
+                UserDetails userDetails = null;
+                try {
+                    userDetails = userDetailsService.loadUserByUsername(username);
+                    if (!userDetails.isEnabled()) {
+                        new SecurityContextLogoutHandler().logout(req, res, authentication);
                     }
+                } catch (Exception e) {
+                }
+
+                if (userDetails == null) {
+                    new SecurityContextLogoutHandler().logout(req, res, authentication);
                 }
             }
         }
         chain.doFilter(req, res);
     }
 
-    public CustomFilter(UserDetailsService userDetailsService) {
+    private CustomFilter(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
-    public CustomFilter() {
+    private CustomFilter() {
     }
 
 }

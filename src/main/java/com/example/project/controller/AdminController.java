@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Handle Business With Role Admin:
+ * Table List Users
+ * Active User
+ * Change Role User
+ * Delete User
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -30,14 +37,8 @@ public class AdminController {
     }
 
     /**
-     *
-     */
-    @GetMapping("/table")
-    public String list(){
-        return "admin/table";
-    }
-    /**
      * Delete User
+     *
      * @param id
      * @return
      */
@@ -49,6 +50,7 @@ public class AdminController {
 
     /**
      * Edit Status Of User (Active <--> Un Active)
+     *
      * @param id
      * @return
      */
@@ -60,6 +62,7 @@ public class AdminController {
 
     /**
      * Change Role Of User (ADMIN <--> USER)
+     *
      * @param id
      * @param role
      */

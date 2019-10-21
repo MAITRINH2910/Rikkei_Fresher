@@ -21,4 +21,5 @@ public interface WeatherService {
 
     Date getMaxDateByNameCity(String city, Long userId);
 
+
 }

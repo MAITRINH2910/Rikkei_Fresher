@@ -1,6 +1,6 @@
 package com.example.project.service.Impl;
 
-import com.example.project.DTO.request.SignUpForm;
+import com.example.project.DTO.request.UserRegistrationDto;
 import com.example.project.entity.Roles;
 import com.example.project.entity.User;
 import com.example.project.repository.RoleRepository;
@@ -38,15 +38,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByEmail(email);
     }
 
-
     @Override
     public List<User> findAllUser() {
         return userRepository.findAll();
-    }
-
-    @Override
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
     }
 
     @Override
@@ -65,26 +59,19 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public User registerNewUserAccount(SignUpForm accountDto) {
+    public User saveUserDto(UserRegistrationDto accountDto) {
         User user = new User();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
+        user.setUsername(accountDto.getUsername());
         user.setEmail(accountDto.getEmail());
-        user.setUsername(accountDto.getFirstName());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         Roles userRole = roleRepository.findByRoleName("ROLE_USER");
         user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
         user.setActive(true);
         return userRepository.save(user);
     }
-    private boolean emailExists(String email) {
-        User user = userRepository.findUserByEmail(email);
-        if (user != null) {
-            return true;
-        }
-        return false;
-    }
-//    @Override
+    //    @Override
 //    public User saveUser(User admin) {
 //        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
 //        admin.setActive(true);
@@ -124,4 +111,10 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user.get());
         }
     }
+
+    @Override
+    public void updatePassword(String password, Long userId) {
+        userRepository.updatePassword(password, userId);
+    }
+
 }

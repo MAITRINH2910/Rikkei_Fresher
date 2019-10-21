@@ -6,7 +6,9 @@ import javax.validation.ConstraintValidator;
 
 import javax.validation.ConstraintValidatorContext;
 
-
+/**
+ * Compare Password with Confirm Password in Registration Page
+ */
 public class FieldMatchValidator implements ConstraintValidator< FieldMatch, Object > {
 
     private String firstFieldName;

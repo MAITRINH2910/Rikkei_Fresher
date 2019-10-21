@@ -10,11 +10,14 @@ import com.example.project.service.WeatherService;
 import com.example.project.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -86,6 +89,8 @@ public class WeatherController {
      */
     @GetMapping("/weather-detail/{city}")
     public String getWeatherDetail(@PathVariable String city, Model model) throws ParseException {
+        WeatherEntity currentWeather = weatherApi.getJsonWeather(city);
+        model.addAttribute("currentWeather", currentWeather);
         WeatherDetailDTO futureWeather = weatherApi.getJsonWeatherDetail(city);
         List<WeatherEntity> futureWeatherList = new ArrayList<WeatherEntity>();
         for (int j = 0; j < 40; j = j + days) {
@@ -112,7 +117,8 @@ public class WeatherController {
      */
     @GetMapping("/save-weather/{city}")
     public String saveWeather(@PathVariable String city) {
-        User user = userApi.getUser();
+        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByUsername(authUser.getName());
         WeatherEntity currentWeather = weatherApi.getJsonWeather(city);
 
         WeatherEntity weather1 = new WeatherEntity(currentWeather.getIcon(), currentWeather.getNameCity(),

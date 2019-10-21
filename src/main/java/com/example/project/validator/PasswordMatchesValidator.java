@@ -1,10 +1,13 @@
 package com.example.project.validator;
 
-import com.example.project.DTO.request.SignUpForm;
+import com.example.project.DTO.request.UserRegistrationDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * Compare Password with Confirm Password
+ */
 public class PasswordMatchesValidator
         implements ConstraintValidator<PasswordMatches, Object> {
 
@@ -14,7 +17,7 @@ public class PasswordMatchesValidator
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context) {
-        SignUpForm user = (SignUpForm) obj;
+        UserRegistrationDto user = (UserRegistrationDto) obj;
         return user.getPassword().equals(user.getConfirmPassword());
     }
 }
