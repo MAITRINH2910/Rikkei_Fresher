@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+
     <meta charset="utf-8">
     <title>Table Users</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Mai Trinh">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
 
     <!-- The styles -->
     <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
+
     <link href="css/charisma-app.css" rel="stylesheet">
     <link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
     <link href='bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
@@ -30,68 +33,247 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <!---->
 
     <style>
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-
-        .carousel-inner img {
-            width: 100%; /* Set width to 100% */
-            min-height: 200px;
-        }
-
-        /* Hide the carousel text when the screen is less than 600 pixels wide */
-        @media (max-width: 600px) {
-            .carousel-caption {
-                display: none;
+        /*---- responsive-design -----*/
+        @media (max-width: 1440px) {
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                margin-top: 0px;
+                min-width: 43%;
             }
         }
 
+        @media (max-width: 1366px) {
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: -5px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 1280px) {
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                margin-top: -65px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 1080px) {
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 0px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 75px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 70px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 800px) {
+            #wob_d {
+                padding: 0px 0 0 !important;
+            }
+
+            h1 {
+                font-size: 2.8em;
+            }
+
+            .vk_gy {
+                float: right;
+                line-height: 22px;
+                padding-top: 90px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.6em;
+            }
+
+            .weather-grids h2 {
+                font-size: 2.8em;
+            }
+
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 50px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .weather-grids h3 {
+                font-size: 1.3em;
+            }
+
+            .weather-grids h2 {
+                font-size: 2.5em;
+            }
+
+            .weather-grids h4 {
+                font-size: 0.8em;
+            }
+
+            .weather-bottom h5 {
+                font-size: 1.1em;
+            }
+
+            .weather-bottom h6 {
+                font-size: 0.9em;
+            }
+
+            .copyright p {
+                font-size: 1em;
+            }
+
+            .main {
+                padding: 0em 0 0;
+            }
+
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 70px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 414px) {
+
+            .weather-bottom h4 {
+                font-size: 0.9em;
+            }
+
+            canvas#clear-day {
+                width: 60px;
+                height: 60px;
+            }
+
+            .weather-bottom canvas {
+                width: 30px;
+                height: 30px;
+            }
+
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 95px;
+                min-width: 43%;
+            }
+            .sol-tmp{
+                margin-top: 5px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .main {
+                padding: 0em 0 0;
+            }
+
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 85px;
+                min-width: 43%;
+            }
+        }
+
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            #wob_d {
+                padding: 5px 0 0 !important;
+            }
+
+            .weather-grids h2 {
+                font-size: 2em;
+            }
+
+            .weather-grids h4 {
+                font-size: 0.7em;
+            }
+
+            .weather-grids h3 {
+                font-size: 1.1em;
+            }
+
+            canvas#clear-day {
+                width: 55px;
+                height: 55px;
+            }
+
+            .weather-bottom canvas {
+                width: 20px;
+                height: 20px;
+            }
+
+            .weather-bottom ul li {
+                width: 19.5%;
+                padding: 0.5em 0;
+            }
+
+            .weather-bottom h5 {
+                font-size: 0.9em;
+            }
+
+            .weather-bottom h6 {
+                font-size: 0.8em;
+            }
+
+            .vk_gy {
+                float: right;
+                padding-left: 55px;
+                line-height: 22px;
+                padding-top: 80px;
+                min-width: 43%;
+            }
+        }
+
+        /*--//responsive-design---*/
     </style>
-    <!------------------------------------------------------------------------->
-    <!--    Current Weather Now -->
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <!-- Custom Theme files -->
-    <link href="current_weather_home/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="current_weather_home/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all">
-    <!-- //Custom Theme files -->
-    <!-- web font -->
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <!--web font-->
-    <link href='//fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-    <!-- //web font -->
-    <!-- js -->
-    <script src="current_weather_home/js/jquery-1.9.1.min.js"></script>
-    <script src="current_weather_home/js/owl.carousel.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#owl-demo").owlCarousel({
-
-                autoPlay: 3000, //Set AutoPlay to 3 seconds
-
-                items: 6,
-                itemsDesktop: [640, 5],
-                itemsDesktopSmall: [414, 4]
-
-            });
-
-        });
-    </script>
-    <!------------------------------------------------------------------------->
-    <!--   Search -->
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Lobster">
     <!-------------------- Cur_Local----------------->
     <script>
         $(document).ready(function () {
@@ -130,545 +312,32 @@
         });
     </script>
     <!--   Ends Cur_local-->
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <!--//mobile-apps-->
-    <!--Custom Theme files-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <!--//Custom Theme files -->
-    <!--web-font-->
-    <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic'
-          rel='stylesheet' type='text/css'>
-    <!--//web-font-->
-    <!--skycons-icons-->
-    <script src="js/skycons.js"></script>
-    <!--//skycons-icons-->
-</head>
-<script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
-<script>
-    (function () {
-        if (typeof _bsa !== 'undefined' && _bsa) {
-            // format, zoneKey, segment:value, options
-            _bsa.init('flexbar', 'CKYI627U', 'placement:w3layoutscom');
-        }
-    })();
-</script>
-<script>
-    (function () {
-        if (typeof _bsa !== 'undefined' && _bsa) {
-            // format, zoneKey, segment:value, options
-            _bsa.init('fancybar', 'CKYDL2JN', 'placement:demo');
-        }
-    })();
-</script>
-<script>
-    (function () {
-        if (typeof _bsa !== 'undefined' && _bsa) {
-            // format, zoneKey, segment:value, options
-            _bsa.init('stickybox', 'CKYI653J', 'placement:w3layoutscom');
-        }
-    })();
-</script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'UA-149859901-1');
-</script>
-<script>
-    window.ga = window.ga || function () {
-        (ga.q = ga.q || []).push(arguments)
-    };
-    ga.l = +new Date;
-    ga('create', 'UA-149859901-1', 'demo.w3layouts.com');
-    ga('require', 'eventTracker');
-    ga('require', 'outboundLinkTracker');
-    ga('require', 'urlChangeTracker');
-    ga('send', 'pageview');
-</script>
-<script async src='/js/autotrack.js'></script>
-
-<meta name="robots" content="noindex">
-<style>
-
-    /*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-    /*--reset--*/
-    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-    }
-
-    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-        display: block;
-    }
-
-    ol, ul {
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-    }
-
-    blockquote, q {
-        quotes: none;
-    }
-
-    blockquote:before, blockquote:after, q:before, q:after {
-        content: '';
-        content: none;
-    }
-
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-
-    /*--start editing from here--*/
-    a {
-        text-decoration: none;
-    }
-
-    .txt-rt {
-        text-align: right;
-    }
-
-    /* text align right */
-    .txt-lt {
-        text-align: left;
-    }
-
-    /* text align left */
-    .txt-center {
-        text-align: center;
-    }
-
-    /* text align center */
-    .float-rt {
-        float: right;
-    }
-
-    /* float right */
-    .float-lt {
-        float: left;
-    }
-
-    /* float left */
-    .clear {
-        clear: both;
-    }
-
-    /* clear float */
-    .pos-relative {
-        position: relative;
-    }
-
-    /* Position Relative */
-    .pos-absolute {
-        position: absolute;
-    }
-
-    /* Position Absolute */
-    .vertical-base {
-        vertical-align: baseline;
-    }
-
-    /* vertical align baseline */
-    .vertical-top {
-        vertical-align: top;
-    }
-
-    /* vertical align top */
-    nav.vertical ul li {
-        display: block;
-    }
-
-    /* vertical menu */
-    nav.horizontal ul li {
-        display: inline-block;
-    }
-
-    /* horizontal menu */
-    img {
-        max-width: 100%;
-    }
-
-    /*--end reset--*/
-    body {
-        background-attachment: fixed;
-        background-size: cover;
-        font-family: 'Josefin Sans', sans-serif;
-    }
-
-    h1 {
-        font-size: 3em;
-        text-align: center;
-        color: #000;
-        font-weight: 300;
-        font-family: 'Josefin Sans', sans-serif;
-    }
-
-    /*--main--*/
-    .main {
-        padding: -1em 0 0;
-    }
-
-    .main-info {
-        width: 100%;
-        margin-top: 25px;
-        /*background: #32457c;*/
-        padding: 2em;
-        /*height: 420px;*/
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 15px;
-        border-color: #d7cece;
-    }
-
-    /*--//main--*/
-    .weather-grids {
-        float: left;
-        width: 33%;
-    }
-
-    .weather-grids.weather-mdl {
-        text-align: center;
-    }
-
-    .weather-grids:nth-child(3) {
-        text-align: right;
-    }
-
-    .weather-grids h3 {
-        font-size: 1.5em;
-        color: #fff;
-    }
-
-    .weather-grids h3.fri {
-        font-weight: 900;
-        color: #FFD700;
-        margin-top: 0.7em;
-    }
-
-    .weather-grids h2 {
-        font-size: 3em;
-        font-weight: 300;
-        color: #fff;
-    }
-
-    .weather-grids h4 {
-        font-size: 1em;
-        color: #fff;
-    }
-
-    .weather-bottom {
-        text-align: center;
-        margin-top: 2em;
-    }
-
-    .weather-bottom ul li {
-        display: inline-block;
-        padding: 1em 0;
-        float: left;
-        width: 19.2%;
-        border-width: 0.5px;
-        border-style: solid;
-        border-radius: 3px;
-        border-color: #d7cece
-    }
-
-    .weather-bottom ul li.bg {
-        /*background: #314277;*/
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 3px;
-        border-color: #d7cece
-    }
-
-    .weather-bottom h4 {
-        font-size: 1em;
-        color: #fff;
-        font-weight: 100;
-    }
-
-    figure.icons {
-        margin: 0.5em 0;
-    }
-
-    .weather-bottom h5 {
-        font-size: 1.2em;
-        color: #fff;
-        font-weight: 600;
-    }
-
-    .weather-bottom h6 {
-        font-size: 1em;
-        color: #FFD700;
-        margin-top: 0.5em;
-    }
-
-    /*--copyright--*/
-    .copyright {
-        margin: 2em 0 1em;
-        text-align: center;
-    }
-
-    .copyright p {
-        font-size: 1.1em;
-        color: #000;
-        line-height: 1.8em;
-    }
-
-    .copyright p a {
-        color: #000;
-    }
-
-    .copyright p a:hover {
-        color: #314277;
-        transition: 0.5s all;
-        -webkit-transition: 0.5s all;
-        -moz-transition: 0.5s all;
-        -o-transition: 0.5s all;
-        -ms-transition: 0.5s all;
-    }
-
-    /*--//copyright--*/
-    /*---- responsive-design -----*/
-    @media (max-width: 1440px) {
-        .main {
-            padding: 0 0 0;
-        }
-    }
-
-    @media (max-width: 1366px) {
-        .main-info {
-            width: 100%;
-        }
-    }
-
-    @media (max-width: 1280px) {
-        .main-info {
-            width: 105%;
-        }
-    }
-
-    @media (max-width: 1080px) {
-        .main-info {
-            width: 105%;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .main-info {
-            width: 105%;
-        }
-    }
-
-    @media (max-width: 900px) {
-        .main-info {
-            width: 105%;
-        }
-    }
-
-    @media (max-width: 800px) {
-        .main {
-            padding: 4em 0 0;
-        }
-
-        .main-info {
-            margin: -7em auto;
-        }
-
-        h1 {
-            font-size: 2.8em;
-        }
-
-        .main-info {
-            width: 105%;
-        }
-    }
-
-    @media (max-width: 640px) {
-        h1 {
-            font-size: 2.6em;
-        }
-
-        .main-info {
-            width: 70%;
-            padding: 1.5em;
-        }
-
-        .weather-grids h2 {
-            font-size: 2.8em;
-        }
-    }
-
-    @media (max-width: 480px) {
-        h1 {
-            font-size: 2.2em;
-        }
-
-        .main-info {
-            width: 82%;
-            margin: 3em auto;
-        }
-
-        .weather-grids h3 {
-            font-size: 1.3em;
-        }
-
-        .weather-grids h2 {
-            font-size: 2.5em;
-        }
-
-        .weather-grids h4 {
-            font-size: 0.8em;
-        }
-
-        .weather-bottom h5 {
-            font-size: 1.1em;
-        }
-
-        .weather-bottom h6 {
-            font-size: 0.9em;
-        }
-
-        .copyright p {
-            font-size: 1em;
-        }
-
-        .main {
-            padding: 0em 0 0;
-        }
-    }
-
-    @media (max-width: 414px) {
-        .main-info {
-            padding: 1.5em 1em;
-        }
-
-        .weather-bottom h4 {
-            font-size: 0.9em;
-        }
-
-        canvas#clear-day {
-            width: 60px;
-            height: 60px;
-        }
-
-        .weather-bottom canvas {
-            width: 30px;
-            height: 30px;
-        }
-
-        .weather-bottom {
-            margin-top: 1.5em;
-        }
-    }
-
-    @media (max-width: 375px) {
-        h1 {
-            font-size: 1.8em;
-        }
-
-        .main {
-            padding: 0em 0 0;
-        }
-    }
-
-    @media (max-width: 320px) {
-        h1 {
-            font-size: 1.6em;
-        }
-
-        .main-info {
-            width: 82%;
-            margin: 1.5em auto;
-            padding: 1em;
-        }
-
-        .weather-grids h2 {
-            font-size: 2em;
-        }
-
-        .weather-grids h4 {
-            font-size: 0.7em;
-        }
-
-        .weather-grids h3 {
-            font-size: 1.1em;
-        }
-
-        canvas#clear-day {
-            width: 55px;
-            height: 55px;
-        }
-
-        .weather-bottom canvas {
-            width: 20px;
-            height: 20px;
-        }
-
-        .weather-bottom ul li {
-            width: 19.5%;
-            padding: 0.5em 0;
-        }
-
-        .weather-bottom h5 {
-            font-size: 0.9em;
-        }
-
-        .weather-bottom h6 {
-            font-size: 0.8em;
-        }
-    }
-
-    /*--//responsive-design---*/
-
-
-</style>
-<!--    Ends Cur_Local-->
-
-
 </head>
 
-<body onload="startTime()">
+<body>
 <!-- topbar starts -->
-<div class="navbar navbar-default">
+<div class="navbar navbar-default" role="navigation">
+
     <div class="navbar-inner">
-        <a class="navbar-brand " th:href="@{/}"> <img alt="Charisma Logo" src="img/1.png"/>
+        <a class="navbar-brand" th:href="@{/}"> <img alt="Charisma Logo" src="img/1.png"/>
             <span class="hidden-xs">Ur-Weather</span></a>
         <div class="search_form" style="float: left">
             <form th:action="@{/search-city}" method="get">
-                <input placeholder="Search Location" class="search-query form-control col-md-10" name="city"
-                       type="text">
-                <button type="submit" class="search_icon" style="margin-top: -30px; width: 40px;height: 3px;"><i
-                        class="glyphicon glyphicon-search" style="color:#000;"></i></button>
+                <input type="text" class="form-control" name="city" placeholder="Search Location"
+                       style="text-align: left">
+                <div class="input-group-append" style="text-align: right">
+                    <button class="btn btn-secondary" type="submit"
+                            style="margin-top: -70px; background-color: #ffffff00;">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
             </form>
         </div>
 
         <!-- user dropdown starts -->
         <div class="btn-group pull-right">
             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> User</span>
+                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> Admin</span>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -682,771 +351,245 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <li><a th:href="@{/logout}">Log-out</a></li>
             </ul>
         </div>
-        <!-- user dropdown ends -->
-
-        <!-- theme selector starts -->
-        <div class="btn-group pull-right theme-container animated tada hidden-xs">
-            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-tint"></i><span
-                    class="hidden-sm hidden-xs"> Change Theme / Skin</span>
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" id="themes">
-                <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
-                <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
-                <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
-                <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
-                <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
-            </ul>
-        </div>
     </div>
 </div>
 <!-- topbar ends -->
-
-<div class="container row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-5">
-        <br><br>
-        <div class="table" th:if="${message != null}">
-            <div class="frame" th:object="${currentWeather}"
-                 style="width: 100%; height: 420px; border-width: 1px; border-style: solid;border-radius: 15px;
+<div class="ch-container">
+    <div class="row">
+        <br>
+        <!-- left menu starts -->
+        <div class="col-sm-1 col-lg-1"></div>
+        <div class="col-sm-5 col-lg-5">
+            <div class="nav-canvas">
+                <div class="nav-sm nav nav-stacked"></div>
+                <div class="nav nav-pills nav-stacked main-menu">
+                    <!--Not Found City-->
+                    <div class="table" th:if="${message != null}">
+                        <div class="frame" th:object="${currentWeather}"
+                             style="width: 100%; height: 420px; border-width: 1px; border-style: solid;border-radius: 15px;
                  border-color: #d7cece; padding: 20px 16px 24px 16px;">
-                <h3 class="message" th:text="${message}"></h3></div>
-        </div>
-        <div class="main cur_local" th:if="${currentWeather == null && message ==null}">
-            <link rel="stylesheet" href="/images/demobar_w3_16oct2019.css">
-            <!-- Demo bar start -->
-            <div id="w3lDemoBar" class="w3l-demo-bar">
-                <a href="https://w3layouts.com/?p=20339" ga-on="click" ga-event-category="Launch Template"
-                   ga-event-action="view" ga-event-label="Launch - view"></a>
-            </div>
-            <div class="main">
-                <!---728x90--->
-                <div class="main-info">
-                    <div class="weather-top">
-                        <div class="weather-grids">
-                            <h2>123</h2>
-                        </div>
-                        <div class="weather-grids">
-                            <h2>456</h2>
-                        </div>
-
-                        <div class="weather-grids">
-                            <div class="date-time">
-                                <div class="dmy">
-                                    <div id="txt"></div>
-                                    <div class="date">
-                                        <!-- Date-JavaScript -->
-                                        <script type="text/javascript">
-                                            var mydate = new Date()
-                                            var year = mydate.getYear()
-                                            if (year < 1000)
-                                                year += 1900
-                                            var day = mydate.getDay()
-                                            var month = mydate.getMonth()
-                                            var daym = mydate.getDate()
-                                            if (daym < 10)
-                                                daym = "0" + daym
-                                            var dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-                                            var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
-                                            document.write("" + dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + "")
-                                        </script>
-                                        <!-- //Date-JavaScript -->
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div id="iconLocal"></div>
-                        </div>
-                        <div class="weather-grids weather-mdl">
-                            <canvas id="clear-day" width="70" height="70"></canvas>
-                        </div>
-                        <div class="weather-grids">
-                            <h2 id="temparature"></h2>
-                        </div>
-
-
-                        <div class="clear"></div>
+                            <h3 class="message" th:text="${message}"></h3></div>
                     </div>
-                    <div class="weather-bottom">
-                        <ul>
-                            <li class="bg"><h4>FRI</h4>
-                                <figure class="icons">
-                                    <canvas id="clear-night" width="40" height="40"></canvas>
-                                </figure>
-                                <h5>27°C</h5>
-                                <h6>17°C</h6>
-                            </li>
-                            <li><h4>SAT</h4>
-                                <figure class="icons">
-                                    <canvas id="partly-cloudy-day" width="40" height="40"></canvas>
-                                </figure>
-                                <h5>20°C</h5>
-                                <h6>15°C</h6>
-                            </li>
-                            <li class="bg"><h4>SUN</h4>
-                                <figure class="icons">
-                                    <canvas id="cloudy" width="40" height="40"></canvas>
-                                </figure>
-                                <h5>18°C</h5>
-                                <h6>12°C</h6>
-                            </li>
-                            <li><h4>MON</h4>
-                                <figure class="icons">
-                                    <canvas id="sleet" width="40" height="40"></canvas>
-                                </figure>
-                                <h5>17°C</h5>
-                                <h6>12°C</h6>
-                            </li>
-                            <li class="bg"><h4>TUE</h4>
-                                <figure class="icons">
-                                    <canvas id="rain" width="40" height="40"></canvas>
-                                </figure>
-                                <h5>17°C</h5>
-                                <h6>10°C</h6>
-                            </li>
-
-                        </ul>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-            <!--            <div class="main-wthree-row">-->
-            <!--                <div class="agileits-top">-->
-            <!--                    <div class="agileinfo-top-row">-->
-            <!--                        <div class="agileinfo-top-img">-->
-
-            <!--                        </div>-->
-            <!--                        <div class="row">-->
-            <!--                            <div class="col-sm-6"></div>-->
-            <!--                            <div class="col-sm-2"><h3 id="temparature"></h3></div>-->
-
-            <!--                            &lt;!&ndash;                            <p id="city"></p>&ndash;&gt;-->
-            <!--                        </div>-->
-
-            <!--                        <div class="agileinfo-top-time">-->
-            <!--                            <div class="date-time">-->
-            <!--                                <div class="dmy">-->
-            <!--                                    <div id="txt"></div>-->
-            <!--                                    <div class="date">-->
-            <!--                                        &lt;!&ndash; Date-JavaScript &ndash;&gt;-->
-            <!--                                        <script type="text/javascript">-->
-            <!--                                            var mydate = new Date()-->
-            <!--                                            var year = mydate.getYear()-->
-            <!--                                            if (year < 1000)-->
-            <!--                                                year += 1900-->
-            <!--                                            var day = mydate.getDay()-->
-            <!--                                            var month = mydate.getMonth()-->
-            <!--                                            var daym = mydate.getDate()-->
-            <!--                                            if (daym < 10)-->
-            <!--                                                daym = "0" + daym-->
-            <!--                                            var dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")-->
-            <!--                                            var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")-->
-            <!--                                            document.write("" + dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + "")-->
-            <!--                                        </script>-->
-            <!--                                        &lt;!&ndash; //Date-JavaScript &ndash;&gt;-->
-            <!--                                    </div>-->
-            <!--                                </div>-->
-            <!--                                <div class="clear"></div>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--                <div class="w3ls-bottom">-->
-            <!--                    <h2>Today's Weather </h2>-->
-            <!--                    <div id="owl-demo" class="owl-carousel owl-theme">-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>10AM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>11AM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>22<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>12PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/2.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>22<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>1PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/3.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>24<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>2PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/4.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>23<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p> 3PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/4.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>22<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>4PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/2.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>5PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/2.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>6PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>7PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>8PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>9PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                        <div class="item">-->
-            <!--                            <div class="biseller-column">-->
-            <!--                                <p>10PM</p>-->
-            <!--                                <a class="lightbox" href="#">-->
-            <!--                                    <img src="images/1.png" alt=""/>-->
-            <!--                                </a>-->
-            <!--                                <p>20<sup class="degree">°</sup></p>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
-
-            <!--                        <div class="main">-->
-            <!--                            &lt;!&ndash;-728x90-&ndash;&gt;-->
-            <!--                            <div class="main-info">-->
-            <!--                                <div class="weather-top">-->
-            <!--                                    <div class="weather-grids">-->
-            <!--                                        <h3 class="fri">Friday </h3>-->
-            <!--                                        <div id="iconLocal"></div>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="weather-grids weather-mdl">-->
-            <!--                                        <canvas id="clear-day" width="70" height="70"></canvas>-->
-            <!--                                    </div>-->
-            <!--                                    <div class="weather-grids">-->
-            <!--                                        <h2 id="temparature"></h2>-->
-
-            <!--                                    </div>-->
-            <!--                                    <div class="clear"></div>-->
-            <!--                                </div>-->
-            <!--                                <div class="weather-bottom">-->
-            <!--                                    <ul>-->
-            <!--                                        <li class="bg"><h4>FRI</h4>-->
-            <!--                                            <figure class="icons">-->
-            <!--                                                <canvas id="clear-night" width="40" height="40"></canvas>-->
-            <!--                                            </figure>-->
-            <!--                                            <h5>27°C</h5>-->
-            <!--                                            <h6>17°C</h6>-->
-            <!--                                        </li>-->
-            <!--                                        <li><h4>SAT</h4>-->
-            <!--                                            <figure class="icons">-->
-            <!--                                                <canvas id="partly-cloudy-day" width="40" height="40"></canvas>-->
-            <!--                                            </figure>-->
-            <!--                                            <h5>20°C</h5>-->
-            <!--                                            <h6>15°C</h6>-->
-            <!--                                        </li>-->
-            <!--                                        <li class="bg"><h4>SUN</h4>-->
-            <!--                                            <figure class="icons">-->
-            <!--                                                <canvas id="cloudy" width="40" height="40"></canvas>-->
-            <!--                                            </figure>-->
-            <!--                                            <h5>18°C</h5>-->
-            <!--                                            <h6>12°C</h6>-->
-            <!--                                        </li>-->
-            <!--                                        <li><h4>MON</h4>-->
-            <!--                                            <figure class="icons">-->
-            <!--                                                <canvas id="sleet" width="40" height="40"></canvas>-->
-            <!--                                            </figure>-->
-            <!--                                            <h5>17°C</h5>-->
-            <!--                                            <h6>12°C</h6>-->
-            <!--                                        </li>-->
-            <!--                                        <li class="bg"><h4>TUE</h4>-->
-            <!--                                            <figure class="icons">-->
-            <!--                                                <canvas id="rain" width="40" height="40"></canvas>-->
-            <!--                                            </figure>-->
-            <!--                                            <h5>17°C</h5>-->
-            <!--                                            <h6>10°C</h6>-->
-            <!--                                        </li>-->
-
-            <!--                                    </ul>-->
-            <!--                                    <div class="clear"></div>-->
-            <!--                                </div>-->
-            <!--                    <script>-->
-            <!--                        var icons = new Skycons({"color": "#FFD700"}),-->
-            <!--                            list = [-->
-            <!--                                "clear-day"-->
-            <!--                            ],-->
-            <!--                            i;-->
-
-            <!--                        for (i = list.length; i&#45;&#45;;)-->
-            <!--                            icons.set(list[i], list[i]);-->
-
-            <!--                        icons.play();-->
-            <!--                    </script>-->
-            <!--                    <script>-->
-            <!--                        var icons = new Skycons({"color": "#f5f5f5"}),-->
-            <!--                            list = [-->
-            <!--                                "clear-night", "partly-cloudy-day",-->
-            <!--                                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",-->
-            <!--                                "fog"-->
-            <!--                            ],-->
-            <!--                            i;-->
-
-            <!--                        for (i = list.length; i&#45;&#45;;)-->
-            <!--                            icons.set(list[i], list[i]);-->
-
-            <!--                        icons.play();-->
-            <!--                    </script>-->
-            <!--                </div>-->
-
-            <!--            </div>-->
-        </div>
-        <!-- Time-JavaScript -->
-        <script>
-            function startTime() {
-                var today = new Date();
-                var h = today.getHours();
-                var m = today.getMinutes();
-                var s = today.getSeconds();
-                m = checkTime(m);
-                s = checkTime(s);
-                document.getElementById('txt').innerHTML =
-                    h + ":" + m + ":" + s;
-                var t = setTimeout(startTime, 500);
-            }
-
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i
-                }
-                ; // add zero in front of numbers < 10
-                return i;
-            }
-        </script>
-        <div class="main search_wea" th:if="${currentWeather != null}">
-            <div class="frame" th:object="${currentWeather}" style="width: 100%; height: 420px; border-width: 1px; border-style: solid;border-radius: 15px; border-color: #d7cece;
+                    <!--Current Location Weather-->
+                    <div class="main cur_local" th:if="${currentWeather == null && message ==null}"></div>
+                    <!--Search Weather-->
+                    <div class="main search_wea" th:if="${currentWeather != null}">
+                        <div class="frame" th:object="${currentWeather}" style="width: 100%; height: 400px; border-width: 1px; border-style: solid;border-radius: 15px; border-color: #d7cece;
     padding: 20px 16px 24px 16px;
 " ;>
                 <span role="heading">
+                    <br><br>
                         <div class="local" style="font-size: x-large !important; color: #878787 !important;">
                     <a th:href="@{/weather-detail/__*{nameCity}__}"><p
                             th:text="*{nameCity}">
                             </a>
                     </div>
-                        <div class="dateNow" style="font-size: medium !important; color: #878787 !important;">
+                        <div class="dateNow"
+                             style="font-size: medium !important; color: #878787 !important; margin-top: 15px">
                            <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
                         </div>
-                    <div class="descript"><span><i th:text="*{description}"></i></span></div>
+                    <div class="descript" style="margin-top: 15px"><span><i th:text="*{description}"></i></span></div>
                     <div class="action" style="float: right" th:switch="${status}">
                                     <a class="btn btn-primary" th:case="'add'"
                                        th:href="@{/save-weather/__*{nameCity}__}"
-                                       style="margin-top: -135px">Add</a>
+                                       style="margin-top: -275px">Add</a>
                                     <a class="btn btn-warning" th:case="'update'"
                                        th:href="@{/update-weather/__*{nameCity}__}"
-                                       style="margin-top: -135px">Update</a>
+                                       style="margin-top: -275px">Update</a>
                     </div>
                 </span>
-                <div id="wob_d"
-                     style="font:16px arial,helvetica,sans-serif;padding:20px 0 0;-webkit-touch-callout:none;-webkit-user-select:none;">
-                    <div>
-                        <img th:src="'http://openweathermap.org/img/w/'+*{icon}+'.png'"
-                             width="50"
-                             height="50" style="float:left;height:64px;width:64px">
+                            <div id="wob_d"
+                                 style="font:16px arial,helvetica,sans-serif;padding:40px 0 0;-webkit-touch-callout:none;-webkit-user-select:none;">
+                                <div>
+                                    <img th:src="'http://openweathermap.org/img/w/'+*{icon}+'.png'"
+                                         width="50"
+                                         height="50" style="float:left;height:64px;width:64px">
 
-                        <div aria-level="3" role="heading" style="padding-left:10px;float:left">
-                            <div>
-                                <div class="vk_bk sol-tmp" style="float:left;margin-top:-3px;font-size:64px">
+                                    <div aria-level="3" role="heading" style="padding-left:10px;float:left">
+                                        <div>
+                                            <div class="vk_bk sol-tmp"
+                                                 style="float:left;margin-top:-3px;font-size:50px">
                                     <span class="wob_t" id="wob_tm" style="display:inline"
                                           th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}"></span>
-                                    <span class="wob_t" id="wob_ttm" style="display:none">82</span>
-                                </div>
-                                <div class="vk_bk wob-unit" style="float:left;font-size:16px;margin-top:6px"><span
-                                        class="wob_t" style="display:inline" aria-label="°Celsius"
-                                        aria-disabled="true"
-                                        role="button">°C</span><a class="wob_t" href="#"
-                                                                  style="display:none;text-decoration:none"
-                                                                  data-lams=""
-                                                                  data-metric="true"
-                                                                  data-url="/setprefs?fheit=0&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
-                                                                  role="button" jsaction="wob.t"
-                                                                  data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-lswAHoECAwQAQ"><span
-                                        aria-label="°Celsius">°C</span></a>&nbsp;|&nbsp;<a class="wob_t" href="#"
-                                                                                           style="display:inline;text-decoration:none;margin-left:-1px"
-                                                                                           data-lams=""
-                                                                                           data-metric="false"
-                                                                                           data-url="/setprefs?fheit=1&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
-                                                                                           role="button"
-                                                                                           jsaction="wob.t"
-                                                                                           data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-1swAHoECAwQAg"><span
-                                        aria-label="°Fahrenheit">°F</span></a> <span class="wob_t"
-                                                                                     style="display:none;margin-left:-1px"
-                                                                                     aria-label="°Fahrenheit"
-                                                                                     aria-disabled="true"
-                                                                                     role="button">°F</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vk_gy vk_sh wob-dtl"
-                             style="float:right;padding-left:30px;line-height:22px;padding-top:2px;min-width:43%">
-                            <div>Áp suất: <span id="wob_pp" th:text="*{pressure}+' hpa'"></span></div>
-                            <div>Độ ẩm: <span id="wob_hm" th:text="*{humidity}+' %'"></span></div>
-                            <div>Gió: <span><span class="wob_t" id="wob_ws" th:text="*{wind}+' m/s'"></span></span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div style="clear:both"></div>
-                <hr>
-                <!--                <div class="gic"-->
-                <!--                     style="margin-bottom:-1px; padding:0; padding-bottom:1px; cursor:pointer">-->
-                <!--                    <div style="white-space: nowrap" id="wob_dp">-->
-                <!--                        <div class="wob_df wob_ds"-->
-                <!--                             style="display:inline-block;line-height:1;text-align:center;-webkit-transition-duration:200ms,200ms,200ms;-webkit-transition-property:background-image,border,font-weight;font-weight:13px;height:90px;width:50px"-->
-                <!--                             data-wob-di="0" role="button" tabindex="0"-->
-                <!--                             data-ved="2ahUKEwib7sP-26PlAhWEM94KHZPPCw0Qi2soADAAegQICxAK">-->
-                <!--                            <div class="vk_lgy" style="padding-top:7px;line-height:15px" aria-label="Thứ Năm">Th 5-->
-                <!--                            </div>-->
-                <!--                            <div style="display:inline-block"><img style="margin:1px 4px 0;height:48px;width:48px"-->
-                <!--                                                                   alt="Mưa rào"-->
-                <!--                                                                   src="//ssl.gstatic.com/onebox/weather/48/rain_light.png"-->
-                <!--                                                                   data-atf="1"></div>-->
-                <!--                            <div style="font-weight:normal;line-height:15px;font-size:13px">-->
-                <!--                                <div class="vk_gy" style="display:inline-block;padding-right:5px"><span-->
-                <!--                                        class="wob_t" style="display:inline">29</span><span class="wob_t"-->
-                <!--                                                                                            style="display:none">84</span>°-->
-                <!--                                </div>-->
-                <!--                                <div class="vk_lgy" style="display:inline-block"><span class="wob_t"-->
-                <!--                                                                                       style="display:inline">25</span><span-->
-                <!--                                        class="wob_t" style="display:none">77</span>°-->
-                <!--                                </div>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                        <div class="wob_df"-->
-                <!--                             style="display:inline-block;line-height:1;text-align:center;-webkit-transition-duration:200ms,200ms,200ms;-webkit-transition-property:background-image,border,font-weight;font-weight:13px;height:90px;width:73px"-->
-                <!--                             data-wob-di="1" role="button" tabindex="0"-->
-                <!--                             data-ved="2ahUKEwib7sP-26PlAhWEM94KHZPPCw0Qi2soATAAegQICxAL">-->
-                <!--                            <div class="vk_lgy" style="padding-top:7px;line-height:15px" aria-label="Thứ Sáu">Th 6-->
-                <!--                            </div>-->
-                <!--                            <div style="display:inline-block"><img style="margin:1px 4px 0;height:48px;width:48px"-->
-                <!--                                                                   alt="Mưa"-->
-                <!--                                                                   src="//ssl.gstatic.com/onebox/weather/48/rain.png"-->
-                <!--                                                                   data-atf="1"></div>-->
-                <!--                            <div style="font-weight:normal;line-height:15px;font-size:13px">-->
-                <!--                                <div class="vk_gy" style="display:inline-block;padding-right:5px"><span-->
-                <!--                                        class="wob_t" style="display:inline">29</span><span class="wob_t"-->
-                <!--                                                                                            style="display:none">84</span>°-->
-                <!--                                </div>-->
-                <!--                                <div class="vk_lgy" style="display:inline-block"><span class="wob_t"-->
-                <!--                                                                                       style="display:inline">25</span><span-->
-                <!--                                        class="wob_t" style="display:none">77</span>°-->
-                <!--                                </div>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                        <div class="wob_df"-->
-                <!--                             style="display:inline-block;line-height:1;text-align:center;-webkit-transition-duration:200ms,200ms,200ms;-webkit-transition-property:background-image,border,font-weight;font-weight:13px;height:90px;width:73px"-->
-                <!--                             data-wob-di="2" role="button" tabindex="0"-->
-                <!--                             data-ved="2ahUKEwib7sP-26PlAhWEM94KHZPPCw0Qi2soAjAAegQICxAM">-->
-                <!--                            <div class="vk_lgy" style="padding-top:7px;line-height:15px" aria-label="Thứ Bảy">Th 7-->
-                <!--                            </div>-->
-                <!--                            <div style="display:inline-block"><img style="margin:1px 4px 0;height:48px;width:48px"-->
-                <!--                                                                   alt="Mưa rào"-->
-                <!--                                                                   src="//ssl.gstatic.com/onebox/weather/48/rain_light.png"-->
-                <!--                                                                   data-atf="1"></div>-->
-                <!--                            <div style="font-weight:normal;line-height:15px;font-size:13px">-->
-                <!--                                <div class="vk_gy" style="display:inline-block;padding-right:5px"><span-->
-                <!--                                        class="wob_t" style="display:inline">29</span><span class="wob_t"-->
-                <!--                                                                                            style="display:none">84</span>°-->
-                <!--                                </div>-->
-                <!--                                <div class="vk_lgy" style="display:inline-block"><span class="wob_t"-->
-                <!--                                                                                       style="display:inline">24</span><span-->
-                <!--                                        class="wob_t" style="display:none">76</span>°-->
-                <!--                                </div>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                        <div class="wob_df"-->
-                <!--                             style="display:inline-block;line-height:1;text-align:center;-webkit-transition-duration:200ms,200ms,200ms;-webkit-transition-property:background-image,border,font-weight;font-weight:13px;height:90px;width:73px"-->
-                <!--                             data-wob-di="3" role="button" tabindex="0"-->
-                <!--                             data-ved="2ahUKEwib7sP-26PlAhWEM94KHZPPCw0Qi2soAzAAegQICxAN">-->
-                <!--                            <div class="vk_lgy" style="padding-top:7px;line-height:15px" aria-label="Chủ Nhật">CN-->
-                <!--                            </div>-->
-                <!--                            <div style="display:inline-block"><img style="margin:1px 4px 0;height:48px;width:48px"-->
-                <!--                                                                   alt="Mưa rào"-->
-                <!--                                                                   src="//ssl.gstatic.com/onebox/weather/48/rain_light.png"-->
-                <!--                                                                   data-atf="1"></div>-->
-                <!--                            <div style="font-weight:normal;line-height:15px;font-size:13px">-->
-                <!--                                <div class="vk_gy" style="display:inline-block;padding-right:5px"><span-->
-                <!--                                        class="wob_t" style="display:inline">28</span><span class="wob_t"-->
-                <!--                                                                                            style="display:none">83</span>°-->
-                <!--                                </div>-->
-                <!--                                <div class="vk_lgy" style="display:inline-block"><span class="wob_t"-->
-                <!--                                                                                       style="display:inline">24</span><span-->
-                <!--                                        class="wob_t" style="display:none">75</span>°-->
-                <!--                                </div>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                        <div class="wob_df"-->
-                <!--                             style="display:inline-block;line-height:1;text-align:center;-webkit-transition-duration:200ms,200ms,200ms;-webkit-transition-property:background-image,border,font-weight;font-weight:13px;height:90px;width:73px"-->
-                <!--                             data-wob-di="4" role="button" tabindex="0"-->
-                <!--                             data-ved="2ahUKEwib7sP-26PlAhWEM94KHZPPCw0Qi2soBDAAegQICxAO">-->
-                <!--                            <div class="vk_lgy" style="padding-top:7px;line-height:15px" aria-label="Thứ Hai">Th 2-->
-                <!--                            </div>-->
-                <!--                            <div style="display:inline-block"><img style="margin:1px 4px 0;height:48px;width:48px"-->
-                <!--                                                                   alt="Mây rải rác"-->
-                <!--                                                                   src="//ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"-->
-                <!--                                                                   data-atf="1"></div>-->
-                <!--                            <div style="font-weight:normal;line-height:15px;font-size:13px">-->
-                <!--                                <div class="vk_gy" style="display:inline-block;padding-right:5px"><span-->
-                <!--                                        class="wob_t" style="display:inline">29</span><span class="wob_t"-->
-                <!--                                                                                            style="display:none">84</span>°-->
-                <!--                                </div>-->
-                <!--                                <div class="vk_lgy" style="display:inline-block"><span class="wob_t"-->
-                <!--                                                                                       style="display:inline">23</span><span-->
-                <!--                                        class="wob_t" style="display:none">74</span>°-->
-                <!--                                </div>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-            </div>
-            <!--            <table class="table detailWeather" th:if="${currentWeather != null}">-->
-            <!--                <tr th:object="${currentWeather}">-->
-            <!--                    <td>-->
-            <!--                        <div class="icon-search">-->
-            <!--                                        <img class="icon-weather" th:src="'http://openweathermap.org/img/w/'+*{icon}+'.png'"-->
-            <!--                                             width="50"-->
-            <!--                                             height="50"></div>-->
-            <!--                    </td>-->
-            <!--                    <td>-->
-            <!--                        <div class="city-date-search">-->
-            <!--                            <b><a th:href="@{/weather-detail/__*{nameCity}__}"><p-->
-            <!--                                    th:text="*{nameCity}">-->
-            <!--                            </a></b>-->
-            <!--                            <p style="margin-top: -6px" th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>-->
-            <!--                        </div>-->
-            <!--                    </td>-->
-            <!--                    <td>-->
-            <!--                        <div class="property-search">-->
-            <!--                            <div class="badge badge-info"-->
-            <!--                                 th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>-->
-            <!--                            <b><i th:text="*{description}"></i></b>-->
-            <!--                            <p th:text="*{wind}+' m/s. '+*{humidity}+' %, '+*{pressure}+' hpa'">win humidity</p>-->
-            <!--                        </div>-->
-            <!--                    </td>-->
-            <!--                                <td th:switch="${status}">-->
-            <!--                                    <a class="btn btn-primary add" th:case="'add'"-->
-            <!--                                       th:href="@{/save-weather/__*{nameCity}__}"-->
-            <!--                                    >Add</a>-->
-            <!--                                    <a class="btn btn-warning" th:case="'update'"-->
-            <!--                                       th:href="@{/update-weather/__*{nameCity}__}"-->
-            <!--                                       style="margin: 10px 5px;">Update</a>-->
-            <!--                                </td>-->
-            <!--                </tr>-->
-            <!--                &lt;!&ndash;            </th:block>&ndash;&gt;-->
-            <!--            </table>-->
-        </div>
-    </div>
-
-    <div class="col-sm-6 history_weather" th:if="${listCities != null}">
-        <br>
-        <div class="col-sm-7"></div>
-        <h2 class="col-sm-12" style="text-align: center; font-size: 20px; margin-bottom: 3px">History Weather
-            Search</h2>
-        <div class="col-sm-12">
-            <!---728x90--->
-            <!--                        <div class="chung" style="width: 100%; background-color: #77829517;">-->
-            <!--                            <div class="cityList" th:each="weather1,i : ${listCities}"-->
-            <!--                                 th:attr="weather=${weather1.getNameCity()}">-->
-            <!--                                <div class="table-responsive">-->
-
-            <!--                                    <table class="table detailDB">-->
-            <!--                                        <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"-->
-            <!--                                                  th:attr="wtest=${ci.getNameCity()}">-->
-            <!--                                            <th:block th:each="w : ${ci}">-->
-            <!--                                                <tr class="detailDB" th:object="${w}"-->
-            <!--                                                    th:attr="city=${weather1.getNameCity()}">-->
-            <!--                                                    <div>-->
-            <!--                                                        <td>-->
-            <!--                                                            <img th:src="*{icon}" class="icon">-->
-            <!--                                                        </td>-->
-            <!--                                                        <td>-->
-            <!--                                                            <div class="city-date">-->
-            <!--                                                                <b><a th:href="@{/weather-detail/__*{nameCity}__}">-->
-            <!--                                                                    <p class="nameCity"-->
-            <!--                                                                       th:text="*{nameCity}"></p>-->
-            <!--                                                                </a></b>-->
-            <!--                                                                <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"-->
-            <!--                                                                   style="color: black"></p>-->
-            <!--                                                            </div>-->
-            <!--                                                        </td>-->
-            <!--                                                        <td>-->
-            <!--                                                            <div class="property">-->
-            <!--                                                                <div class="badge badge-info"-->
-            <!--                                                                     th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>-->
-            <!--                                                                <b><i th:text="*{description}" style="color: black"></i></b>-->
-            <!--                                                                <p style="margin-top: 10px; color: black"-->
-            <!--                                                                   th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">-->
-            <!--                                                            </div>-->
-            <!--                                                        </td>-->
-            <!--                                                        <td><a class="text-info"-->
-            <!--                                                               th:href="@{/delete-weather/__*{weatherId}__}"-->
-            <!--                                                               onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"-->
-            <!--                                                               title="Xóa Lead">-->
-            <!--                                                            <i class="glyphicon glyphicon-trash"-->
-            <!--                                                               style="color: red; margin-left: -20px;"></i>-->
-            <!--                                                        </a></td>-->
-            <!--                                                    </div>-->
-            <!--                                                </tr>-->
-            <!--                                            </th:block>-->
-            <!--                                        </th:block>-->
-            <!--                                    </table>-->
-            <!--                                    <div class="show-more" th:if="${weatherList0.get(i.index).size() > 1}"-->
-            <!--                                         th:attr="show=${weather1.getNameCity()}" style="font-size: 15px">Show more-->
-            <!--                                    </div>-->
-            <!--                                </div>-->
-            <!--                            </div>-->
-            <!--                        </div>-->
-            <div class="container ltr" lang="en" dir="ltr">
-
-                <div class="forecast next-7-days container">
-                    <div class="daily">
-                        <div class="cityList" th:each="weather1,i : ${listCities}"
-                             th:attr="weather=${weather1.getNameCity()}">
-                            <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"
-                                      th:attr="wtest=${ci.getNameCity()}">
-                                <th:block th:each="w : ${ci}">
-                                    <div class="day" th:object="${w}"
-                                         th:attr="city=${weather1.getNameCity()}">
-                                        <div class="main-data row">
-                                            <div class="col">
-                                                <div class="time" style="margin-top: 5px"
-                                                     th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></div>
+                                                <span class="wob_t" id="wob_ttm" style="display:none">82</span>
                                             </div>
-                                            <div class="col">
-                                                <div class="icon">
-                                                    <div class="w-icon iconvault rain">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
-                                                             enable-background="new 0 0 300 300">
-                                                            <img th:src="*{icon}" width="50"
-                                                                 height="50">
-                                                        </svg>
-                                                    </div>
-                                                </div>
+                                            <div class="vk_bk wob-unit"
+                                                 style="float:left;font-size:16px;margin-top:6px"><span
+                                                    class="wob_t" style="display:inline" aria-label="°Celsius"
+                                                    aria-disabled="true"
+                                                    role="button">°C</span><a class="wob_t" href="#"
+                                                                              style="display:none;text-decoration:none"
+                                                                              data-lams=""
+                                                                              data-metric="true"
+                                                                              data-url="/setprefs?fheit=0&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
+                                                                              role="button" jsaction="wob.t"
+                                                                              data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-lswAHoECAwQAQ"><span
+                                                    aria-label="°Celsius">°C</span></a>&nbsp;|&nbsp;<a class="wob_t"
+                                                                                                       href="#"
+                                                                                                       style="display:inline;text-decoration:none;margin-left:-1px"
+                                                                                                       data-lams=""
+                                                                                                       data-metric="false"
+                                                                                                       data-url="/setprefs?fheit=1&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
+                                                                                                       role="button"
+                                                                                                       jsaction="wob.t"
+                                                                                                       data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-1swAHoECAwQAg"><span
+                                                    aria-label="°Fahrenheit">°F</span></a> <span class="wob_t"
+                                                                                                 style="display:none;margin-left:-1px"
+                                                                                                 aria-label="°Fahrenheit"
+                                                                                                 aria-disabled="true"
+                                                                                                 role="button">°F</span>
                                             </div>
-                                            <div class="col">
-                                                <div class="temp">
-                                                    <span class="hiTemp"
-                                                          th:text="*{#numbers.formatDecimal(temp,2,2)}+'°С'"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="summary"><span th:text="*{description}"></span></div>
-                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vk_gy vk_sh wob-dtl">
+                                        <div>Áp suất: <span id="wob_pp" th:text="*{pressure}+' hpa'"></span></div>
+                                        <div>Độ ẩm: <span id="wob_hm" th:text="*{humidity}+' %'"></span></div>
+                                        <div>Gió: <span><span class="wob_t" id="wob_ws" th:text="*{wind}+' m/s'"></span></span>
                                         </div>
 
                                     </div>
-                                </th:block>
-                            </th:block>
+
+                                </div>
+
+                            </div>
+                            <div style="clear:both"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
+        <!--/span-->
+        <!-- left menu ends -->
+        <!-- History Weather-->
+        <div id="content" class="col-lg-6 col-sm-6">
+            <div class="row">
+                <div class="box col-md-12">
+                    <!--                    <div class="box-inner">-->
+                    <!--                        <div class="box-header well" data-original-title="">-->
+                    <!--                            <h2><i class="glyphicon glyphicon-folder-close"></i> History Weather</h2>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="box-content">-->
+                    <!--                            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">-->
+                    <!--                                <tbody>-->
+                    <!--                                <tr th:each="user,iterStat : ${listUsers}" th:data-id="${user.id}">-->
+                    <!--                                    <td class="center" th:text="${user.firstName}"></td>-->
+                    <!--                                    <td class="center" th:text="${user.email}"></td>-->
+                    <!--                                    <td class="center"><input class="checkbox1" type="checkbox"-->
+                    <!--                                                              th:checked="${user.active}">-->
+                    <!--                                    </td>-->
+                    <!--                                    <td class="center">-->
+                    <!--                                        <div class="input-group mb-3">-->
+                    <!--                                            <select class="role" id="inputGroupSelect02">-->
+                    <!--                                                <option th:each="item : ${user.roleName}"-->
+                    <!--                                                        th:utext="${item.roleName}"-->
+                    <!--                                                        th:value="${item.roleName}">-->
+                    <!--                                                <option th:each="item : ${user.roleName}" th:utext="ROLE_ADMIN"-->
+                    <!--                                                        th:if="${item.roleName == 'ROLE_USER'}"-->
+                    <!--                                                        value="ROLE_ADMIN"></option>-->
+                    <!--                                                <option th:each="item : ${user.roleName}" th:utext="ROLE_USER"-->
+                    <!--                                                        th:if="${item.roleName == 'ROLE_ADMIN'}"-->
+                    <!--                                                        value="ROLE_USER"></option>-->
+                    <!--                                            </select>-->
+                    <!--                                        </div>-->
+                    <!--                                    </td>-->
+                    <!--                                    <td class="center">-->
+                    <!--                                        <a class="btn btn-danger" th:href="@{/admin/delete/__${user.id}__}"-->
+                    <!--                                           onclick="return confirm('Do you want to delete this account?')"-->
+                    <!--                                           title="Xóa Lead"-->
+                    <!--                                        > <i class="glyphicon glyphicon-trash icon-white"></i>-->
+                    <!--                                            Delete</a>-->
+                    <!--                                    </td>-->
+                    <!--                                </tr>-->
 
+                    <!--                                </tbody>-->
+                    <!--                            </table>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <div class="box-inner chung">
+                        <div class="box-header well" data-original-title="">
+                            <h2><i class="glyphicon glyphicon-folder-close"></i> History Weather</h2>
+                        </div>
+                        <div class="cityList" th:each="weather1,i : ${listCities}"
+                             th:attr="weather=${weather1.getNameCity()}">
+                            <table class="table table-striped">
+                                <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"
+                                          th:attr="wtest=${ci.getNameCity()}">
+                                    <th:block th:each="w : ${ci}">
+                                        <tr class="detailDB" th:object="${w}"
+                                            th:attr="city=${weather1.getNameCity()}">
+                                            <div>
+                                                <td>
+                                                    <img th:src="*{icon}" class="icon">
+                                                </td>
+                                                <td>
+                                                    <div class="city-date">
+                                                        <b><a th:href="@{/weather-detail/__*{nameCity}__}">
+                                                            <p class="nameCity"
+                                                               th:text="*{nameCity}"></p>
+                                                        </a></b>
+                                                        <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"
+                                                           style="color: black"></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="property">
+                                                        <div class="badge badge-info"
+                                                             th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>
+                                                        <b><i th:text="*{description}" style="color: black"></i></b>
+                                                        <p style="margin-top: 10px; color: black"
+                                                           th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">
+                                                    </div>
+                                                </td>
+                                                <td><a class="text-info"
+                                                       th:href="@{/delete-weather/__*{weatherId}__}"
+                                                       onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"
+                                                       title="Xóa Lead">
+                                                    <i class="glyphicon glyphicon-minus-sign"
+                                                       style="color: red"></i>
+                                                </a></td>
+                                            </div>
+                                        </tr>
+                                    </th:block>
+                                </th:block>
+                            </table>
+                            <div class="show-more" th:if="${weatherList0.get(i.index).size() > 1}"
+                                 th:attr="show=${weather1.getNameCity()}" style="font-size: 15px">Show more
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div><!--/row-->
+            <!-- content ends -->
+        </div><!--/#content.col-md-0-->
+    </div><!--/fluid-row-->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-<!--<div class="row">-->
-<!--    <div class="col-md-9 col-lg-9 col-xs-9 hidden-xs">-->
-<!--        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-<!--        &lt;!&ndash; Charisma Demo 2 &ndash;&gt;-->
-<!--        <ins class="adsbygoogle"-->
-<!--             style="display:inline-block;width:728px;height:90px"-->
-<!--             data-ad-client="ca-pub-5108790028230107"-->
-<!--             data-ad-slot="3193373905"></ins>-->
-<!--        <script>-->
-<!--            (adsbygoogle = window.adsbygoogle || []).push({});-->
-<!--        </script>-->
-<!--    </div>-->
-<!--</div>-->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</div><!--/.fluid-container-->
 
+<!-- external javascript -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- library for cookie management -->
 <script src="js/jquery.cookie.js"></script>
-<!-- calender plugin -->
-<script src='bower_components/moment/min/moment.min.js'></script>
-<script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
-<!-- data table plugin -->
-<script src='js/jquery.dataTables.min.js'></script>
-
-<!-- select or dropdown enhancer -->
 <script src="bower_components/chosen/chosen.jquery.min.js"></script>
 <!-- plugin for gallery image view -->
 <script src="bower_components/colorbox/jquery.colorbox-min.js"></script>
@@ -1468,6 +611,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="js/charisma.js"></script>
+
 
 <script>
     if ($('.cityList').length > 1) {

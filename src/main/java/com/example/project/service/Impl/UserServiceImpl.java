@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
-        Roles userRole = roleRepository.findByRoleName("ROLE_USER");
+        Roles userRole = roleRepository.findByRoleName("ROLE_USER").get();
         user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername(accountDto.getUsername());
         user.setEmail(accountDto.getEmail());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
-        Roles userRole = roleRepository.findByRoleName("ROLE_USER");
+        Roles userRole = roleRepository.findByRoleName("ROLE_USER").get();
         user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
         user.setActive(true);
         return userRepository.save(user);
@@ -96,17 +96,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editRoleUser(Long id, String roleName) {
         Optional<User> user = userRepository.findById(id);
-        Roles role = roleRepository.findByRoleName(roleName);
+        Roles role = roleRepository.findByRoleName(roleName).get();
         if (role.getRoleName().equals("ROLE_ADMIN")) {
             HashSet<Roles> roles = new HashSet<>();
-            roles.add(roleRepository.findByRoleName("ROLE_ADMIN"));
+            roles.add(roleRepository.findByRoleName("ROLE_ADMIN").get());
             roles.remove(roleRepository.findByRoleName("ROLE_USER"));
             user.get().setRoleName(roles);
             userRepository.save(user.get());
         } else if (role.getRoleName().equals("ROLE_USER")) {
             HashSet<Roles> roles = new HashSet<>();
             roles.remove(roleRepository.findByRoleName("ROLE_ADMIN"));
-            roles.add(roleRepository.findByRoleName("ROLE_USER"));
+            roles.add(roleRepository.findByRoleName("ROLE_USER").get());
             user.get().setRoleName(roles);
             userRepository.save(user.get());
         }

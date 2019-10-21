@@ -111,7 +111,7 @@ select {
 
 .box {
     /*margin-top: 10px;*/
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
 }
 
 .box-inner {
@@ -190,7 +190,7 @@ select {
 }
 
 .box-content {
-    padding: 10px;
+    padding: 2px;
 }
 
 .btn-round {
@@ -559,7 +559,9 @@ ul.github-buttons li {
 
     .sidebar-nav .nav-canvas {
         top: -20px;
-        left: -90%;
+        /*left: -90%;*/
+        left: -120%;
+
         position: absolute;
         width: 80%;
         z-index: 2;
@@ -669,7 +671,9 @@ ul.github-buttons li {
 
     .sidebar-nav .nav-canvas {
         top: -20px;
-        left: -90%;
+        /*left: -90%;*/
+        left: -255%;
+
         position: absolute;
         width: 80%;
         z-index: 2;

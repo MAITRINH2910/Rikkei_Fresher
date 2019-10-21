@@ -4,11 +4,15 @@ import com.example.project.entity.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * Role Repository connect to Database
  */
 @Repository
 public interface RoleRepository extends JpaRepository<Roles, Long> {
 
-    Roles findByRoleName(String roleName);
+//    Roles findByRoleName(String roleName);
+
+    Optional<Roles> findByRoleName(String roleName);
 }

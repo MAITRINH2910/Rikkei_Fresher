@@ -445,7 +445,7 @@ div#txt {
     }
 
     div#txt {
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     .w3ls-bottom {
@@ -511,7 +511,7 @@ div#txt {
 
 @media (max-width: 736px) {
     div#txt {
-        font-size: 1.6em;
+        font-size: 1.3em;
     }
 }
 
@@ -682,7 +682,7 @@ div#txt {
     }
 
     div#txt {
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
 
     .date {
