@@ -1,329 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<th:block th:replace="layouts/main_layout :: layout"></th:block>
 
-    <meta charset="utf-8">
-    <title>Table Users</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
-    <meta name="author" content="Muhammad Usman">
-
-    <!-- The styles -->
-    <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
-
-    <link href="css/charisma-app.css" rel="stylesheet">
-    <link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='bower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='css/jquery.noty.css' rel='stylesheet'>
-    <link href='css/noty_theme_default.css' rel='stylesheet'>
-    <link href='css/elfinder.min.css' rel='stylesheet'>
-    <link href='css/elfinder.theme.css' rel='stylesheet'>
-    <link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='css/uploadify.css' rel='stylesheet'>
-    <link href='css/animate.min.css' rel='stylesheet'>
-
-    <!-- jQuery -->
-    <script src="bower_components/jquery/jquery.min.js"></script>
-
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <style>
-        /*---- responsive-design -----*/
-        @media (max-width: 1440px) {
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                margin-top: 0px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 1366px) {
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: -5px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 1280px) {
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                margin-top: -65px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 1080px) {
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 0px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 75px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 70px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 800px) {
-            #wob_d {
-                padding: 0px 0 0 !important;
-            }
-
-            h1 {
-                font-size: 2.8em;
-            }
-
-            .vk_gy {
-                float: right;
-                line-height: 22px;
-                padding-top: 90px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 2.6em;
-            }
-
-            .weather-grids h2 {
-                font-size: 2.8em;
-            }
-
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 50px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2em;
-            }
-
-            .weather-grids h3 {
-                font-size: 1.3em;
-            }
-
-            .weather-grids h2 {
-                font-size: 2.5em;
-            }
-
-            .weather-grids h4 {
-                font-size: 0.8em;
-            }
-
-            .weather-bottom h5 {
-                font-size: 1.1em;
-            }
-
-            .weather-bottom h6 {
-                font-size: 0.9em;
-            }
-
-            .copyright p {
-                font-size: 1em;
-            }
-
-            .main {
-                padding: 0em 0 0;
-            }
-
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 70px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 414px) {
-
-            .weather-bottom h4 {
-                font-size: 0.9em;
-            }
-
-            canvas#clear-day {
-                width: 60px;
-                height: 60px;
-            }
-
-            .weather-bottom canvas {
-                width: 30px;
-                height: 30px;
-            }
-
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 95px;
-                min-width: 43%;
-            }
-            .sol-tmp{
-                margin-top: 5px;
-            }
-        }
-
-        @media (max-width: 375px) {
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .main {
-                padding: 0em 0 0;
-            }
-
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 85px;
-                min-width: 43%;
-            }
-        }
-
-        @media (max-width: 320px) {
-            h1 {
-                font-size: 1.6em;
-            }
-
-            #wob_d {
-                padding: 5px 0 0 !important;
-            }
-
-            .weather-grids h2 {
-                font-size: 2em;
-            }
-
-            .weather-grids h4 {
-                font-size: 0.7em;
-            }
-
-            .weather-grids h3 {
-                font-size: 1.1em;
-            }
-
-            canvas#clear-day {
-                width: 55px;
-                height: 55px;
-            }
-
-            .weather-bottom canvas {
-                width: 20px;
-                height: 20px;
-            }
-
-            .weather-bottom ul li {
-                width: 19.5%;
-                padding: 0.5em 0;
-            }
-
-            .weather-bottom h5 {
-                font-size: 0.9em;
-            }
-
-            .weather-bottom h6 {
-                font-size: 0.8em;
-            }
-
-            .vk_gy {
-                float: right;
-                padding-left: 55px;
-                line-height: 22px;
-                padding-top: 80px;
-                min-width: 43%;
-            }
-        }
-
-        /*--//responsive-design---*/
-    </style>
-    <!-------------------- Cur_Local----------------->
-    <script>
-        $(document).ready(function () {
-
-            var x = document.getElementById("demo");
-            if (navigator.geolocation) {
-
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-
-            function showPosition(position) {
-
-                var lat = position.coords.latitude;
-                var lon = position.coords.longitude;
-
-                $.ajax({
-                    url: "/forecast-current",
-                    type: "GET",
-                    data: {
-                        lat: lat,
-                        lon: lon
-                    },
-                    success: function (value) {
-                        var weHTML = '<span>' + value.main.temp + '</span>';
-                        var icon = '<span><img class="weather-widget__img" src="https://openweathermap.org/img/wn/'
-                            + value.weather[0].icon + '.png"  width="100" height="100"></span>';
-                        var city = '<span>' + value.name + '</span>';
-                        $('#city').append(city);
-                        $('.agileinfo-top-img').append(icon);
-                        $('#temparature').append(weHTML + "°C");
-                    }
-                })
-            }
-        });
-    </script>
-    <!--   Ends Cur_local-->
-</head>
-
-<body>
+<body onload="startTime()">
 <!-- topbar starts -->
 <div class="navbar navbar-default" role="navigation">
 
     <div class="navbar-inner">
-        <a class="navbar-brand" th:href="@{/}"> <img alt="Charisma Logo" src="img/1.png"/>
-            <span class="hidden-xs">Ur-Weather</span></a>
+        <a class="navbar-brand" th:href="@{/}"> <img alt="Charisma Logo" src="img/logo10.png"/>
+            <span class="hidden-xs"></span></a>
         <div class="search_form" style="float: left">
             <form th:action="@{/search-city}" method="get">
-                <input type="text" class="form-control" name="city" placeholder="Search Location"
+                <input type="text" class="form-control" name="cityName" placeholder="Search Location"
                        style="text-align: left">
                 <div class="input-group-append" style="text-align: right">
                     <button class="btn btn-secondary" type="submit"
@@ -337,12 +25,19 @@
         <!-- user dropdown starts -->
         <div class="btn-group pull-right">
             <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> Admin</span>
+                <i class="glyphicon glyphicon-user"
+                   th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}"><span
+                        class="hidden-sm hidden-xs"
+                >Admin</span></i>
+                <i class="glyphicon glyphicon-user"
+                   th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}"><span class="hidden-sm hidden-xs"
+                > User</span></i>
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
-                    <a th:href="@{/admin}">History Weather Search</a>
+                <li class="nav-item"
+                    th:if="${#authorization.expression('hasRole(''ROLE_USER'')') && #authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+                    <a th:href="@{/admin}">Your Profile</a>
                 </li>
                 <li class="nav-item" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                     <a th:href="@{/admin}">Management</a>
@@ -356,8 +51,8 @@
 <!-- topbar ends -->
 <div class="ch-container">
     <div class="row">
-        <br>
         <!-- left menu starts -->
+        <br>
         <div class="col-sm-1 col-lg-1"></div>
         <div class="col-sm-5 col-lg-5">
             <div class="nav-canvas">
@@ -371,17 +66,125 @@
                             <h3 class="message" th:text="${message}"></h3></div>
                     </div>
                     <!--Current Location Weather-->
-                    <div class="main cur_local" th:if="${currentWeather == null && message ==null}"></div>
+                    <div class="main cur_local" th:if="${currentWeather == null && message ==null}">
+                        <div class="frame" style="width: 100%; height: 400px; border-width: 1px;
+                                    border-style: solid;border-radius: 5px; border-color: #d7cece;
+                                    padding: 20px 16px 24px 16px;
+background-image: url('../../img/blue_mountains.jpg');background-repeat: no-repeat;
+background-size: 100% 411px;
+">
+<!--                            <div style="background-color: #d3d3d34d; height: 360px">-->
+                            <span role="heading">
+                                <br><br>
+                                    <div class="local"
+                                         style="font-size: x-large !important; color: #878787 !important;">
+                                        <a th:href="@{/weather-detail/__*{nameCity}__}"><p
+                                                th:text="*{nameCity}">
+                            </a>
+                                    </div>
+                                    <div class="dateNow"
+                                         style="font-size: medium !important; color: #878787 !important; margin-top: 15px">
+                                    <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"></p>
+                                    </div>
+                                    <div class="descript" style="margin-top: 15px"><span><i
+                                            th:text="*{description}"></i></span></div>
+                                    <div class="action" style="float: right">
+
+                                    </div>
+                            </span>
+                                <div style="font:16px arial,helvetica,sans-serif;padding:0px 0 0;-webkit-touch-callout:none;-webkit-user-select:none;">
+                                    <div class="left_side" style="float: left">
+                                        <div class="vk_bk date-time" style="margin-top: 15px">
+                                            <div class="dmy">
+                                                <div class="date">
+                                                    <!-- Date-JavaScript -->
+                                                    <script type="text/javascript">
+                                                        var mydate = new Date()
+                                                        var year = mydate.getYear()
+                                                        if (year < 1000)
+                                                            year += 1900
+                                                        var day = mydate.getDay()
+                                                        var month = mydate.getMonth()
+                                                        var daym = mydate.getDate()
+                                                        if (daym < 10)
+                                                            daym = "0" + daym
+                                                        var dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+                                                        var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+                                                        document.write("" + dayarray[day] + ", " + montharray[month] + " " + daym + ", " + year + "")
+                                                    </script>
+                                                    <!-- //Date-JavaScript -->
+                                                </div>
+                                                <div id="txt"></div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <br>
+
+                                        <div class="vk_gy vk_sh wob-dtl"></div>
+                                    </div>
+
+                                    <div class="right_side">
+                                        <div class="vk_bk sol-tmp" style="float: right">
+                                            <span class="wob_t" id="temparature" style="display:inline"></span>
+                                        </div>
+                                        <div aria-level="3" role="heading">
+                                            <div class="vk_bk wob-unit" id="celci"
+                                                 style="float:left"><span
+                                                    class="wob_t" style="display:inline"
+                                                    aria-label="°Celsius"
+                                                    aria-disabled="true"
+                                                    role="button">°C</span><a class="wob_t" href="#"
+                                                                              style="display:none;text-decoration:none"
+                                                                              data-lams=""
+                                                                              data-metric="true"
+                                                                              data-url="/setprefs?fheit=0&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
+                                                                              role="button" jsaction="wob.t"
+                                                                              data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-lswAHoECAwQAQ"><span
+                                                    aria-label="°Celsius">°C</span></a>&nbsp;|&nbsp;<a
+                                                    class="wob_t"
+                                                    href="#"
+                                                    style="display:inline;text-decoration:none;margin-left:-1px"
+                                                    data-lams=""
+                                                    data-metric="false"
+                                                    data-url="/setprefs?fheit=1&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
+                                                    role="button"
+                                                    jsaction="wob.t"
+                                                    data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-1swAHoECAwQAg"><span
+                                                    aria-label="°Fahrenheit">°F</span></a> <span
+                                                    class="wob_t"
+                                                    style="display:none;margin-left:-1px"
+                                                    aria-label="°Fahrenheit"
+                                                    aria-disabled="true"
+                                                    role="button">°F</span>
+                                            </div>
+                                        </div>
+                                        <div id="icon_test" class="test123"></div>
+                                        <div id="descript_local"></div>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <div class="noidung">
+                                        <div> Min Temparature: <span id="tempMin_local"></span></div>
+                                        <div> Max Temparature: <span id="tempMax_local"></span></div>
+                                        <div> Pressure: <span id="pressure_local"></span></div>
+                                        <div> Humidity: <span id="humidity_local"></span></div>
+                                        <div> Wind: <span id="wind_local"></span></div>
+                                    </div>
+                                </div>
+<!--                            </div>-->
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
                     <!--Search Weather-->
                     <div class="main search_wea" th:if="${currentWeather != null}">
-                        <div class="frame" th:object="${currentWeather}" style="width: 100%; height: 400px; border-width: 1px; border-style: solid;border-radius: 15px; border-color: #d7cece;
+                        <div class="frame" th:object="${currentWeather}" style="width: 100%; height: 400px; border-width: 1px; border-style: solid;border-radius: 5px; border-color: #d7cece;
     padding: 20px 16px 24px 16px;
 " ;>
                 <span role="heading">
                     <br><br>
                         <div class="local" style="font-size: x-large !important; color: #878787 !important;">
                     <a th:href="@{/weather-detail/__*{nameCity}__}"><p
-                            th:text="*{nameCity}">
+                            th:text="*{nameCity}" th:value="${param.cityName}">
                             </a>
                     </div>
                         <div class="dateNow"
@@ -410,12 +213,14 @@
                                             <div class="vk_bk sol-tmp"
                                                  style="float:left;margin-top:-3px;font-size:50px">
                                     <span class="wob_t" id="wob_tm" style="display:inline"
-                                          th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}"></span>
-                                                <span class="wob_t" id="wob_ttm" style="display:none">82</span>
+                                          th:text="*{temp}"></span>
+                                                <span class="wob_t" id="wob_ttm"
+                                                      style="display:none">82</span>
                                             </div>
                                             <div class="vk_bk wob-unit"
                                                  style="float:left;font-size:16px;margin-top:6px"><span
-                                                    class="wob_t" style="display:inline" aria-label="°Celsius"
+                                                    class="wob_t" style="display:inline"
+                                                    aria-label="°Celsius"
                                                     aria-disabled="true"
                                                     role="button">°C</span><a class="wob_t" href="#"
                                                                               style="display:none;text-decoration:none"
@@ -424,27 +229,32 @@
                                                                               data-url="/setprefs?fheit=0&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
                                                                               role="button" jsaction="wob.t"
                                                                               data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-lswAHoECAwQAQ"><span
-                                                    aria-label="°Celsius">°C</span></a>&nbsp;|&nbsp;<a class="wob_t"
-                                                                                                       href="#"
-                                                                                                       style="display:inline;text-decoration:none;margin-left:-1px"
-                                                                                                       data-lams=""
-                                                                                                       data-metric="false"
-                                                                                                       data-url="/setprefs?fheit=1&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
-                                                                                                       role="button"
-                                                                                                       jsaction="wob.t"
-                                                                                                       data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-1swAHoECAwQAg"><span
-                                                    aria-label="°Fahrenheit">°F</span></a> <span class="wob_t"
-                                                                                                 style="display:none;margin-left:-1px"
-                                                                                                 aria-label="°Fahrenheit"
-                                                                                                 aria-disabled="true"
-                                                                                                 role="button">°F</span>
+                                                    aria-label="°Celsius">°C</span></a>&nbsp;|&nbsp;<a
+                                                    class="wob_t"
+                                                    href="#"
+                                                    style="display:inline;text-decoration:none;margin-left:-1px"
+                                                    data-lams=""
+                                                    data-metric="false"
+                                                    data-url="/setprefs?fheit=1&amp;sig=0_mbZMdjB5rj8mIQKxwwtGp6YovTA=&amp;prev=https://www.google.com/search%3Fq%3Dweather%26oq%3Dweather%26aqs%3Dchrome..69i57j69i60l5.3792j1j4%26sourceid%3Dchrome%26ie%3DUTF-8"
+                                                    role="button"
+                                                    jsaction="wob.t"
+                                                    data-ved="2ahUKEwjcj4Xan6PlAhXCQN4KHQImBKIQ-1swAHoECAwQAg"><span
+                                                    aria-label="°Fahrenheit">°F</span></a> <span
+                                                    class="wob_t"
+                                                    style="display:none;margin-left:-1px"
+                                                    aria-label="°Fahrenheit"
+                                                    aria-disabled="true"
+                                                    role="button">°F</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="vk_gy vk_sh wob-dtl">
-                                        <div>Áp suất: <span id="wob_pp" th:text="*{pressure}+' hpa'"></span></div>
-                                        <div>Độ ẩm: <span id="wob_hm" th:text="*{humidity}+' %'"></span></div>
-                                        <div>Gió: <span><span class="wob_t" id="wob_ws" th:text="*{wind}+' m/s'"></span></span>
+                                        <div>Pressure: <span id="wob_pp" th:text="*{pressure}+' hpa'"></span>
+                                        </div>
+                                        <div>Humidity: <span id="wob_hm" th:text="*{humidity}+' %'"></span>
+                                        </div>
+                                        <div>Wind: <span><span class="wob_t" id="wob_ws"
+                                                               th:text="*{wind}+' m/s'"></span></span>
                                         </div>
 
                                     </div>
@@ -458,103 +268,65 @@
                 </div>
             </div>
         </div>
-        <br>
-        <!--/span-->
         <!-- left menu ends -->
+
+        <!-- right page starts-->
         <!-- History Weather-->
         <div id="content" class="col-lg-6 col-sm-6">
             <div class="row">
-                <div class="box col-md-12">
-                    <!--                    <div class="box-inner">-->
-                    <!--                        <div class="box-header well" data-original-title="">-->
-                    <!--                            <h2><i class="glyphicon glyphicon-folder-close"></i> History Weather</h2>-->
-                    <!--                        </div>-->
-                    <!--                        <div class="box-content">-->
-                    <!--                            <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">-->
-                    <!--                                <tbody>-->
-                    <!--                                <tr th:each="user,iterStat : ${listUsers}" th:data-id="${user.id}">-->
-                    <!--                                    <td class="center" th:text="${user.firstName}"></td>-->
-                    <!--                                    <td class="center" th:text="${user.email}"></td>-->
-                    <!--                                    <td class="center"><input class="checkbox1" type="checkbox"-->
-                    <!--                                                              th:checked="${user.active}">-->
-                    <!--                                    </td>-->
-                    <!--                                    <td class="center">-->
-                    <!--                                        <div class="input-group mb-3">-->
-                    <!--                                            <select class="role" id="inputGroupSelect02">-->
-                    <!--                                                <option th:each="item : ${user.roleName}"-->
-                    <!--                                                        th:utext="${item.roleName}"-->
-                    <!--                                                        th:value="${item.roleName}">-->
-                    <!--                                                <option th:each="item : ${user.roleName}" th:utext="ROLE_ADMIN"-->
-                    <!--                                                        th:if="${item.roleName == 'ROLE_USER'}"-->
-                    <!--                                                        value="ROLE_ADMIN"></option>-->
-                    <!--                                                <option th:each="item : ${user.roleName}" th:utext="ROLE_USER"-->
-                    <!--                                                        th:if="${item.roleName == 'ROLE_ADMIN'}"-->
-                    <!--                                                        value="ROLE_USER"></option>-->
-                    <!--                                            </select>-->
-                    <!--                                        </div>-->
-                    <!--                                    </td>-->
-                    <!--                                    <td class="center">-->
-                    <!--                                        <a class="btn btn-danger" th:href="@{/admin/delete/__${user.id}__}"-->
-                    <!--                                           onclick="return confirm('Do you want to delete this account?')"-->
-                    <!--                                           title="Xóa Lead"-->
-                    <!--                                        > <i class="glyphicon glyphicon-trash icon-white"></i>-->
-                    <!--                                            Delete</a>-->
-                    <!--                                    </td>-->
-                    <!--                                </tr>-->
-
-                    <!--                                </tbody>-->
-                    <!--                            </table>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                <div class="box col-md-12" th:if="${listCities != null}">
                     <div class="box-inner chung">
                         <div class="box-header well" data-original-title="">
                             <h2><i class="glyphicon glyphicon-folder-close"></i> History Weather</h2>
                         </div>
-                        <div class="cityList" th:each="weather1,i : ${listCities}"
-                             th:attr="weather=${weather1.getNameCity()}">
-                            <table class="table table-striped">
-                                <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"
-                                          th:attr="wtest=${ci.getNameCity()}">
-                                    <th:block th:each="w : ${ci}">
-                                        <tr class="detailDB" th:object="${w}"
-                                            th:attr="city=${weather1.getNameCity()}">
-                                            <div>
-                                                <td>
+                        <div class="cover" style="overflow: auto; height: 363px">
+                            <div class="cityList" th:each="weather1,i : ${listCities}"
+                                 th:attr="weather=${weather1.getNameCity()}">
+                                <table class="table table-striped">
+                                    <th:block class="listCities" th:each="ci : ${weatherList0.get(i.index)}"
+                                              th:attr="wtest=${ci.getNameCity()}">
+                                        <th:block th:each="w : ${ci}">
+                                            <tr class="detailDB" th:object="${w}"
+                                                th:attr="city=${weather1.getNameCity()}">
+                                                <td class="icon_rps">
                                                     <img th:src="*{icon}" class="icon">
                                                 </td>
-                                                <td>
-                                                    <div class="city-date">
-                                                        <b><a th:href="@{/weather-detail/__*{nameCity}__}">
-                                                            <p class="nameCity"
-                                                               th:text="*{nameCity}"></p>
-                                                        </a></b>
-                                                        <p th:text="*{#calendars.format(date, 'dd-MM-yyyy')}"
-                                                           style="color: black"></p>
-                                                    </div>
+                                                <td class="city_rps">
+                                                    <!--                                                        <div class="city-date">-->
+                                                    <b><a th:href="@{/weather-detail/__*{nameCity}__}">
+                                                        <p class="nameCity"
+                                                           th:text="*{nameCity}"></p>
+                                                    </a></b>
+                                                    <p th:text="*{#dates.format(date, 'dd-MM-yyyy')}"
+                                                       style="color: black"></p>
+                                                    <!--                                                        </div>-->
                                                 </td>
-                                                <td>
-                                                    <div class="property">
-                                                        <div class="badge badge-info"
-                                                             th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'°С'"></div>
-                                                        <b><i th:text="*{description}" style="color: black"></i></b>
-                                                        <p style="margin-top: 10px; color: black"
-                                                           th:text="*{wind}+'m/s. '+ *{humidity}+'%. '+*{pressure}+'hpa. '">
-                                                    </div>
+                                                <td class="temp_rps">
+                                                    <!--                                                        <div class="property">-->
+                                                    <div class="badge badge-info"
+                                                         th:text="*{temp}+'°С'"></div>
+                                                    <b><i id="descript_rps" th:text="*{description}"
+                                                          style="color: black"></i></b>
+                                                    <p style="color: black" class="general_rps"
+                                                       th:text="*{wind}+'m/s &nbsp;  '+ *{humidity}+'% &nbsp; '+*{pressure}+'hpa. '">
+                                                        <!--                                                        </div>-->
                                                 </td>
                                                 <td><a class="text-info"
                                                        th:href="@{/delete-weather/__*{weatherId}__}"
-                                                       onclick="return confirm('Bạn có muốn xoá dữ liệu này hay không?')"
-                                                       title="Xóa Lead">
+                                                       onclick="return confirm('Do you want to delete this record?')"
+                                                       title="Delete Weather">
                                                     <i class="glyphicon glyphicon-minus-sign"
                                                        style="color: red"></i>
                                                 </a></td>
-                                            </div>
-                                        </tr>
+                                            </tr>
+                                        </th:block>
                                     </th:block>
-                                </th:block>
-                            </table>
-                            <div class="show-more" th:if="${weatherList0.get(i.index).size() > 1}"
-                                 th:attr="show=${weather1.getNameCity()}" style="font-size: 15px">Show more
+                                </table>
+                                <div class="show-more" th:if="${weatherList0.get(i.index).size() > 1}"
+                                     th:attr="show=${weather1.getNameCity()}"
+                                     style="font-size: 15px; text-align: center; background: #c6c6db61;color:#317eac;margin-top: -10px; margin-bottom: 5px ">
+                                    <b>Show more</b>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -562,57 +334,10 @@
                 <!--/span-->
             </div><!--/row-->
             <!-- content ends -->
-        </div><!--/#content.col-md-0-->
-    </div><!--/fluid-row-->
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h3>Settings</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Here settings can be configured...</p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
-                </div>
-            </div>
         </div>
-    </div>
+        <!-- right page ends-->
+    </div><!--/fluid-row-->
 </div><!--/.fluid-container-->
-
-<!-- external javascript -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- library for cookie management -->
-<script src="js/jquery.cookie.js"></script>
-<script src="bower_components/chosen/chosen.jquery.min.js"></script>
-<!-- plugin for gallery image view -->
-<script src="bower_components/colorbox/jquery.colorbox-min.js"></script>
-<!-- notification plugin -->
-<script src="js/jquery.noty.js"></script>
-<!-- library for making tables responsive -->
-<script src="bower_components/responsive-tables/responsive-tables.js"></script>
-<!-- tour plugin -->
-<script src="bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
-<!-- star rating plugin -->
-<script src="js/jquery.raty.min.js"></script>
-<!-- for iOS style toggle switch -->
-<script src="js/jquery.iphone.toggle.js"></script>
-<!-- autogrowing textarea plugin -->
-<script src="js/jquery.autogrow-textarea.js"></script>
-<!-- multiple file upload plugin -->
-<script src="js/jquery.uploadify-3.1.min.js"></script>
-<!-- history.js for cross-browser state change on ajax -->
-<script src="js/jquery.history.js"></script>
-<!-- application script for Charisma demo -->
-<script src="js/charisma.js"></script>
-
-
 <script>
     if ($('.cityList').length > 1) {
         $('tr[city]:visible').each(function () {

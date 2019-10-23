@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Handle Business With Role Admin:
- * Table List Users
- * Active User
- * Change Role User
- * Delete User
+ * The AdminController class is used to illustrate:
+ * 1. Handle Business With Role Admin:
+ * 2. Table List Users
+ * 3. Active User
+ * 4. Change Role User
+ * 5. Delete User
  */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     /**
      * Dashboard Admin Management
@@ -30,7 +31,7 @@ public class AdminController {
      * @return
      */
     @GetMapping
-    public String listUsers(Model model) {
+    private String listUsers(Model model) {
         List<User> users = userService.findAllUser();
         model.addAttribute("listUsers", users);
         return "admin/table";
@@ -43,7 +44,7 @@ public class AdminController {
      * @return
      */
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable long id) {
+    private String deleteUser(@PathVariable long id) {
         userService.delete(id);
         return "redirect:/admin";
     }
@@ -55,7 +56,7 @@ public class AdminController {
      * @return
      */
     @GetMapping("/edit-status-user")
-    public String editStatusUser(@RequestParam Long id) {
+    private String editStatusUser(@RequestParam Long id) {
         userService.editStatusUser(id);
         return "redirect:/admin";
     }
@@ -68,7 +69,7 @@ public class AdminController {
      */
     @GetMapping("/change-role")
     @ResponseBody
-    public void changeRoleUser(@RequestParam Long id, @RequestParam String role) {
+    private void changeRoleUser(@RequestParam Long id, @RequestParam String role) {
         userService.editRoleUser(id, role);
     }
 }

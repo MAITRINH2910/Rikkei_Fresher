@@ -46,7 +46,7 @@ public class PasswordResetController {
             model.addAttribute("token", resetToken.getToken());
         }
 
-        return "reset-password";
+        return "handle_password/reset-password";
     }
 
     @PostMapping

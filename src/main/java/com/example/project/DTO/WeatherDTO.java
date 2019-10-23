@@ -1,6 +1,7 @@
 package com.example.project.DTO;
 
-import java.sql.Timestamp;
+import com.example.project.DTO.WeatherPropertyDTO.*;
+
 import java.util.Date;
 import java.util.List;
 

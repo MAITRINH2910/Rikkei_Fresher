@@ -26,10 +26,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(username);
         if (user != null) {
             Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-            Set<Roles> roles = user.getRoleName();
-            for (Roles role : roles) {
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName()));
-            }
+            Roles roles = user.getRoleName();
+
+            grantedAuthorities.add(new SimpleGrantedAuthority(roles.getRoleName()));
+
 
             return new UserDetails() {
                 @Override
@@ -68,7 +68,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 }
             };
         } else {
-            throw new UsernameNotFoundException(  "No user found with username: "+ username);
+            throw new UsernameNotFoundException("No user found with username: " + username);
         }
     }
 }

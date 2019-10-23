@@ -3,10 +3,16 @@ package com.example.project.service.Impl;
 import com.example.project.DTO.request.UserRegistrationDto;
 import com.example.project.entity.Roles;
 import com.example.project.entity.User;
+import com.example.project.entity.WeatherEntity;
+import com.example.project.repository.PasswordResetTokenRepository;
 import com.example.project.repository.RoleRepository;
 import com.example.project.repository.UserRepository;
+import com.example.project.repository.WeatherRepository;
 import com.example.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +25,24 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Value("${host.http}")
+    private String host_http;
+    @Value("${domain}")
+    private String domain_http;
+    @Value("${tail.icon.path}")
+    private String tail_icon_path;
+
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private WeatherRepository weatherRepository;
+
+    @Autowired
+    private PasswordResetTokenRepository passwordResetTokenRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -48,15 +67,6 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    @Override
-    public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setActive(true);
-        Roles userRole = roleRepository.findByRoleName("ROLE_USER").get();
-        user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
-        return userRepository.save(user);
-    }
-
     @Transactional
     @Override
     public User saveUserDto(UserRegistrationDto accountDto) {
@@ -67,7 +77,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(accountDto.getEmail());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         Roles userRole = roleRepository.findByRoleName("ROLE_USER").get();
-        user.setRoleName(new HashSet<Roles>(Arrays.asList(userRole)));
+        user.setRoleName(userRole);
         user.setActive(true);
         return userRepository.save(user);
     }
@@ -101,13 +111,13 @@ public class UserServiceImpl implements UserService {
             HashSet<Roles> roles = new HashSet<>();
             roles.add(roleRepository.findByRoleName("ROLE_ADMIN").get());
             roles.remove(roleRepository.findByRoleName("ROLE_USER"));
-            user.get().setRoleName(roles);
+            user.get().setRoleName(roles.stream().findFirst().get());
             userRepository.save(user.get());
         } else if (role.getRoleName().equals("ROLE_USER")) {
             HashSet<Roles> roles = new HashSet<>();
             roles.remove(roleRepository.findByRoleName("ROLE_ADMIN"));
             roles.add(roleRepository.findByRoleName("ROLE_USER").get());
-            user.get().setRoleName(roles);
+            user.get().setRoleName(roles.stream().findFirst().get());
             userRepository.save(user.get());
         }
     }
@@ -117,4 +127,37 @@ public class UserServiceImpl implements UserService {
         userRepository.updatePassword(password, userId);
     }
 
+    /**
+     * Get Authentication User from Security Context Holder of Spring Security
+     * Set icon of weather for user
+     *
+     * @return
+     */
+    @Override
+    public User getAuthUser() {
+        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepository.findByUsername(authUser.getName());
+        List<WeatherEntity> weatherList = weatherRepository.findAllByUsers(user);
+        for (int i = 0; i < weatherList.size(); i++) {
+            weatherList.get(i).setIcon(host_http + domain_http + "/img/w/" + weatherList.get(i).getIcon() + tail_icon_path);
+        }
+        return user;
+    }
+
+    /**
+     * Get Authentication User from Security Context Holder of Spring Security
+     *
+     * @return
+     */
+    @Override
+    public User getUser() {
+        Authentication authUser = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepository.findByUsername(authUser.getName());
+        return user;
+    }
+
+    @Override
+    public Boolean existsByUserName(String userName) {
+        return userRepository.existsByUsername(userName);
+    }
 }

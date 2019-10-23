@@ -1,10 +1,10 @@
 package com.example.project.controller;
 
 import com.example.project.DTO.WeatherDTO;
-import com.example.project.api.UserApi;
-import com.example.project.api.WeatherApi;
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
+import com.example.project.service.UserService;
+import com.example.project.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,27 +16,38 @@ import java.util.*;
 @RequestMapping("/")
 public class HomeController {
     @Autowired
-    public UserApi userApi;
+    public UserService userService;
 
     @Autowired
-    public WeatherApi weatherApi;
+    public WeatherController weatherController;
 
+    @Autowired
+    public WeatherService weatherService;
+    /**
+     * History Weather
+     * @param model
+     * @return
+     */
     @GetMapping
     public String homePage(Model model) {
-        User user = userApi.getAuthUser();
-        List<WeatherEntity> listCity = weatherApi.getCitiesByUser(user);
+        User user = userService.getAuthUser();
+        List<WeatherEntity> listCity = weatherService.getCitiesByUser(user);
         model.addAttribute("listCities", listCity);
-        List<List<WeatherEntity>> weatherGroupByCity = weatherApi.weatherGroupByCity(user);
+        List<List<WeatherEntity>> weatherGroupByCity = weatherService.weatherGroupByCity(user);
         model.addAttribute("weatherList0", weatherGroupByCity);
         return "user/home";
     }
 
-    @GetMapping("/forecast-current")
+    /**
+     * Show Local Weather
+     * @param lat
+     * @param lon
+     * @return
+     */
+    @GetMapping("/local-weather")
     @ResponseBody
     public WeatherDTO forecastCurrentWeather(@RequestParam String lat, @RequestParam String lon) {
-        return weatherApi.restCurWeather(lat, lon);
+        return weatherService.getCurrentLocalWeather(lat, lon);
     }
-
-
 }
 

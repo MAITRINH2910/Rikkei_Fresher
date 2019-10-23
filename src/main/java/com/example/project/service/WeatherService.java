@@ -1,5 +1,7 @@
 package com.example.project.service;
 
+import com.example.project.DTO.WeatherDTO;
+import com.example.project.DTO.WeatherDetailDTO;
 import com.example.project.entity.User;
 import com.example.project.entity.WeatherEntity;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ public interface WeatherService {
 
     List<WeatherEntity> getWeatherByUser(User user);
 
-    void deleteWeather (Long id);
+    void deleteWeather(Long id);
 
     List<WeatherEntity> findCity(Long id);
 
@@ -21,5 +23,15 @@ public interface WeatherService {
 
     Date getMaxDateByNameCity(String city, Long userId);
 
+    WeatherDTO getCurrentLocalWeather(String lat, String lon);
 
+    WeatherDetailDTO getJsonWeatherDetail(String cityName);
+
+    WeatherEntity getJsonWeather(String cityName);
+
+    List<WeatherEntity> getCitiesByUser(User user);
+
+    List<List<WeatherEntity>> weatherGroupByCity(User user);
+
+    WeatherEntity filterWeather(String cityName);
 }

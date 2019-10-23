@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Check Status User
- * If Status is Un Active -> block User
- * Authentication Account By Filtering Before Forwarding To Controller
+ * The CustomFilter class is used to illustrate:
+ * 1. Check Status User if status is Un Active -> block User
+ * 2. Authentication Account By Filtering Before Forwarding To Controller
  *
  */
 @Component

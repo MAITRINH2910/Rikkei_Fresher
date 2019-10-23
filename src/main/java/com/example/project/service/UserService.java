@@ -1,6 +1,7 @@
 package com.example.project.service;
 
 import com.example.project.DTO.request.UserRegistrationDto;
+import com.example.project.entity.Roles;
 import com.example.project.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,6 @@ public interface UserService {
 
     void delete(Long id);
 
-    User saveUser(User user);
-
     User saveUserDto(UserRegistrationDto userDTO);
 
     void editStatusUser(Long id);
@@ -27,5 +26,11 @@ public interface UserService {
     void editRoleUser(Long id, String roleName);
 
     void updatePassword(String password, Long userId);
+
+    User getAuthUser();
+
+    User getUser();
+
+    Boolean existsByUserName (String userName);
 
 }

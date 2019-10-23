@@ -39,7 +39,7 @@ public class PasswordForgotController {
 
     @GetMapping
     public String displayForgotPasswordPage() {
-        return "forgot-password";
+        return "handle_password/forgot-password";
     }
 
     @PostMapping
@@ -48,13 +48,13 @@ public class PasswordForgotController {
                                             HttpServletRequest request) {
 
         if (result.hasErrors()) {
-            return "forgot-password";
+            return "handle_password/forgot-password";
         }
 
         User user = userService.findUserByEmail(form.getEmail());
         if (user == null) {
             result.rejectValue("email", null, "We could not find an account for that e-mail address.");
-            return "forgot-password";
+            return "handle_password/forgot-password";
         }
 
         PasswordResetToken token = new PasswordResetToken();
@@ -64,7 +64,7 @@ public class PasswordForgotController {
         tokenRepository.save(token);
 
         Mail mail = new Mail();
-        mail.setFrom("no-reply@memorynotfound.com");
+        mail.setFrom("no-reply@urweathernotfount.com");
         mail.setTo(user.getEmail());
         mail.setSubject("Password reset request");
 

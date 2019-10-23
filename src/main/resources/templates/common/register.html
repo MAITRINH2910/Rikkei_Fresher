@@ -7,8 +7,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Registration Form - Ur-Weather</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="/register_login/css/bootstrap.min.css" rel="stylesheet">
@@ -16,186 +14,153 @@
     <link href="/register_login/css/mdb.min.css" rel="stylesheet">
     <link href="/register_login/css/register.css" rel="stylesheet">
 
-    <!--    Validate Form Using Javascript-->
-    <script>
-        // Defining a function to display error message
-        function printError(elemId, hintMsg) {
-            document.getElementById(elemId).innerHTML = hintMsg;
-        }
-
-        // Defining a function to validate form
-        function validateForm() {
-            // Retrieving the values of form elements
-            var username = document.regisForm.username.value;
-            var email = document.regisForm.email.value;
-            var password = document.regisForm.password.value;
-            var firstName = document.regisForm.firstName.value;
-            var lastName = document.regisForm.lastName.value;
-            var cfPass = document.regisForm.cfPass.value;
-
-
-            // Defining error variables with a default value
-            var nameErr = emailErr = cfErr = pwErr = fnameErr = lnameErr = true;
-
-            // Validate firstname
-            if (firstName == "") {
-                printError("fnameErr", "Please enter your first name");
-            } else {
-                printError("fnameErr", "");
-                fnameErr = false;
-            }
-
-            // Validate lastname
-            if (lastName == "") {
-                printError("lnameErr", "Please enter your last name");
-            } else {
-                printError("lnameErr", "");
-                lnameErr = false;
-            }
-
-            // Validate name
-            if (username == "") {
-                printError("nameErr", "Please enter your name");
-            } else {
-                var regex = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$/;
-                if (regex.test(username) === false) {
-                    printError("nameErr", "Please enter a valid name");
-                } else {
-                    printError("nameErr", "");
-                    nameErr = false;
-                }
-            }
-
-            // Validate email address
-            if (email == "") {
-                printError("emailErr", "Please enter your email address");
-            } else {
-                // Regular expression for basic email validation
-                var regex = /^\S+@\S+\.\S+$/;
-                if (regex.test(email) === false) {
-                    printError("emailErr", "Please enter a valid email address");
-                } else {
-                    printError("emailErr", "");
-                    emailErr = false;
-                }
-            }
-
-            // Validate password
-            if (password == "") {
-                printError("pwErr", "Please enter your password");
-            } else {
-                var regex = /^[/w]\d{8,32}$/;
-                if (regex.test(password) === false) {
-                    printError("pwErr", "Please enter a valid 10 digit mobile number");
-                } else {
-                    printError("pwErr", "");
-                    pwErr = false;
-                }
-            }
-
-            // Validate confirm password
-            if (cfPass == "") {
-                printError("cfErr", "Please enter your confirm password");
-            } else {
-                var regex = /^[/w]\d{8,32}$/;
-                if (regex.test(cfPass) === false) {
-                    printError("cfErr", "Please enter a valid 10 digit mobile number");
-                } else {
-                    printError("cfErr", "");
-                    cfErr = false;
-                }
-            }
-        }
-
-    </script>
+    <!-- Load Thư viện jQuery vào trước khi load jQuery Validate-->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript"
+            src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 </head>
 <body>
-<!--<div class="wow fadeInRight" data-wow-delay="0.3s" style="width: 100%">-->
-    <div class="signup-form">
-        <form th:action="@{/registration}"
-              th:object="${user}" method="post" class="form-horizontal" role="form">
+<div class="signup-form">
+    <form th:action="@{/registration}" id="formDemo"
+          th:object="${user}" method="post" class="form-horizontal" role="form">
+        <div class="head-form" style="height: 75px">
             <div th:if="${param.success}">
-                <div class="alert alert-info"><b>You've successfully registered!!!</b></div>
+                <div class="alert alert-info"><span class="glyphicon glyphicon-ok-sign"></span>
+                    <b style="font-size: 15px">Registered Successfully. Click <a th:href="@{/login}"
+                                                                                 style="color: black">here</a>
+                        to login</b></div>
             </div>
-            <h2>Sign Up</h2>
-            <hr>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-xs-6" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
-                        <input type="text" class="form-control" name="firstName"
-                               placeholder="First Name" th:field="*{firstName}">
-                        <p class="error-message"
-                           th:each="error: ${#fields.errors('firstName')}"
-                           th:text="${error}" style="color: red; margin: 0">Validation
-                            error</p>
-                        <div class="error" id="fnameErr"></div>
-                    </div>
-                    <div class="col-xs-6" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
-                        <input
-                                type="text" class="form-control" name="lastName"
-                                placeholder="Last Name" th:field="*{lastName}">
-                        <p class="error-message"
-                           th:each="error: ${#fields.errors('lastName')}"
-                           th:text="${error}" style="color: red; margin: 0">Validation
-                            error</p>
-                        <div class="error" id="lnameErr"></div>
-                    </div>
+            <h2>Sign Up</h2></div>
+        <hr>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6" th:classappend="${#fields.hasErrors('firstName')}? 'has-error':''">
+                    <input type="text" class="form-control" id="firstName" required
+                           placeholder="First Name" th:field="*{firstName}">
+                    <p class="error-message"
+                       th:each="error: ${#fields.errors('firstName')}"
+                       th:text="${error}">Validation
+                        error</p>
+                </div>
+                <div class="col-xs-6" th:classappend="${#fields.hasErrors('lastName')}? 'has-error':''">
+                    <input
+                            type="text" class="form-control" id="lastName" required
+                            placeholder="Last Name" th:field="*{lastName}">
+                    <p class="error-message"
+                       th:each="error: ${#fields.errors('lastName')}"
+                       th:text="${error}">Validation
+                        error</p>
                 </div>
             </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
-                <input type="email" class="form-control" name="username" placeholder="Username" th:field="*{username}">
-                <p class="error-message" style="color: red;  margin: 0"
-                   th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation
-                    error</p>
-                <div class="error" id="nameErr"></div>
-            </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                <input type="email" class="form-control" name="email" placeholder="Email" th:field="*{email}">
-                <p class="error-message" style="color: red;  margin: 0"
-                   th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
-                    error</p>
-                <div class="error" id="emailErr"></div>
-            </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                <input type="password" class="form-control" name="password" placeholder="Password" minlength="8"
-                       maxlength="32">
-                <p class="error-message" style="color: red;  margin: 0"
-                   th:each="error : ${#fields.errors('password')}"
-                   th:text="${error}">Validation error</p>
-                <div class="error" id="pwErr"></div>
-            </div>
-            <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                <input type="password" class="form-control" name="cfPass" placeholder="Confirm Password"
-                       th:field="*{confirmPassword}">
-                <p class="error-message" style="color: red;  margin: 0"
-                   th:each="error : ${#fields.errors('confirmPassword')}"
-                   th:text="${error}">Validation error</p>
-                <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
-                   style="color: red; text-align: center"
-                   th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
-                    error</p>
-                <div class="error" id="cfErr"></div>
-            </div>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+            <input type="text" class="form-control" id="username"
+                   placeholder="Username" th:field="*{username}" required>
+            <p class="error-message"
+               th:each="error : ${#fields.errors('username')}" th:text="${error}">Validation
+                error</p>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+            <input type="email" class="form-control" id="email"
+                   placeholder="Email" th:field="*{email}" required>
+            <p class="error-message"
+               th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
+                error</p>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+            <input type="password" class="form-control" id="password"
+                   placeholder="Password" required th:field="*{password}">
+            <p class="error-message"
+               th:each="error : ${#fields.errors('password')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+            <input type="password" class="form-control" th:field="*{confirmPassword}"
+                   placeholder="Confirm Password" required>
+            <p class="error-message"
+               th:each="error : ${#fields.errors('confirmPassword')}"
+               th:text="${error}">Validation error</p>
+            <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+               th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
+                error</p>
+        </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-lg">Sign Up</button>
-            </div>
-            <div class="hint-text">Already have an account? <a th:href="@{/login}">Login here</a></div>
+        <div class="form-group button-sign">
+            <button type="submit" class="btn btn-lg">Sign Up</button>
+        </div>
+        <div class="hint-text">Already have an account? <a th:href="@{/login}">Login</a></div>
+    </form>
+</div>
+<script type="text/javascript">
+    //    add a rule with a regular expression
+    jQuery.validator.addMethod(
+        "regex",
+        function (value, element, regexp) {
+            if (regexp.constructor != RegExp)
+                regexp = new RegExp(regexp);
+            else if (regexp.global)
+                regexp.lastIndex = 0;
+            return this.optional(element) || regexp.test(value);
+        }, "erreur expression reguliere"
+    );
+    $(document).ready(function () {
 
-        </form>
-    </div>
-<!--</div>-->
+        //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
+        $("#formDemo").validate({
+            rules: {
+                firstName: "required",
+                lastName: "required",
 
-<!-- JQuery -->
-<script type="text/javascript" src="/register_login/js/jquery-3.3.1.min.js"></script>
-<!-- Tooltips -->
-<script type="text/javascript" src="/register_login/js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="/register_login/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="/register_login/js/mdb.min.js"></script>
-<script>
-    new WOW().init();
+                password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 32,
+                },
+                confirmPassword: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#password",
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+                username: {
+                    required: true,
+                    regex: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{1,}$/,
+                    minlength: 8,
+                    maxlength: 32,
+                },
+            },
+            messages: {
+                firstName: "This field is required",
+                lastName: "This field is required",
+                username: {
+                    required: "This field is required",
+                    regex: "At least 1 uppercase, 1 lowercase and 1 number",
+                },
+                email: {
+                    required: "This field is required",
+                    email: "Please enter valid email",
+                    pattern: "Please enter valid email",
+                },
+                password: {
+                    required: 'This field is required',
+                    minlength: 'At least 8 characters',
+                    maxlength: 'Maximum 32 characters',
+                },
+                confirmPassword: {
+                    required: "This field is required",
+                    minlength: 'At least 8 characters',
+                    equalTo: "Password does not match",
+                },
+
+            }
+        });
+    });
 </script>
+
 </body>
 </html>
+
+

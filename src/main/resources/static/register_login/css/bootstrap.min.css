@@ -2056,7 +2056,7 @@ textarea.form-control {
 }
 
 .form-group {
-    margin-bottom: 1rem
+    margin-bottom: 0rem
 }
 
 .form-text {
@@ -5049,7 +5049,6 @@ a.badge-dark.focus, a.badge-dark:focus {
 .alert {
     position: relative;
     padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem
 }
@@ -5117,9 +5116,9 @@ a.badge-dark.focus, a.badge-dark:focus {
 }
 
 .alert-info {
-    color: red;
-    background-color: #dae1e2;
-    border-color: #bee5eb
+    color: #1888f9;
+    background-color: #06b6ff33;
+    border-color: #bee5eb;
 }
 
 .alert-info hr {
@@ -8125,7 +8124,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .mt-5, .my-5 {
-    margin-top: 3rem !important
+    margin-top: 0em !important
 }
 
 .mr-5, .mx-5 {
@@ -8133,7 +8132,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .mb-5, .my-5 {
-    margin-bottom: 3rem !important
+    margin-bottom: 0rem !important
 }
 
 .ml-5, .mx-5 {

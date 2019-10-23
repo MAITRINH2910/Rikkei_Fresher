@@ -1,0 +1,392 @@
+<th:block th:fragment="footer" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <footer>
+        <!-- ****************Page Admin ************************************-->
+        <!-- jQuery -->
+        <script src="pageAdmin/bower_components/jquery/jquery.min.js"></script>
+        <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- external javascript-->
+        <script src="pageAdmin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- library for cookie management -->
+        <script src="pageAdmin/js/jquery.cookie.js"></script>
+        <!-- data table plugin -->
+        <script src='pageAdmin/js/jquery.dataTables.min.js'></script>
+        <!-- select or dropdown enhancer -->
+        <script src="pageAdmin/bower_components/chosen/chosen.jquery.min.js"></script>
+        <!-- plugin for gallery image view -->
+        <script src="pageAdmin/bower_components/colorbox/jquery.colorbox-min.js"></script>
+        <!-- library for making tables responsive -->
+        <script src="pageAdmin/bower_components/responsive-tables/responsive-tables.js"></script>
+        <!-- star rating plugin -->
+        <script src="pageAdmin/js/jquery.raty.min.js"></script>
+        <!-- for iOS style toggle switch -->
+        <script src="pageAdmin/js/jquery.iphone.toggle.js"></script>
+        <!-- autogrowing textarea plugin -->
+        <script src="pageAdmin/js/jquery.autogrow-textarea.js"></script>
+        <!-- multiple file upload plugin -->
+        <script src="pageAdmin/js/jquery.uploadify-3.1.min.js"></script>
+        <!-- history.js for cross-browser state change on ajax -->
+        <script src="pageAdmin/js/jquery.history.js"></script>
+        <!-- application script for Charisma demo -->
+        <script src="pageAdmin/js/charisma.js"></script>
+        <!--handle business-->
+        <!--        <script src="/pageAdmin/js/handle.business.js"></script>-->
+
+        <!-- ****************Page Login ************************************-->
+<!--             &lt;!&ndash;Ajax&ndash;&gt;-->
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<!--        &lt;!&ndash; JQuery &ndash;&gt;-->
+<!--        <script type="text/javascript" src="/register_login/js/jquery-3.3.1.min.js"></script>-->
+<!--        &lt;!&ndash; Tooltips &ndash;&gt;-->
+<!--        <script type="text/javascript" src="/register_login/js/popper.min.js"></script>-->
+<!--        &lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;-->
+<!--        <script type="text/javascript" src="/register_login/js/bootstrap.min.js"></script>-->
+<!--        &lt;!&ndash; MDB core JavaScript &ndash;&gt;-->
+<!--        <script type="text/javascript" src="/register_login/js/mdb.min.js"></script>-->
+<!--        &lt;!&ndash;Login Javascript&ndash;&gt;-->
+<!--        <script type="text/javascript" src="/register_login/js/login.js"></script>-->
+
+
+        <!-- ****************Page Home ************************************-->
+
+        <style>
+            /*---- responsive-design -----*/
+            @media (max-width: 1440px) {
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    margin-top: 0px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 1366px) {
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: -5px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 1280px) {
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    margin-top: -65px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 1080px) {
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 0px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 1024px) {
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 75px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 900px) {
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 70px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 800px) {
+                #wob_d {
+                    padding: 0px 0 0 !important;
+                }
+
+                h1 {
+                    font-size: 2.8em;
+                }
+
+                .vk_gy {
+                    float: right;
+                    line-height: 22px;
+                    padding-top: 90px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 640px) {
+                h1 {
+                    font-size: 2.6em;
+                }
+
+                .weather-grids h2 {
+                    font-size: 2.8em;
+                }
+
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 50px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 2.2em;
+                }
+
+                .weather-grids h3 {
+                    font-size: 1.3em;
+                }
+
+                .weather-grids h2 {
+                    font-size: 2.5em;
+                }
+
+                .weather-grids h4 {
+                    font-size: 0.8em;
+                }
+
+                .weather-bottom h5 {
+                    font-size: 1.1em;
+                }
+
+                .weather-bottom h6 {
+                    font-size: 0.9em;
+                }
+
+                .copyright p {
+                    font-size: 1em;
+                }
+
+                .main {
+                    padding: 0em 0 0;
+                }
+
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 70px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 414px) {
+
+                .weather-bottom h4 {
+                    font-size: 0.9em;
+                }
+
+                canvas#clear-day {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .weather-bottom canvas {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 95px;
+                    min-width: 43%;
+                }
+
+                .sol-tmp {
+                    margin-top: 5px;
+                }
+            }
+
+            @media (max-width: 375px) {
+                h1 {
+                    font-size: 1.8em;
+                }
+
+                .main {
+                    padding: 0em 0 0;
+                }
+
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 85px;
+                    min-width: 43%;
+                }
+            }
+
+            @media (max-width: 320px) {
+                h1 {
+                    font-size: 1.6em;
+                }
+
+                #wob_d {
+                    padding: 5px 0 0 !important;
+                }
+
+                .weather-grids h2 {
+                    font-size: 2em;
+                }
+
+                .weather-grids h4 {
+                    font-size: 0.7em;
+                }
+
+                .weather-grids h3 {
+                    font-size: 1.1em;
+                }
+
+                canvas#clear-day {
+                    width: 55px;
+                    height: 55px;
+                }
+
+                .weather-bottom canvas {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .weather-bottom ul li {
+                    width: 19.5%;
+                    padding: 0.5em 0;
+                }
+
+                .weather-bottom h5 {
+                    font-size: 0.9em;
+                }
+
+                .weather-bottom h6 {
+                    font-size: 0.8em;
+                }
+
+                .vk_gy {
+                    float: right;
+                    padding-left: 55px;
+                    line-height: 22px;
+                    padding-top: 80px;
+                    min-width: 43%;
+                }
+            }
+
+            /*--//responsive-design---*/
+        </style>
+        <!-------------------- Cur_Local----------------->
+        <script>
+            $(document).ready(function () {
+
+                var x = document.getElementById("demo");
+                if (navigator.geolocation) {
+
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+
+                function showPosition(position) {
+
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+
+                    $.ajax({
+                        url: "/local-weather",
+                        type: "GET",
+                        data: {
+                            lat: lat,
+                            lon: lon
+                        },
+                        success: function (value) {
+                            var temp = '<span>' + value.main.temp + '</span>';
+                            var icon = '<span><img class="weather-widget__img" src="https://openweathermap.org/img/wn/'
+                                + value.weather[0].icon + '.png"  width="60" height="60"></span>';
+                            var city = '<span>' + value.name + '</span>';
+                            var descript_local = '<span>' + value.weather[0].description + '</span>';
+                            var tempMin = '<span>' + value.main.temp_min + ' &degC' + '</span>';
+                            var tempMax = '<span>' + value.main.temp_max + '&degC' + '</span>';
+                            var pressure = '<span>' + value.main.pressure + 'hpa.' + '</span>';
+                            var humidity = '<span>' + value.main.humidity + '%' + '</span>';
+                            var wind = '<span>' + value.wind.speed + 'm/s' + '</span>';
+
+                            $('#city').append(city);
+                            $('#icon_test').append(icon);
+                            $('#temparature').append(temp);
+                            $('#descript_local').append(descript_local);
+                            $('#tempMin_local').append(tempMin);
+                            $('#tempMax_local').append(tempMax);
+                            $('#pressure_local').append(pressure);
+                            $('#humidity_local').append(humidity);
+                            $('#wind_local').append(wind);
+
+                        }
+                    })
+                }
+            });
+        </script>
+        <!--   Ends Cur_local-->
+
+        <!--    Current Time-->
+        <script src="current_weather_home/js/jquery-1.9.1.min.js"></script>
+        <script src="current_weather_home/js/owl.carousel.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#owl-demo").owlCarousel({
+
+                    autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+                    items: 6,
+                    itemsDesktop: [640, 5],
+                    itemsDesktopSmall: [414, 4]
+
+                });
+
+            });
+        </script>
+        <!-- Time-JavaScript -->
+        <script>
+            function startTime() {
+                var today = new Date();
+                var h = today.getHours();
+                var m = today.getMinutes();
+                var s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('txt').innerHTML =
+                    h + ":" + m + ":" + s;
+                var t = setTimeout(startTime, 500);
+            }
+
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i
+                }
+                ; // add zero in front of numbers < 10
+                return i;
+            }
+        </script>
+        <!-- //Time-JavaScript -->
+        <!--    -->
+
+    </footer>
+</th:block>

@@ -1,7 +1,11 @@
 package com.example.project.entity;
 
+import com.example.project.repository.PasswordResetTokenRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,12 +42,22 @@ public class User {
     private boolean active;
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Roles> roleName;
+    private Roles roleName;
+
+    @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "user")
+    private PasswordResetToken passwordResetToken;
+
+//    @ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "users")
+//    private Set<WeatherEntity> weatherEntities;
+
+    @OneToMany(mappedBy = "userEntity", cascade=CascadeType.REMOVE)
+    @JsonIgnore
+    private List<WeatherEntity> listWeather;
 
     public Long getId() {
         return id;
@@ -93,11 +107,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Set<Roles> getRoleName() {
+    public Roles getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(Set<Roles> roleName) {
+    public void setRoleName(Roles roleName) {
         this.roleName = roleName;
     }
 

@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/forgot-password**",
                         "/reset-password**")
                 .permitAll()
-                .antMatchers("/")
+                .antMatchers("/","search-city/**")
                 .hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin/**")
                 .hasRole("ADMIN")

@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <!-- Required meta tags always come first -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -11,241 +10,124 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="/register_login/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/register_login/css/login.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="/register_login/css/mdb.min.css" rel="stylesheet">
-    <style>
-        /* Required for full background image */
-
-        html,
-        body,
-        header,
-        .view {
-            height: 100%;
-        }
-
-        @media (max-width: 740px) {
-            html,
-            body,
-            header,
-            .view {
-                height: 700px;
-            }
-
-            .card {
-                width: 100% !important;
-            }
-        }
-
-        @media (min-width: 800px) and (max-width: 850px) {
-            html,
-            body,
-            header,
-            .view {
-                height: 650px;
-            }
-        }
-
-        .top-nav-collapse {
-            background-color: #03a9f4 !important;
-        }
-
-        .navbar:not(.top-nav-collapse) {
-            background: transparent !important;
-        }
-
-        @media (max-width: 991px) {
-            .navbar:not(.top-nav-collapse) {
-                background: #03a9f4 !important;
-            }
-        }
-
-        .rgba-gradient {
-            background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(102, 153, 228, 0) 100%);
-        }
-
-        .card {
-            background-color: rgba(126, 123, 215, 0.2);
-        }
-
-        .md-form label {
-            color: black;
-        }
-
-        h6 {
-            line-height: 1.7;
-        }
-
-        .error {
-            color: red;
-            font-size: 90%;
-            margin-left: 35px;
-        }
-
-    </style>
 </head>
-<script>
-    // Defining a function to display error message
-    function printError(elemId, hintMsg) {
-        document.getElementById(elemId).innerHTML = hintMsg;
-    }
 
-    // Defining a function to validate form
-    function validateForm() {
-        // Retrieving the values of form elements
-        var username = document.contactForm.username.value;
-        var password = document.contactForm.password.value;
-
-
-        // Defining error variables with a default value
-        var nameErr = pwErr = true;
-
-        // Validate firstname
-        if (username == "") {
-            printError("nameErr", "Please enter your name");
-        } else {
-            printError("nameErr", "");
-            nameErr = false;
-        }
-
-        // Validate password
-        if (password == "") {
-            printError("pwErr", "Please enter your password");
-        } else {
-            printError("pwErr", "");
-            pwErr = false;
-        }
-
-        // Prevent the form from being submitted if there are any errors
-        if ((nameErr || pwErr) == true) {
-            return false;
-        } else {
-            // Creating a string from input data for preview
-            var dataPreview = "You've entered the following details: \n" +
-                "Full Name: " + username + "\n" +
-                "Password: " + password + "\n" +
-
-                // Display input data in a dialog box before submitting the form
-                alert(dataPreview);
-        }
-    }
-
-</script>
 <body>
-<!-- Main navigation -->
-<header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+<!-- Full Page Intro -->
+<div class="view"
+     style="background-image: url('https://www.worldpediatricdental.com/wp-content/uploads/2014/10/blue-cloud-bg.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+        <!-- Content -->
         <div class="container">
-            <a class="navbar-brand" th:href="@{/}"> <img alt="Charisma Logo" src="img/1.png" class="hidden-xs"
-                                                         style="width: 5%"/>
-                <span>Ur-Weather</span></a>
-        </div>
-    </nav>
-    <!-- Navbar -->
-    <!-- Full Page Intro -->
-    <div class="view"
-         style="background-image: url('https://www.worldpediatricdental.com/wp-content/uploads/2014/10/blue-cloud-bg.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-        <!-- Mask & flexbox options-->
-        <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
-            <!-- Content -->
-            <div class="container">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text-1 text-center text-md-left">
-                        <!--                        <br>-->
-                        <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Welcome to
-                            Ur-Weather </h1>
-                        <!--                        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">-->
-                        <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Access all of your personal weather
-                            station
-                            data, all in one place.</h6>
-                    </div>
-                    <!--Grid column-->
-                    <!--Grid column-->
-                    <div class="col-md-6 col-xl-5 mb-4">
-                        <!--Form-->
-                        <div class="card wow fadeInRight" data-wow-delay="0.3s" style="width: 90%">
-                            <div class="card-body">
-                                <!--Header-->
-                                <div class="text-center">
-                                    <h3 class="white-text">
-                                        Login</h3>
-                                    <!--                                    <hr class="hr-light">-->
-                                </div>
-                                <!--Body-->
-                                <form autocomplete="off" th:action="@{/login}" name='f'  onsubmit="return validate()"
-                                      th:object="${userForm}" method="POST" class="form-horizontal" role="form">
-                                    <div th:if="${param.logout}">
-                                        <div class="alert alert-info">You have been logged out.</div>
-                                    </div>
-                                    <div class="md-form" th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
-                                        <i class="fas fa-user prefix white-text active"></i>
-                                        <label for="form3" class="active">Username</label>
-                                        <input type="text" id="form3" name="username" th:field="*{username}" class="white-text form-control">
-                                        <p class="error-message" style="color: red; text-align: center"
-                                           th:each="error : ${#fields.errors('username')}"
-                                           th:text="${error}">Validation error</p>
-                                        <div class="error" id="nameErr"></div>
-                                    </div>
-                                    <div class="md-form" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-                                        <i class="fas fa-lock prefix white-text active"></i>
-                                        <label for="form4">Password</label>
-                                        <input type="password" id="form4" name="password" th:field="*{password}"
-                                               class="white-text form-control">
-                                        <p class="error-message" style="color: red; text-align: center"
-                                           th:each="error : ${#fields.errors('password')}"
-                                           th:text="${error}">Validation error</p>
-                                        <div class="error" id="pwErr"></div>
-                                    </div>
-                                    <div class="pass-restore" style="text-align: right">
-                                        <b><span data-l10n-id="forgot"></span>
-                                            <a th:href="@{/forgot-password}" tabindex="-1" style="color: black">
-                                                Forgot password</a>?</b>
-                                    </div>
-                                    <div class="error" id="bothErr"></div>
-
-                                    <div th:if="${param.error}">
-                                        <div class="alert alert-danger" th:text="${errorMessage}">
-<!--                                            Invalid username or password.-->
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center mt-4">
-                                        <button class="btn btn-indigo" type="submit">Sign in</button>
-                                        <br>
-                                        <div class="inline-ul text-center d-flex justify-content-center">
-                                            <a class="p-2 m-2 tw-ic">
-                                                <i class="fab fa-twitter white-text"></i>
-                                            </a>
-                                            <a class="p-2 m-2 li-ic">
-                                                <i class="fab fa-linkedin-in white-text"> </i>
-                                            </a>
-                                            <a class="p-2 m-2 ins-ic">
-                                                <i class="fab fa-instagram white-text"> </i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="txt1">Don’t have an account?</span>
-                                        <a class="white-text" th:href="@{/registration}"> <b>Register</b> </a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!--/.Form-->
-                    </div>
-                    <!--Grid column-->
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text-1 text-center text-md-left">
+                    <!--                        <br>-->
+                    <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s"><img
+                            src="img/logo10.png" width="50px" ; height="50px">
+                        Welcome to Ur-Weather </h1>
+                    <!--                        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">-->
+                    <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Access all of your personal weather
+                        station
+                        data, all in one place.</h6>
                 </div>
-                <!--Grid row-->
-            </div>
-            <!-- Content -->
-        </div>
-        <!-- Mask & flexbox options-->
-    </div>
-    <!-- Full Page Intro -->
-</header>
+                <!--Grid column-->
+                <div class="col-md-6 col-xl-5 mb-4">
+                    <!--Form-->
+                    <div class="card wow fadeInRight" data-wow-delay="0.3s" style="width: 90%">
+                        <div class="card-body">
+                            <!--Header-->
+                            <div class="text-center">
+                                <h3 class="white-text">
+                                    Login</h3>
+                            </div>
+                            <!--Body-->
+                            <form autocomplete="off" th:action="@{/login}" name='f' onsubmit="return validate()"
+                                  th:object="${userForm}" method="POST" class="form-horizontal" role="form">
+                                <div th:if="${param.logout}">
+                                    <div class="alert alert-info">You have been logged out.</div>
+                                </div>
+                                <div class="md-form"
+                                     th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+                                    <i class="fas fa-user prefix white-text active"></i>
+                                    <label for="form3" class="active">Username</label>
+                                    <input type="text" id="form3" name="username" th:field="*{username}"
+                                           class="white-text form-control username">
+                                    <p class="error-message" style="color: red;"
+                                       th:each="error : ${#fields.errors('username')}"
+                                       th:text="${error}">Validation error</p>
+                                    <div class="error" id="nameErr"></div>
+                                </div>
+                                <div class="md-form"
+                                     th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+                                    <i class="fas fa-lock prefix white-text active"></i>
+                                    <label for="form4">Password</label>
+                                    <input type="password" id="form4" name="password" th:field="*{password}"
+                                           class="white-text form-control">
+                                    <p class="error-message" style="color: red"
+                                       th:each="error : ${#fields.errors('password')}"
+                                       th:text="${error}">Validation error</p>
+                                    <div class="error" id="pwErr"></div>
+                                </div>
+                                <div class="pass-restore" style="text-align: right">
+                                    <b><span data-l10n-id="forgot"></span>
+                                        <a th:href="@{/forgot-password}" tabindex="-1" style="color: black">
+                                            Forgot password</a>?</b>
+                                </div>
+                                <div class="error" id="bothErr"></div>
 
+                                <div th:if="${param.error}">
+                                    <div class="alert alert-danger" th:text="${errorMessage}">
+                                        <!--                                            Invalid username or password.-->
+                                    </div>
+                                </div>
+                                <label id="kqCheckName"></label>
+
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-indigo" type="submit">Sign in</button>
+                                    <br>
+                                    <div class="inline-ul text-center d-flex justify-content-center">
+                                        <a class="p-2 m-2 tw-ic">
+                                            <i class="fab fa-twitter white-text"></i>
+                                        </a>
+                                        <a class="p-2 m-2 li-ic">
+                                            <i class="fab fa-linkedin-in white-text"> </i>
+                                        </a>
+                                        <a class="p-2 m-2 ins-ic">
+                                            <i class="fab fa-instagram white-text"> </i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <span class="txt1">Don’t have an account?</span>
+                                    <a class="white-text" th:href="@{/registration}"> <b>Register</b> </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--/.Form-->
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Content -->
+    </div>
+    <!-- Mask & flexbox options-->
+</div>
+<!-- Full Page Intro -->
+<footer>
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</footer>
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- JQuery -->
 <script type="text/javascript" src="/register_login/js/jquery-3.3.1.min.js"></script>
 <!-- Tooltips -->
@@ -254,58 +136,5 @@
 <script type="text/javascript" src="/register_login/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="/register_login/js/mdb.min.js"></script>
-<script>
-    new WOW().init();
-</script>
-</body>
-</html>
-<script type="text/javascript">
-    function printError(elemId, hintMsg) {
-        document.getElementById(elemId).innerHTML = hintMsg;
-    }
-    function validate() {
-
-        if (document.f.username.value == "" && document.f.password.value == "") {
-            printError("bothErr", "Username and Password are required");
-            document.f.username.focus();
-            return false;
-        } else {
-            printError("bothErr", "");
-            document.f.username.focus();
-            bothErr = false;
-        }
-        if (document.f.username.value == "") {
-            printError("nameErr", "Please enter your username");
-            document.f.username.focus();
-            return false;
-        } else {
-            printError("nameErr", "");
-            document.f.username.focus();
-            nameErr = false;
-        }
-        if (document.f.password.value == "") {
-            printError("pwErr", "Please enter your password");
-            document.f.password.focus();
-            return false;
-        } else {
-            printError("pwErr", "");
-            document.f.password.focus();
-            pwErr = false;
-        }
-        // if (document.f.username.value == "" && document.f.password.value == "") {
-        //     alert("Username and password are required");
-        //     document.f.username.focus();
-        //     return false;
-        // }
-        // if (document.f.username.value == "") {
-        //     alert("Username is required");
-        //     document.f.username.focus();
-        //     return false;
-        // }
-        // if (document.f.password.value == "") {
-        //     alert("Password is required");
-        //     document.f.password.focus();
-        //     return false;
-        // }
-    }
-</script>
+<!--Login Javascript-->
+<script type="text/javascript" src="/register_login/js/login.js"></script>

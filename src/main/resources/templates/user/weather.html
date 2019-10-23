@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" id="location" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,7 +73,7 @@
                 </div>
 
                 <div class="current-conditions">
-                    <div class="temp" th:text="*{#numbers.formatDecimal(temp - 273.15,2,2)}+'&deg;C'"></div>
+                    <div class="temp" th:text="*{temp}+'&deg;C'"></div>
                     <div class="summary" th:text="*{description}" style="margin-top: 5px"></div>
                 </div>
             </div>
@@ -126,7 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="temp">
-                                    <span class="hiTemp" th:text="*{#numbers.formatDecimal(temp,2,2)}+'°С'"></span>
+                                    <span class="hiTemp" th:text="*{#numbers.formatDecimal(temp,2,2 )}+'°С'"></span>
                                 </div>
                                 <div class="summary"></div>
                                 <div class="summary"><span th:text="*{description}"></span></div>

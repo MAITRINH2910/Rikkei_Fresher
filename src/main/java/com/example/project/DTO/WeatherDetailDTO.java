@@ -1,12 +1,14 @@
 package com.example.project.DTO;
 
+import com.example.project.DTO.WeatherPropertyDTO.City;
+
 import java.util.List;
 
 public class WeatherDetailDTO {
     private Integer cod;
     private String message;
     private Integer cnt;
-    private List<com.example.project.DTO.List> list;
+    private List<com.example.project.DTO.WeatherPropertyDTO.List> list;
     private City city;
 
 
@@ -42,11 +44,11 @@ public class WeatherDetailDTO {
         this.cnt = cnt;
     }
 
-    public List<com.example.project.DTO.List> getList() {
+    public List<com.example.project.DTO.WeatherPropertyDTO.List> getList() {
         return list;
     }
 
-    public void setList(List<com.example.project.DTO.List> list) {
+    public void setList(List<com.example.project.DTO.WeatherPropertyDTO.List> list) {
         this.list = list;
     }
 }

@@ -1,8 +1,5 @@
 package com.example.project.config;
 
-import java.sql.Timestamp;
-import java.util.HashSet;
-
 import com.example.project.entity.Roles;
 import com.example.project.entity.User;
 import com.example.project.repository.RoleRepository;
@@ -15,6 +12,11 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * The DataSeedingListener class is used to illustrate:
+ * 1. Create Default Admin for the first time start server
+ *
+ */
 @Component
 public class DataSeedingListener implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -58,7 +60,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
 
         // Set account admin
         // Check userAdmin have been existed
-        if(!userRepository.existsByUsername(userAdmin)) {
+        if (!userRepository.existsByUsername(userAdmin)) {
             // Create one UserEntity Admin
             User accountAdmin = new User();
             // Set property for User has ROLE_ADMIN
@@ -68,9 +70,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
             accountAdmin.setFirstName(firstName);
             accountAdmin.setLastName(lastName);
             accountAdmin.setActive(Constants.ACTIVE);
-            HashSet<Roles> roles = new HashSet<>();
-            roles.add(roleRepository.findByRoleName(Constants.ADMIN).get());
-            accountAdmin.setRoleName(roles);
+            accountAdmin.setRoleName(roleRepository.findByRoleName(Constants.ADMIN).get());
             //Add USER Admin in DB
             userRepository.save(accountAdmin);
 
